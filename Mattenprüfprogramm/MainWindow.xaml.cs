@@ -38,7 +38,7 @@ namespace Mattenprüfprogramm
             anmeldung = Convert.ToBoolean(xml.SelectSingleNode("Einstellungen").SelectSingleNode("Anmeldung").InnerText);
 
             if (!anmeldung)
-            {
+            {//
                 Window BenutzerAnmeldung = new Benutzer.BenutzerAnmelden(this);
                 BenutzerAnmeldung.Show();
             }
