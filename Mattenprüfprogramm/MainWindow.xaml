@@ -1,0 +1,58 @@
+﻿<Window x:Class="Mattenprüfprogramm.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Mattenprüfprogramm" Height="500" Width="800" Icon="IconB.png" WindowStartupLocation="CenterOwner">
+    <Grid Name="MainGrid">
+        <Menu Height="27" IsMainMenu="true" HorizontalAlignment="Left" Name="MainMenu" VerticalAlignment="Top" >
+            <MenuItem Header="Benutzer">
+                <MenuItem Header="Anmelden" Click="BenutzerAnmelden_Click"></MenuItem>
+                <MenuItem Header="Abmelden" Click="BenutzerAbmelden_Click" IsEnabled="False" Name="MainMenu_Abmelden"></MenuItem>
+                <MenuItem Header="Benutzerverwaltung" Click="Benutzerverwaltung_Click" IsEnabled="False" Name="MainMenu_Benutzerverwaltung"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Stammdaten" Name="MenuItemStammdaten" IsEnabled="False">
+                <MenuItem Header="Mattentyp" Click="Mattentyp_Click"></MenuItem>
+                <MenuItem Header="Prüfer" Click="Prüfer_Click"></MenuItem>
+                <MenuItem Header="Schweissmaschinen" Click="Schweissmaschinen_Click"></MenuItem>
+                <MenuItem Header="Nenngewicht" Click="Nenngewicht_Click"></MenuItem>
+                <MenuItem Header="Grenzwerte" Click="Grenzwerte_Click"></MenuItem>
+                
+            </MenuItem>
+            <!--<MenuItem Header="Mattenprüfungen"  Name="MenuItemMattenprüfungen"  IsEnabled="False">
+                <MenuItem Header="Mattenverwaltung"  Click="Mattenprüfungen_Click"></MenuItem>
+            </MenuItem>-->
+            <MenuItem Header="Export"  Name="MenuItemExport" IsEnabled="False">
+                <MenuItem Header="Excel" Click="Excel_Click" Name="MenuItemExcelExport"></MenuItem>
+                <MenuItem Header="AS400" Click="AS400_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Einstellungen" IsEnabled="False"  Name="MenuItemEinstellungen" >
+                <MenuItem Header="Optionen" Click="Optionen_Click"></MenuItem>
+                <MenuItem Header="Informationen" Click="Informationen_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        
+            <DataGrid AutoGenerateColumns="true" CanUserResizeColumns="True" Height="420" HorizontalAlignment="Left"  Margin="0,29,0,0" Name="dataGrid_Matten" VerticalAlignment="Top" Width="625" SelectionChanged="dataGrid_Matten_SelectionChanged"  AutoGeneratingColumn="OnAutoGeneratingColumn" SelectionMode="Single" IsEnabled="False" />
+            <GroupBox Header="Details" Height="99" HorizontalAlignment="Left" Margin="631,349,0,0" Name="groupBox1" VerticalAlignment="Top" Width="141">
+                <Grid>
+                    <Button Content="Scherversuche" Height="29" HorizontalAlignment="Left" IsEnabled="False" Margin="6,41,0,0" Name="button_scherversuche" VerticalAlignment="Top" Width="120" Click="button_scherversuche_Click" />
+                    <Button Content="Zugversuche" Height="29" HorizontalAlignment="Left" IsEnabled="False" Margin="6,6,0,0" Name="button_zugversuche" VerticalAlignment="Top" Width="120" Click="button_zugversuche_Click" />
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Operationen" Height="206" HorizontalAlignment="Left" Margin="631,137,0,0" Name="groupBox2" VerticalAlignment="Top" Width="147">
+                <Grid>
+                    <Button Content="Löschen" Height="29" HorizontalAlignment="Left" IsEnabled="False" Margin="6,76,0,0" Name="button_löschen" VerticalAlignment="Top" Width="120" Click="button_löschen_Click" />
+                    <Button Content="Neu" Height="29" HorizontalAlignment="Left" Margin="6,6,0,0" Name="button_neu" VerticalAlignment="Top" Width="120" Click="button_neu_Click" IsEnabled="False" />
+                    <Button Content="Drucken" Height="29" HorizontalAlignment="Left" Margin="6,146,0,0" Name="button_drucken" VerticalAlignment="Top" Width="120" Click="button_drucken_Click" IsEnabled="False" />
+                    <Button Content="Löschen nach Datum" Height="29" HorizontalAlignment="Left" Margin="6,111,0,0" Name="button_löschen_datum" VerticalAlignment="Top" Width="120" Click="button_löschen_datum_Click" IsEnabled="False" />
+                    <Button Content="Zuordnen" Height="29" HorizontalAlignment="Left" Margin="6,41,0,0" Name="button_zuordnen" VerticalAlignment="Top" Width="120" Click="button_zuordnen_Click" IsEnabled="False" />
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Infos" Height="100" HorizontalAlignment="Left" Margin="631,29,0,0" Name="groupBox3" VerticalAlignment="Top" Width="141">
+                <Grid>
+                    <Label Content="Es sind 0 Scherungen" Height="28" HorizontalAlignment="Left" Margin="3,6,0,0" Name="label_scherung" VerticalAlignment="Top" />
+                    <Label Content="und 0 Züge offen." Height="28" HorizontalAlignment="Left" Margin="3,26,0,0" Name="label_zug" VerticalAlignment="Top" />
+                </Grid>
+            </GroupBox>
+        
+    </Grid>
+    
+</Window>

@@ -1,0 +1,29 @@
+﻿<Window x:Class="Mattenprüfprogramm.Mattenprüfungen.Mattenverwaltung"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Mattenverwaltung" Height="500" Width="800" WindowStartupLocation="CenterOwner" Icon="/Mattenprüfprogramm;component/IconB.png">
+    <Grid>
+        <!--<DataGrid AutoGenerateColumns="true" CanUserResizeColumns="True" Height="439" HorizontalAlignment="Left"  Margin="10,10,0,0" Name="dataGrid_Matten" VerticalAlignment="Top" Width="615" SelectionChanged="dataGrid_Matten_SelectionChanged" AutoGeneratingColumn="OnAutoGeneratingColumn" SelectionMode="Single" />
+        <GroupBox Header="Details" Height="99" HorizontalAlignment="Left" Margin="631,349,0,0" Name="groupBox1" VerticalAlignment="Top" Width="141">
+            <Grid>
+                <Button Content="Scherversuche" Height="29" HorizontalAlignment="Left" IsEnabled="False" Margin="6,41,0,0" Name="button_scherversuche" VerticalAlignment="Top" Width="120" Click="button_scherversuche_Click" />
+                <Button Content="Zugversuche" Height="29" HorizontalAlignment="Left" IsEnabled="False" Margin="6,6,0,0" Name="button_zugversuche" VerticalAlignment="Top" Width="120" Click="button_zugversuche_Click" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Operationen" Height="206" HorizontalAlignment="Left" Margin="631,123,0,0" Name="groupBox2" VerticalAlignment="Top" Width="147">
+            <Grid>
+                <Button Content="Löschen" Height="29" HorizontalAlignment="Left" IsEnabled="False" Margin="6,76,0,0" Name="button_löschen" VerticalAlignment="Top" Width="120" Click="button_löschen_Click" />
+                <Button Content="Neu" Height="29" HorizontalAlignment="Left" Margin="6,6,0,0" Name="button_neu" VerticalAlignment="Top" Width="120" Click="button_neu_Click" />
+                <Button Content="Drucken" Height="29" HorizontalAlignment="Left" Margin="6,146,0,0" Name="button_drucken" VerticalAlignment="Top" Width="120" Click="button_drucken_Click" />
+                <Button Content="Löschen nach Datum" Height="29" HorizontalAlignment="Left" Margin="6,111,0,0" Name="button_löschen_datum" VerticalAlignment="Top" Width="120" Click="button_löschen_datum_Click" />
+                <Button Content="Zuordnen" Height="29" HorizontalAlignment="Left" Margin="6,41,0,0" Name="button_zuordnen" VerticalAlignment="Top" Width="120" Click="button_zuordnen_Click" IsEnabled="False" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Infos" Height="100" HorizontalAlignment="Left" Margin="631,12,0,0" Name="groupBox3" VerticalAlignment="Top" Width="141">
+            <Grid>
+                <Label Content="Es sind 0 Scherungen" Height="28" HorizontalAlignment="Left" Margin="3,6,0,0" Name="label_scherung" VerticalAlignment="Top" />
+                <Label Content="und 0 Züge offen." Height="28" HorizontalAlignment="Left" Margin="3,26,0,0" Name="label_zug" VerticalAlignment="Top" />
+            </Grid>
+        </GroupBox>-->
+    </Grid>
+</Window>

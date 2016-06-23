@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BSL_Prüfmaschinen" Class="DatabaseConnectionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=10.222.102.2\SQL2005;Initial Catalog=BSL_Prüfmaschinen;Persist Security Info=True;User ID=sa" SettingsObjectName="Mattenprüfprogramm.Properties.Settings" SettingsPropertyName="BSL_PrüfmaschinenConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Grenzwert" Member="Grenzwert">
+    <Type Name="Grenzwert">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Feld" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Min" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Max" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Import" Member="Import">
+    <Type Name="Import">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Matten" Member="Matten">
+    <Type Name="Matten">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Datum" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Prüfnummer" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Prüfer" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Maschine" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Mattentyp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Kommentar" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Temperatur" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Tiefgerippt" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Anzahl_l" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Anzahl_r" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Anzahl_q" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Fehlversuche_l" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Fehlversuche_r" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Fehlversuche_q" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Matten_Scherung" Member="Scherung" ThisKey="Id" OtherKey="Id_Matten" Type="Scherung" />
+      <Association Name="Matten_Zug" Member="Zug" ThisKey="Id" OtherKey="Id_Matten" Type="Zug" />
+      <Association Name="Mattentypen_Matten" Member="Mattentypen" ThisKey="Id_Mattentyp" OtherKey="Id" Type="Mattentypen" IsForeignKey="true" />
+      <Association Name="Prüfer_Matten" Member="Prüfer" ThisKey="Id_Prüfer" OtherKey="Id" Type="Prüfer" IsForeignKey="true" />
+      <Association Name="Schweissmaschine_Matten" Member="Schweissmaschine" ThisKey="Id_Maschine" OtherKey="Id" Type="Schweissmaschine" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Mattentypen" Member="Mattentypen">
+    <Type Name="Mattentypen">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Mattentypen_Matten" Member="Matten" ThisKey="Id" OtherKey="Id_Mattentyp" Type="Matten" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Nenngewichte" Member="Nenngewichte">
+    <Type Name="Nenngewichte">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Durchmesser" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Nenngewicht" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Prüfer" Member="Prüfer">
+    <Type Name="Prüfer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="Prüfer_Matten" Member="Matten" ThisKey="Id" OtherKey="Id_Prüfer" Type="Matten" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rippenflächen" Member="Rippenflächen">
+    <Type Name="Rippenflächen">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nenndurchmesser" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Min" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Max" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Scherung" Member="Scherung">
+    <Type Name="Scherung">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Datum" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Maschine" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Mattentyp" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Prüfer" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Durchmesser" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Richtung" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Höchstkraft" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Scherwert" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Id_Matten" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Matten_Scherung" Member="Matten" ThisKey="Id_Matten" OtherKey="Id" Type="Matten" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Schweissmaschine" Member="Schweissmaschine">
+    <Type Name="Schweissmaschine">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nummer" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Schweissmaschine_Matten" Member="Matten" ThisKey="Id" OtherKey="Id_Maschine" Type="Matten" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="User">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Passwort" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="lesen" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="schreiben" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="admin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Zug" Member="Zug">
+    <Type Name="Zug">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Datum" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Maschine" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Mattentyp" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Prüfer" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Durchmesser" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Masse" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Richtung" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Zugfestigkeit" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Dehngrenze" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DehnungHöchstkraft" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Bruchdehnung" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Streckengrenzverhältnis" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AbweichungNenngewicht" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Bruchlage" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Id_Matten" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Se1" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Se2" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Se3" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="H1m" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="H2m" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="H3m" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="H125" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="H225" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="H325" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="H175" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="H275" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="H375" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="C" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="Matten_Zug" Member="Matten" ThisKey="Id_Matten" OtherKey="Id" Type="Matten" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

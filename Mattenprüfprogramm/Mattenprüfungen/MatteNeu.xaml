@@ -1,0 +1,24 @@
+﻿<Window x:Class="Mattenprüfprogramm.Mattenprüfungen.MatteNeu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Neue Matte anlegen" Height="346" Width="300" Icon="/Mattenprüfprogramm;component/IconB.png" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="146,44,0,0" Name="textBox_prüfnummer" VerticalAlignment="Top" Width="120" IsEnabled="False" Visibility="Hidden" />
+        <DatePicker Height="25" HorizontalAlignment="Left" Margin="146,13,0,0" Name="datePicker_matte" VerticalAlignment="Top" Width="120" />
+        <Label Content="Datum" Height="25" HorizontalAlignment="Left" Margin="12,13,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="Prüfnummer" Height="23" HorizontalAlignment="Left" Margin="12,44,0,0" Name="label2" VerticalAlignment="Top" Visibility="Hidden" />
+        <Label Content="Prüfer" Height="23" HorizontalAlignment="Left" Margin="12,73,0,0" Name="label3" VerticalAlignment="Top" />
+        <Label Content="Maschine" Height="23" HorizontalAlignment="Left" Margin="12,102,0,0" Name="label4" VerticalAlignment="Top" />
+        <Label Content="Mattentyp" Height="26" HorizontalAlignment="Left" Margin="12,131,0,0" Name="label5" VerticalAlignment="Top" />
+        <Label Content="Kommentar" Height="37" HorizontalAlignment="Left" Margin="12,189,0,0" Name="label6" VerticalAlignment="Top" />
+        <Label Content="Temperatur" Height="27" HorizontalAlignment="Left" Margin="12,160,0,0" Name="label7" VerticalAlignment="Top" />
+        <Button Content="Speichern und Schließen" Height="29" HorizontalAlignment="Left" Margin="61,266,0,0" Name="button_SuS" VerticalAlignment="Top" Width="150" Click="button_SuS_Click" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="146,73,0,0" Name="comboBox_prüfer" VerticalAlignment="Top" Width="120" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="146,102,0,0" Name="comboBox_maschine" VerticalAlignment="Top" Width="120" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="146,131,0,0" Name="comboBox_mattentyp" VerticalAlignment="Top" Width="120" />
+        <TextBox Height="37" HorizontalAlignment="Left"  Name="textBox_kommentar" VerticalAlignment="Top" Width="120" TextWrapping="Wrap"
+                    AcceptsReturn="True"  VerticalScrollBarVisibility="Visible" IsEnabled="True" Margin="146,189,0,0" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="146,160,0,0" Name="textBox_temperatur" VerticalAlignment="Top" Width="120" />
+        <CheckBox Content="Tiefgerippt" Height="16" HorizontalAlignment="Left" Margin="146,232,0,0" Name="checkBox_tiefgerippt" VerticalAlignment="Top" />
+    </Grid>
+</Window>

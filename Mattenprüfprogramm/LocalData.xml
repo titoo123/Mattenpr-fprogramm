@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Einstellungen>
+  <Anmeldung>true</Anmeldung>
+  <Zug>1</Zug>
+  <Scherung>1</Scherung>
+  <Messprotokoll>1</Messprotokoll>
+  <Importpfad>C:\</Importpfad>
+</Einstellungen>
