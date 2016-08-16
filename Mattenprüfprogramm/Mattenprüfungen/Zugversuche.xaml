@@ -41,22 +41,22 @@
         <DataGrid AutoGenerateColumns="true" Height="200" HorizontalAlignment="Left" AutoGeneratingColumn="dataGrid_zugversuche_AutoGeneratingColumn"  Margin="12,167,0,0" Name="dataGrid_zugversuche" LoadingRow="dataGrid_zugversuche_LoadingRow" VerticalAlignment="Top" Width="754" SelectionChanged="dataGrid_zugversuche_SelectionChanged" />
         <GroupBox Header="Zugdaten" Height="332" HorizontalAlignment="Left" Margin="12,373,0,0" Name="groupBox3" VerticalAlignment="Top" Width="754">
             <Grid>
-                <Label Content="Durchmesser" Height="23" HorizontalAlignment="Left" Name="label12" VerticalAlignment="Top" Margin="6,10,0,0" />
+                <Label Content="D" Height="23" HorizontalAlignment="Left" Name="label12" VerticalAlignment="Top" Margin="6,10,0,0" />
                 <Label Content="Richtung" Height="26" HorizontalAlignment="Left" Margin="6,63,0,0" Name="label13" VerticalAlignment="Top" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="145,10,0,0" Name="textBox_zugdaten_durchmesser" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                 <ComboBox Height="23" Margin="145,63,477,0" Name="comboBox_zugdaten_richtung" VerticalAlignment="Top" IsEnabled="False" ItemsSource="{Binding}" />
-                <Label Content="Masse" Height="23" HorizontalAlignment="Left" Margin="6,37,0,0" Name="label14" VerticalAlignment="Top" />
-                <Label Content="Zugfestigkeit [MPa]" Height="26" HorizontalAlignment="Left" Margin="6,90,0,0" Name="label15" VerticalAlignment="Top" />
+                <Label Content="M" Height="23" HorizontalAlignment="Left" Margin="6,37,0,0" Name="label14" VerticalAlignment="Top" />
+                <Label Content="Rm" Height="26" HorizontalAlignment="Left" Margin="6,90,0,0" Name="label15" VerticalAlignment="Top" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="145,37,0,0" Name="textBox_zugdaten_masse" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                 <TextBox Height="23" HorizontalAlignment="Right" Margin="0,10,150,0" Name="textBox_zugdaten_dehnhöchstkraft" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                 <Button Content="Speichern" Height="23" HorizontalAlignment="Left" Margin="613,37,0,0" Name="button_zug_speichern" VerticalAlignment="Top" Width="120" IsEnabled="False" Click="button_zug_speichern_Click" />
                 <Button Content="Bearbeiten" Height="23" HorizontalAlignment="Right" Margin="0,9,9,0" Name="button_zug_bearbeiten" VerticalAlignment="Top" Width="120" Click="button_zug_bearbeiten_Click" />
-                <Label Content="0.2% Dehngrenze [MPa]" Height="26" HorizontalAlignment="Left" Margin="6,117,0,0" Name="label16" VerticalAlignment="Top" />
-                <Label Content="Dehngrenze bei Höchstkraft %" Height="26" HorizontalAlignment="Left" Margin="282,10,0,0" Name="label17" VerticalAlignment="Top" />
-                <Label Content="Bruchdehnung %" Height="26" HorizontalAlignment="Left" Margin="282,37,0,0" Name="label18" VerticalAlignment="Top" />
-                <Label Content="Streckengrenzverhältnis" Height="26" HorizontalAlignment="Left" Margin="282,63,0,0" Name="label19" VerticalAlignment="Top" />
-                <Label Content="Abweichung vom Nenngewicht %" Height="26" HorizontalAlignment="Left" Margin="282,90,0,0" Name="label20" VerticalAlignment="Top" />
-                <Label Content="Bruchlage" Height="26" HorizontalAlignment="Left" Margin="282,117,0,0" Name="label21" VerticalAlignment="Top" />
+                <Label Content="Rp" Height="26" HorizontalAlignment="Left" Margin="6,117,0,0" Name="label16" VerticalAlignment="Top" />
+                <Label Content="Agt" Height="26" HorizontalAlignment="Left" Margin="282,10,0,0" Name="label17" VerticalAlignment="Top" />
+                <Label Content="A" Height="26" HorizontalAlignment="Left" Margin="282,37,0,0" Name="label18" VerticalAlignment="Top" />
+                <Label Content="Rm/Rp" Height="26" HorizontalAlignment="Left" Margin="282,63,0,0" Name="label19" VerticalAlignment="Top" />
+                <Label Content="Dgs" Height="26" HorizontalAlignment="Left" Margin="282,90,0,0" Name="label20" VerticalAlignment="Top" />
+                <Label Content="Br" Height="26" HorizontalAlignment="Left" Margin="282,117,0,0" Name="label21" VerticalAlignment="Top" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="145,90,0,0" Name="textBox_zugfestigkeit" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="145,117,0,0" Name="textBox_dehngrenze" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="472,37,0,0" Name="textBox_bruchdehnung" VerticalAlignment="Top" Width="120" IsEnabled="False" />
@@ -80,9 +80,13 @@
                         <Label Content="c" Height="28" HorizontalAlignment="Left" Margin="132,6,0,0" Name="label25" VerticalAlignment="Top" />
                         <Label Content="se" Height="28" HorizontalAlignment="Left" Margin="174,6,0,0" Name="label26" VerticalAlignment="Top" />
                         <Label Content="fr" Height="28" HorizontalAlignment="Left" Margin="279,6,0,0" Name="label27" VerticalAlignment="Top" />
-                        <TextBox Height="23" HorizontalAlignment="Left" Margin="132,30,0,0" Name="textBox_c" VerticalAlignment="Top" Width="41" IsEnabled="False" />
+
+                        <TextBox Height="23" HorizontalAlignment="Left" Margin="132,30,0,0" Name="textBox_c1" VerticalAlignment="Top" Width="41" IsEnabled="False" />
+                        <TextBox Height="23" HorizontalAlignment="Left" Margin="132,54,0,0" Name="textBox_c2" VerticalAlignment="Top" Width="41" IsEnabled="False" />
+                        <TextBox Height="23" HorizontalAlignment="Left" Margin="132,78,0,0" Name="textBox_c3" VerticalAlignment="Top" Width="41" IsEnabled="False" />
+
                         <TextBox Height="23" HorizontalAlignment="Left" Margin="174,30,0,0" Name="textBox_se_1" VerticalAlignment="Top" Width="41" IsEnabled="False" />
-                       <TextBox Height="23" HorizontalAlignment="Left" Margin="174,54,0,0" Name="textBox_se_2" VerticalAlignment="Top" Width="41" IsEnabled="False" />
+                        <TextBox Height="23" HorizontalAlignment="Left" Margin="174,54,0,0" Name="textBox_se_2" VerticalAlignment="Top" Width="41" IsEnabled="False" />
                         <TextBox Height="23" HorizontalAlignment="Left" Margin="174,78,0,0" Name="textBox_se_3" VerticalAlignment="Top" Width="41" IsEnabled="False" />
                         <TextBox Height="23" HorizontalAlignment="Left" Margin="279,30,0,0" Name="textBox_fr" VerticalAlignment="Top" Width="120" IsEnabled="False" />
 

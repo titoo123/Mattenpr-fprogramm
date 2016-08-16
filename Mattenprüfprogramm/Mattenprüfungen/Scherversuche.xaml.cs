@@ -28,7 +28,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
         //ListDictionary gW = new ListDictionary();
         //List<List<String>> gWl = new List<List<String>>();
         //Dictionary<int, List<String>> gW = new Dictionary<int, List<string>>();
-       List<Tuple<int, string>> TgW = new List<Tuple<int,string>>();
+        List<Tuple<int, string>> TgW = new List<Tuple<int,string>>();
 
         public Scherversuche(Matten m, MainWindow mv)
         {
@@ -171,10 +171,10 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             var esr = from s in db.Scherung
                       where s.Id == Convert.ToInt32(Erweiterungen.Helper.GetStringFromDataGrid(0, dataGrid_scherversuche))
                       select s;
-            esr.First().Höchstkraft = Convert.ToDouble(textBox_scherdaten_hoechstkraft);
-            esr.First().Scherwert = Convert.ToDouble(textBox_scherdaten_scherwert);
+            esr.First().Fm = Convert.ToDouble(textBox_scherdaten_hoechstkraft);
+            esr.First().Sw = Convert.ToDouble(textBox_scherdaten_scherwert);
             esr.First().Richtung = comboBox_scherdaten_richtung.SelectedValue.ToString();
-            esr.First().Durchmesser = Convert.ToDouble(textBox_scherdaten_durchmesser);
+            esr.First().D = Convert.ToDouble(textBox_scherdaten_durchmesser);
 
             textBox_scherdaten_durchmesser.IsEnabled = false;
             comboBox_scherdaten_richtung.IsEnabled = false;
@@ -248,7 +248,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             //Läd Scherungen
             var sch = from s in db.Scherung
                       where s.Id_Matten == m.Id
-                      select new { s.Id,s.Datum, s.Durchmesser, s.Richtung, s.Höchstkraft, s.Scherwert };
+                      select new { s.Id,s.Datum, s.D, s.Richtung, s.Fm, s.Sw };
 
             var dur = from d in db.Grenzwert
                       select d;
@@ -258,15 +258,15 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             {
                 foreach (var du in dur)
                 {
-                        if (du.Feld == "Durchmesser" && (sc.Durchmesser < du.Min || sc.Durchmesser > du.Max))
+                        if (du.Feld == "Durchmesser" && (sc.D < du.Min || sc.D > du.Max))
                         {
                             TgW.Add(new Tuple<int, string>(i, "Durchmesser"));
                         }
-                        if (du.Feld == "Höchstkraft" && (sc.Höchstkraft < du.Min || sc.Höchstkraft > du.Max))
+                        if (du.Feld == "Höchstkraft" && (sc.Fm < du.Min || sc.Fm > du.Max))
                         {
                             TgW.Add(new Tuple<int, string>(i, "Höchstkraft"));
                         }
-                        if (du.Feld == "Scherwert" && (sc.Scherwert < du.Min || sc.Scherwert > du.Max))
+                        if (du.Feld == "Scherwert" && (sc.Sw < du.Min || sc.Sw > du.Max))
                         {
                             TgW.Add(new Tuple<int, string>(i, "Scherwert"));
                         } 

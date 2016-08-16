@@ -22,7 +22,7 @@
             </MenuItem>-->
             <MenuItem Header="Export"  Name="MenuItemExport" IsEnabled="False">
                 <MenuItem Header="Excel" Click="Excel_Click" Name="MenuItemExcelExport"></MenuItem>
-                <MenuItem Header="AS400" Click="AS400_Click"></MenuItem>
+                <!--<MenuItem Header="AS400" Click="AS400_Click"></MenuItem>-->
             </MenuItem>
             <MenuItem Header="Einstellungen" IsEnabled="False"  Name="MenuItemEinstellungen" >
                 <MenuItem Header="Optionen" Click="Optionen_Click"></MenuItem>

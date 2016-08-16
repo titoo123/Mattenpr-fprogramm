@@ -173,7 +173,9 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             textBox_Hn75_2.IsEnabled = true;
             textBox_Hn75_3.IsEnabled = true;
 
-            textBox_c.IsEnabled = true;
+            textBox_c1.IsEnabled = true;
+            textBox_c2.IsEnabled = true;
+            textBox_c3.IsEnabled = true;
 
             textBox_se_1.IsEnabled = true;
             textBox_se_2.IsEnabled = true;
@@ -194,16 +196,16 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                       select s;
 
 
-            esr.First().Durchmesser = Convert.ToDouble( textBox_zugdaten_durchmesser.Text);
-            esr.First().Masse = Convert.ToDouble(textBox_zugdaten_masse.Text);
+            esr.First().D = Convert.ToDouble( textBox_zugdaten_durchmesser.Text);
+            esr.First().M = Convert.ToDouble(textBox_zugdaten_masse.Text);
             esr.First().Richtung = Convert.ToString(comboBox_zugdaten_richtung.SelectedValue);
-            esr.First().Zugfestigkeit = Convert.ToDouble(textBox_zugfestigkeit.Text);
-            esr.First().Dehngrenze = Convert.ToDouble(textBox_dehngrenze.Text);
-            esr.First().DehnungHöchstkraft = Convert.ToDouble(textBox_zugdaten_dehnhöchstkraft.Text);
-            esr.First().Bruchdehnung = Convert.ToDouble(textBox_bruchdehnung.Text);
-            esr.First().Streckengrenzverhältnis = Convert.ToDouble(textBox_streckengrenzverhältnis.Text);
-            esr.First().AbweichungNenngewicht = Convert.ToDouble(textBox_abweichungNenngewicht.Text);
-            esr.First().Bruchlage = Convert.ToString(textBox_bruchlage.Text);
+            esr.First().Rm = Convert.ToDouble(textBox_zugfestigkeit.Text);
+            esr.First().Rp = Convert.ToDouble(textBox_dehngrenze.Text);
+            esr.First().Agt = Convert.ToDouble(textBox_zugdaten_dehnhöchstkraft.Text);
+            esr.First().A = Convert.ToDouble(textBox_bruchdehnung.Text);
+            esr.First().RmRp = Convert.ToDouble(textBox_streckengrenzverhältnis.Text);
+            esr.First().Dgs = Convert.ToDouble(textBox_abweichungNenngewicht.Text);
+            esr.First().Br = Convert.ToString(textBox_bruchlage.Text);
 
             esr.First().H1m = Convert.ToDouble(textBox_Hnm_1.Text);
             esr.First().H2m = Convert.ToDouble(textBox_Hnm_2.Text);
@@ -217,13 +219,15 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             esr.First().H275 = Convert.ToDouble(textBox_Hn75_2.Text);
             esr.First().H375 = Convert.ToDouble(textBox_Hn75_3.Text);
 
-            esr.First().C = Convert.ToDouble(textBox_c.Text);
+            esr.First().c1 = Convert.ToDouble(textBox_c1.Text);
+            esr.First().c2 = Convert.ToDouble(textBox_c2.Text);
+            esr.First().c3 = Convert.ToDouble(textBox_c3.Text);
 
-            esr.First().Se1 = Convert.ToDouble(textBox_se_1.Text);
-            esr.First().Se2 = Convert.ToDouble(textBox_se_2.Text);
-            esr.First().Se3 = Convert.ToDouble(textBox_se_3.Text);
+            esr.First().se1 = Convert.ToDouble(textBox_se_1.Text);
+            esr.First().se2 = Convert.ToDouble(textBox_se_2.Text);
+            esr.First().se3 = Convert.ToDouble(textBox_se_3.Text);
 
-            esr.First().Fr = Convert.ToDouble(textBox_fr.Text);
+            esr.First().fR = Convert.ToDouble(textBox_fr.Text);
 
             try
             {
@@ -257,7 +261,9 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             textBox_Hn75_2.IsEnabled = false;
             textBox_Hn75_3.IsEnabled = false;
 
-            textBox_c.IsEnabled = false;
+            textBox_c1.IsEnabled = false;
+            textBox_c2.IsEnabled = false;
+            textBox_c3.IsEnabled = false;
 
             textBox_se_1.IsEnabled = false;
             textBox_se_2.IsEnabled = false;
@@ -295,7 +301,10 @@ namespace Mattenprüfprogramm.Mattenprüfungen
 
             double h34 = (H175 + H275 + H375) / 3;
 
-            double c = Convert.ToDouble(textBox_c.Text);
+
+
+            double c = (Convert.ToDouble(textBox_c1.Text) + Convert.ToDouble(textBox_c2.Text) + Convert.ToDouble(textBox_c3.Text)) / 3;
+
 
             double fr = ((ds * Math.PI - es) * (h + 2 * (h14 + h34))) / (6 * ds * Math.PI * c);
 
@@ -339,13 +348,14 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                 textBox_Hn75_2.Text = Erweiterungen.Helper.GetStringFromDataGrid(22, dataGrid_zugversuche);
                 textBox_Hn75_3.Text = Erweiterungen.Helper.GetStringFromDataGrid(23, dataGrid_zugversuche);
 
-                textBox_c.Text =        Erweiterungen.Helper.GetStringFromDataGrid(24, dataGrid_zugversuche);
-
+                textBox_c1.Text =       Erweiterungen.Helper.GetStringFromDataGrid(24, dataGrid_zugversuche);
+                textBox_c2.Text =       Erweiterungen.Helper.GetStringFromDataGrid(25, dataGrid_zugversuche);
+                textBox_c3.Text =       Erweiterungen.Helper.GetStringFromDataGrid(26, dataGrid_zugversuche);
                 textBox_se_1.Text =     Erweiterungen.Helper.GetStringFromDataGrid(15, dataGrid_zugversuche);
                 textBox_se_2.Text =     Erweiterungen.Helper.GetStringFromDataGrid(16, dataGrid_zugversuche);
                 textBox_se_3.Text =     Erweiterungen.Helper.GetStringFromDataGrid(17, dataGrid_zugversuche);
 
-                textBox_fr.Text =       Erweiterungen.Helper.GetStringFromDataGrid(25, dataGrid_zugversuche);
+                textBox_fr.Text =       Erweiterungen.Helper.GetStringFromDataGrid(27, dataGrid_zugversuche);
                
             }
 
@@ -409,24 +419,24 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                       {
                           s.Id,
                           s.Datum,
-                          s.Durchmesser,
-                          s.Masse,
+                          s.D,
+                          s.M,
                           s.Richtung,
-                          s.Zugfestigkeit,
-                          s.Dehngrenze,
-                          s.DehnungHöchstkraft,
-                          s.Bruchdehnung, 
-                          s.Streckengrenzverhältnis,
-                          s.AbweichungNenngewicht, //10
-                          s.Bruchlage,
+                          s.Rm,
+                          s.Rp,
+                          s.Agt,
+                          s.A, 
+                          s.RmRp,
+                          s.Dgs, //10
+                          s.Br,
 
                           s.H1m,
                           s.H2m,
                           s.H3m,
 
-                          s.Se1, //15
-                          s.Se2,
-                          s.Se3,
+                          s.se1, //15
+                          s.se2,
+                          s.se3,
 
                           s.H125,
                           s.H225,
@@ -435,8 +445,10 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                           s.H275,
                           s.H375,
 
-                          s.C,
-                          s.Fr
+                          s.c1,
+                          s.c2,
+                          s.c3,
+                          s.fR
                       };
 
             int i = 0;
@@ -452,27 +464,27 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                 foreach (var du in dur)
                 {
 
-                        if (du.Feld == "Durchmesser" && (sc.Durchmesser < du.Min || sc.Durchmesser > du.Max))
+                        if (du.Feld == "Durchmesser" && (sc.D < du.Min || sc.D > du.Max))
                         {
                             TgW.Add(new Tuple<int, string>(i, "Durchmesser"));
                         }
-                        if (du.Feld == "Zugfestigkeit" && (sc.Zugfestigkeit < du.Min || sc.Zugfestigkeit > du.Max))
+                        if (du.Feld == "Zugfestigkeit" && (sc.Rm < du.Min || sc.Rm > du.Max))
                         {
                             TgW.Add(new Tuple<int, string>(i, "Zugfestigkeit"));
                         }
-                        if (du.Feld == "Dehngrenze" && (sc.Dehngrenze < du.Min || sc.Dehngrenze > du.Max))
+                        if (du.Feld == "Dehngrenze" && (sc.Rp < du.Min || sc.Rp > du.Max))
                         {
                             TgW.Add(new Tuple<int, string>(i, "Dehngrenze"));
                         }
-                        if (du.Feld == "Bruchdehnung" && (sc.Bruchdehnung < du.Min || sc.Bruchdehnung > du.Max))
+                        if (du.Feld == "Bruchdehnung" && (sc.A < du.Min || sc.A > du.Max))
                         {
                             TgW.Add(new Tuple<int, string>(i, "Bruchdehnung"));
                         }
-                        if (du.Feld == "Streckengrenzverhältnis" && (sc.Streckengrenzverhältnis < du.Min || sc.Streckengrenzverhältnis > du.Max))
+                        if (du.Feld == "Streckengrenzverhältnis" && (sc.RmRp < du.Min || sc.RmRp > du.Max))
                         {
                             TgW.Add(new Tuple<int, string>(i, "Streckgrenzverhältnis"));
                         }
-                        if (du.Feld == "AbweichungNenngewicht" && (sc.AbweichungNenngewicht < du.Min || sc.AbweichungNenngewicht > du.Max))
+                        if (du.Feld == "AbweichungNenngewicht" && (sc.Dgs < du.Min || sc.Dgs > du.Max))
                         {
                             TgW.Add(new Tuple<int, string>(i, "Abweichung Nenngewicht"));
                         }

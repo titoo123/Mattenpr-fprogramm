@@ -36,9 +36,6 @@ namespace Mattenprüfprogramm
     partial void InsertImport(Import instance);
     partial void UpdateImport(Import instance);
     partial void DeleteImport(Import instance);
-    partial void InsertMatten(Matten instance);
-    partial void UpdateMatten(Matten instance);
-    partial void DeleteMatten(Matten instance);
     partial void InsertMattentypen(Mattentypen instance);
     partial void UpdateMattentypen(Mattentypen instance);
     partial void DeleteMattentypen(Mattentypen instance);
@@ -51,18 +48,21 @@ namespace Mattenprüfprogramm
     partial void InsertRippenflächen(Rippenflächen instance);
     partial void UpdateRippenflächen(Rippenflächen instance);
     partial void DeleteRippenflächen(Rippenflächen instance);
-    partial void InsertScherung(Scherung instance);
-    partial void UpdateScherung(Scherung instance);
-    partial void DeleteScherung(Scherung instance);
     partial void InsertSchweissmaschine(Schweissmaschine instance);
     partial void UpdateSchweissmaschine(Schweissmaschine instance);
     partial void DeleteSchweissmaschine(Schweissmaschine instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
+    partial void InsertMatten(Matten instance);
+    partial void UpdateMatten(Matten instance);
+    partial void DeleteMatten(Matten instance);
     partial void InsertZug(Zug instance);
     partial void UpdateZug(Zug instance);
     partial void DeleteZug(Zug instance);
+    partial void InsertScherung(Scherung instance);
+    partial void UpdateScherung(Scherung instance);
+    partial void DeleteScherung(Scherung instance);
     #endregion
 		
 		public DatabaseConnectionDataContext() : 
@@ -111,14 +111,6 @@ namespace Mattenprüfprogramm
 			}
 		}
 		
-		public System.Data.Linq.Table<Matten> Matten
-		{
-			get
-			{
-				return this.GetTable<Matten>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Mattentypen> Mattentypen
 		{
 			get
@@ -151,14 +143,6 @@ namespace Mattenprüfprogramm
 			}
 		}
 		
-		public System.Data.Linq.Table<Scherung> Scherung
-		{
-			get
-			{
-				return this.GetTable<Scherung>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Schweissmaschine> Schweissmaschine
 		{
 			get
@@ -175,11 +159,27 @@ namespace Mattenprüfprogramm
 			}
 		}
 		
+		public System.Data.Linq.Table<Matten> Matten
+		{
+			get
+			{
+				return this.GetTable<Matten>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Zug> Zug
 		{
 			get
 			{
 				return this.GetTable<Zug>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Scherung> Scherung
+		{
+			get
+			{
+				return this.GetTable<Scherung>();
 			}
 		}
 	}
@@ -401,583 +401,6 @@ namespace Mattenprüfprogramm
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Matten")]
-	public partial class Matten : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.DateTime _Datum;
-		
-		private int _Prüfnummer;
-		
-		private int _Id_Prüfer;
-		
-		private int _Id_Maschine;
-		
-		private int _Id_Mattentyp;
-		
-		private string _Kommentar;
-		
-		private System.Nullable<double> _Temperatur;
-		
-		private System.Nullable<bool> _Tiefgerippt;
-		
-		private System.Nullable<int> _Anzahl_l;
-		
-		private System.Nullable<int> _Anzahl_r;
-		
-		private System.Nullable<int> _Anzahl_q;
-		
-		private System.Nullable<int> _Fehlversuche_l;
-		
-		private System.Nullable<int> _Fehlversuche_r;
-		
-		private System.Nullable<int> _Fehlversuche_q;
-		
-		private EntitySet<Scherung> _Scherung;
-		
-		private EntitySet<Zug> _Zug;
-		
-		private EntityRef<Mattentypen> _Mattentypen;
-		
-		private EntityRef<Prüfer> _Prüfer;
-		
-		private EntityRef<Schweissmaschine> _Schweissmaschine;
-		
-    #region Definitionen der Erweiterungsmethoden
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnDatumChanging(System.DateTime value);
-    partial void OnDatumChanged();
-    partial void OnPrüfnummerChanging(int value);
-    partial void OnPrüfnummerChanged();
-    partial void OnId_PrüferChanging(int value);
-    partial void OnId_PrüferChanged();
-    partial void OnId_MaschineChanging(int value);
-    partial void OnId_MaschineChanged();
-    partial void OnId_MattentypChanging(int value);
-    partial void OnId_MattentypChanged();
-    partial void OnKommentarChanging(string value);
-    partial void OnKommentarChanged();
-    partial void OnTemperaturChanging(System.Nullable<double> value);
-    partial void OnTemperaturChanged();
-    partial void OnTiefgeripptChanging(System.Nullable<bool> value);
-    partial void OnTiefgeripptChanged();
-    partial void OnAnzahl_lChanging(System.Nullable<int> value);
-    partial void OnAnzahl_lChanged();
-    partial void OnAnzahl_rChanging(System.Nullable<int> value);
-    partial void OnAnzahl_rChanged();
-    partial void OnAnzahl_qChanging(System.Nullable<int> value);
-    partial void OnAnzahl_qChanged();
-    partial void OnFehlversuche_lChanging(System.Nullable<int> value);
-    partial void OnFehlversuche_lChanged();
-    partial void OnFehlversuche_rChanging(System.Nullable<int> value);
-    partial void OnFehlversuche_rChanged();
-    partial void OnFehlversuche_qChanging(System.Nullable<int> value);
-    partial void OnFehlversuche_qChanged();
-    #endregion
-		
-		public Matten()
-		{
-			this._Scherung = new EntitySet<Scherung>(new Action<Scherung>(this.attach_Scherung), new Action<Scherung>(this.detach_Scherung));
-			this._Zug = new EntitySet<Zug>(new Action<Zug>(this.attach_Zug), new Action<Zug>(this.detach_Zug));
-			this._Mattentypen = default(EntityRef<Mattentypen>);
-			this._Prüfer = default(EntityRef<Prüfer>);
-			this._Schweissmaschine = default(EntityRef<Schweissmaschine>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Datum", DbType="DateTime NOT NULL")]
-		public System.DateTime Datum
-		{
-			get
-			{
-				return this._Datum;
-			}
-			set
-			{
-				if ((this._Datum != value))
-				{
-					this.OnDatumChanging(value);
-					this.SendPropertyChanging();
-					this._Datum = value;
-					this.SendPropertyChanged("Datum");
-					this.OnDatumChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prüfnummer", DbType="Int NOT NULL")]
-		public int Prüfnummer
-		{
-			get
-			{
-				return this._Prüfnummer;
-			}
-			set
-			{
-				if ((this._Prüfnummer != value))
-				{
-					this.OnPrüfnummerChanging(value);
-					this.SendPropertyChanging();
-					this._Prüfnummer = value;
-					this.SendPropertyChanged("Prüfnummer");
-					this.OnPrüfnummerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Prüfer", DbType="Int NOT NULL")]
-		public int Id_Prüfer
-		{
-			get
-			{
-				return this._Id_Prüfer;
-			}
-			set
-			{
-				if ((this._Id_Prüfer != value))
-				{
-					if (this._Prüfer.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnId_PrüferChanging(value);
-					this.SendPropertyChanging();
-					this._Id_Prüfer = value;
-					this.SendPropertyChanged("Id_Prüfer");
-					this.OnId_PrüferChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Maschine", DbType="Int NOT NULL")]
-		public int Id_Maschine
-		{
-			get
-			{
-				return this._Id_Maschine;
-			}
-			set
-			{
-				if ((this._Id_Maschine != value))
-				{
-					if (this._Schweissmaschine.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnId_MaschineChanging(value);
-					this.SendPropertyChanging();
-					this._Id_Maschine = value;
-					this.SendPropertyChanged("Id_Maschine");
-					this.OnId_MaschineChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Mattentyp", DbType="Int NOT NULL")]
-		public int Id_Mattentyp
-		{
-			get
-			{
-				return this._Id_Mattentyp;
-			}
-			set
-			{
-				if ((this._Id_Mattentyp != value))
-				{
-					if (this._Mattentypen.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnId_MattentypChanging(value);
-					this.SendPropertyChanging();
-					this._Id_Mattentyp = value;
-					this.SendPropertyChanged("Id_Mattentyp");
-					this.OnId_MattentypChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kommentar", DbType="VarChar(MAX)")]
-		public string Kommentar
-		{
-			get
-			{
-				return this._Kommentar;
-			}
-			set
-			{
-				if ((this._Kommentar != value))
-				{
-					this.OnKommentarChanging(value);
-					this.SendPropertyChanging();
-					this._Kommentar = value;
-					this.SendPropertyChanged("Kommentar");
-					this.OnKommentarChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Temperatur", DbType="Float")]
-		public System.Nullable<double> Temperatur
-		{
-			get
-			{
-				return this._Temperatur;
-			}
-			set
-			{
-				if ((this._Temperatur != value))
-				{
-					this.OnTemperaturChanging(value);
-					this.SendPropertyChanging();
-					this._Temperatur = value;
-					this.SendPropertyChanged("Temperatur");
-					this.OnTemperaturChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tiefgerippt", DbType="Bit")]
-		public System.Nullable<bool> Tiefgerippt
-		{
-			get
-			{
-				return this._Tiefgerippt;
-			}
-			set
-			{
-				if ((this._Tiefgerippt != value))
-				{
-					this.OnTiefgeripptChanging(value);
-					this.SendPropertyChanging();
-					this._Tiefgerippt = value;
-					this.SendPropertyChanged("Tiefgerippt");
-					this.OnTiefgeripptChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anzahl_l", DbType="Int")]
-		public System.Nullable<int> Anzahl_l
-		{
-			get
-			{
-				return this._Anzahl_l;
-			}
-			set
-			{
-				if ((this._Anzahl_l != value))
-				{
-					this.OnAnzahl_lChanging(value);
-					this.SendPropertyChanging();
-					this._Anzahl_l = value;
-					this.SendPropertyChanged("Anzahl_l");
-					this.OnAnzahl_lChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anzahl_r", DbType="Int")]
-		public System.Nullable<int> Anzahl_r
-		{
-			get
-			{
-				return this._Anzahl_r;
-			}
-			set
-			{
-				if ((this._Anzahl_r != value))
-				{
-					this.OnAnzahl_rChanging(value);
-					this.SendPropertyChanging();
-					this._Anzahl_r = value;
-					this.SendPropertyChanged("Anzahl_r");
-					this.OnAnzahl_rChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anzahl_q", DbType="Int")]
-		public System.Nullable<int> Anzahl_q
-		{
-			get
-			{
-				return this._Anzahl_q;
-			}
-			set
-			{
-				if ((this._Anzahl_q != value))
-				{
-					this.OnAnzahl_qChanging(value);
-					this.SendPropertyChanging();
-					this._Anzahl_q = value;
-					this.SendPropertyChanged("Anzahl_q");
-					this.OnAnzahl_qChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fehlversuche_l", DbType="Int")]
-		public System.Nullable<int> Fehlversuche_l
-		{
-			get
-			{
-				return this._Fehlversuche_l;
-			}
-			set
-			{
-				if ((this._Fehlversuche_l != value))
-				{
-					this.OnFehlversuche_lChanging(value);
-					this.SendPropertyChanging();
-					this._Fehlversuche_l = value;
-					this.SendPropertyChanged("Fehlversuche_l");
-					this.OnFehlversuche_lChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fehlversuche_r", DbType="Int")]
-		public System.Nullable<int> Fehlversuche_r
-		{
-			get
-			{
-				return this._Fehlversuche_r;
-			}
-			set
-			{
-				if ((this._Fehlversuche_r != value))
-				{
-					this.OnFehlversuche_rChanging(value);
-					this.SendPropertyChanging();
-					this._Fehlversuche_r = value;
-					this.SendPropertyChanged("Fehlversuche_r");
-					this.OnFehlversuche_rChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fehlversuche_q", DbType="Int")]
-		public System.Nullable<int> Fehlversuche_q
-		{
-			get
-			{
-				return this._Fehlversuche_q;
-			}
-			set
-			{
-				if ((this._Fehlversuche_q != value))
-				{
-					this.OnFehlversuche_qChanging(value);
-					this.SendPropertyChanging();
-					this._Fehlversuche_q = value;
-					this.SendPropertyChanged("Fehlversuche_q");
-					this.OnFehlversuche_qChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Matten_Scherung", Storage="_Scherung", ThisKey="Id", OtherKey="Id_Matten")]
-		public EntitySet<Scherung> Scherung
-		{
-			get
-			{
-				return this._Scherung;
-			}
-			set
-			{
-				this._Scherung.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Matten_Zug", Storage="_Zug", ThisKey="Id", OtherKey="Id_Matten")]
-		public EntitySet<Zug> Zug
-		{
-			get
-			{
-				return this._Zug;
-			}
-			set
-			{
-				this._Zug.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Mattentypen_Matten", Storage="_Mattentypen", ThisKey="Id_Mattentyp", OtherKey="Id", IsForeignKey=true)]
-		public Mattentypen Mattentypen
-		{
-			get
-			{
-				return this._Mattentypen.Entity;
-			}
-			set
-			{
-				Mattentypen previousValue = this._Mattentypen.Entity;
-				if (((previousValue != value) 
-							|| (this._Mattentypen.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Mattentypen.Entity = null;
-						previousValue.Matten.Remove(this);
-					}
-					this._Mattentypen.Entity = value;
-					if ((value != null))
-					{
-						value.Matten.Add(this);
-						this._Id_Mattentyp = value.Id;
-					}
-					else
-					{
-						this._Id_Mattentyp = default(int);
-					}
-					this.SendPropertyChanged("Mattentypen");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Prüfer_Matten", Storage="_Prüfer", ThisKey="Id_Prüfer", OtherKey="Id", IsForeignKey=true)]
-		public Prüfer Prüfer
-		{
-			get
-			{
-				return this._Prüfer.Entity;
-			}
-			set
-			{
-				Prüfer previousValue = this._Prüfer.Entity;
-				if (((previousValue != value) 
-							|| (this._Prüfer.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Prüfer.Entity = null;
-						previousValue.Matten.Remove(this);
-					}
-					this._Prüfer.Entity = value;
-					if ((value != null))
-					{
-						value.Matten.Add(this);
-						this._Id_Prüfer = value.Id;
-					}
-					else
-					{
-						this._Id_Prüfer = default(int);
-					}
-					this.SendPropertyChanged("Prüfer");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Schweissmaschine_Matten", Storage="_Schweissmaschine", ThisKey="Id_Maschine", OtherKey="Id", IsForeignKey=true)]
-		public Schweissmaschine Schweissmaschine
-		{
-			get
-			{
-				return this._Schweissmaschine.Entity;
-			}
-			set
-			{
-				Schweissmaschine previousValue = this._Schweissmaschine.Entity;
-				if (((previousValue != value) 
-							|| (this._Schweissmaschine.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Schweissmaschine.Entity = null;
-						previousValue.Matten.Remove(this);
-					}
-					this._Schweissmaschine.Entity = value;
-					if ((value != null))
-					{
-						value.Matten.Add(this);
-						this._Id_Maschine = value.Id;
-					}
-					else
-					{
-						this._Id_Maschine = default(int);
-					}
-					this.SendPropertyChanged("Schweissmaschine");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Scherung(Scherung entity)
-		{
-			this.SendPropertyChanging();
-			entity.Matten = this;
-		}
-		
-		private void detach_Scherung(Scherung entity)
-		{
-			this.SendPropertyChanging();
-			entity.Matten = null;
-		}
-		
-		private void attach_Zug(Zug entity)
-		{
-			this.SendPropertyChanging();
-			entity.Matten = this;
-		}
-		
-		private void detach_Zug(Zug entity)
-		{
-			this.SendPropertyChanging();
-			entity.Matten = null;
 		}
 	}
 	
@@ -1453,325 +876,6 @@ namespace Mattenprüfprogramm
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Scherung")]
-	public partial class Scherung : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<System.DateTime> _Datum;
-		
-		private System.Nullable<int> _Maschine;
-		
-		private string _Mattentyp;
-		
-		private string _Prüfer;
-		
-		private System.Nullable<double> _Durchmesser;
-		
-		private string _Richtung;
-		
-		private System.Nullable<double> _Höchstkraft;
-		
-		private System.Nullable<double> _Scherwert;
-		
-		private System.Nullable<int> _Id_Matten;
-		
-		private EntityRef<Matten> _Matten;
-		
-    #region Definitionen der Erweiterungsmethoden
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnDatumChanging(System.Nullable<System.DateTime> value);
-    partial void OnDatumChanged();
-    partial void OnMaschineChanging(System.Nullable<int> value);
-    partial void OnMaschineChanged();
-    partial void OnMattentypChanging(string value);
-    partial void OnMattentypChanged();
-    partial void OnPrüferChanging(string value);
-    partial void OnPrüferChanged();
-    partial void OnDurchmesserChanging(System.Nullable<double> value);
-    partial void OnDurchmesserChanged();
-    partial void OnRichtungChanging(string value);
-    partial void OnRichtungChanged();
-    partial void OnHöchstkraftChanging(System.Nullable<double> value);
-    partial void OnHöchstkraftChanged();
-    partial void OnScherwertChanging(System.Nullable<double> value);
-    partial void OnScherwertChanged();
-    partial void OnId_MattenChanging(System.Nullable<int> value);
-    partial void OnId_MattenChanged();
-    #endregion
-		
-		public Scherung()
-		{
-			this._Matten = default(EntityRef<Matten>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Datum", DbType="DateTime")]
-		public System.Nullable<System.DateTime> Datum
-		{
-			get
-			{
-				return this._Datum;
-			}
-			set
-			{
-				if ((this._Datum != value))
-				{
-					this.OnDatumChanging(value);
-					this.SendPropertyChanging();
-					this._Datum = value;
-					this.SendPropertyChanged("Datum");
-					this.OnDatumChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Maschine", DbType="Int")]
-		public System.Nullable<int> Maschine
-		{
-			get
-			{
-				return this._Maschine;
-			}
-			set
-			{
-				if ((this._Maschine != value))
-				{
-					this.OnMaschineChanging(value);
-					this.SendPropertyChanging();
-					this._Maschine = value;
-					this.SendPropertyChanged("Maschine");
-					this.OnMaschineChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mattentyp", DbType="VarChar(10)")]
-		public string Mattentyp
-		{
-			get
-			{
-				return this._Mattentyp;
-			}
-			set
-			{
-				if ((this._Mattentyp != value))
-				{
-					this.OnMattentypChanging(value);
-					this.SendPropertyChanging();
-					this._Mattentyp = value;
-					this.SendPropertyChanged("Mattentyp");
-					this.OnMattentypChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prüfer", DbType="VarChar(50)")]
-		public string Prüfer
-		{
-			get
-			{
-				return this._Prüfer;
-			}
-			set
-			{
-				if ((this._Prüfer != value))
-				{
-					this.OnPrüferChanging(value);
-					this.SendPropertyChanging();
-					this._Prüfer = value;
-					this.SendPropertyChanged("Prüfer");
-					this.OnPrüferChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Durchmesser", DbType="Float")]
-		public System.Nullable<double> Durchmesser
-		{
-			get
-			{
-				return this._Durchmesser;
-			}
-			set
-			{
-				if ((this._Durchmesser != value))
-				{
-					this.OnDurchmesserChanging(value);
-					this.SendPropertyChanging();
-					this._Durchmesser = value;
-					this.SendPropertyChanged("Durchmesser");
-					this.OnDurchmesserChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Richtung", DbType="VarChar(5)")]
-		public string Richtung
-		{
-			get
-			{
-				return this._Richtung;
-			}
-			set
-			{
-				if ((this._Richtung != value))
-				{
-					this.OnRichtungChanging(value);
-					this.SendPropertyChanging();
-					this._Richtung = value;
-					this.SendPropertyChanged("Richtung");
-					this.OnRichtungChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Höchstkraft", DbType="Float")]
-		public System.Nullable<double> Höchstkraft
-		{
-			get
-			{
-				return this._Höchstkraft;
-			}
-			set
-			{
-				if ((this._Höchstkraft != value))
-				{
-					this.OnHöchstkraftChanging(value);
-					this.SendPropertyChanging();
-					this._Höchstkraft = value;
-					this.SendPropertyChanged("Höchstkraft");
-					this.OnHöchstkraftChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Scherwert", DbType="Float")]
-		public System.Nullable<double> Scherwert
-		{
-			get
-			{
-				return this._Scherwert;
-			}
-			set
-			{
-				if ((this._Scherwert != value))
-				{
-					this.OnScherwertChanging(value);
-					this.SendPropertyChanging();
-					this._Scherwert = value;
-					this.SendPropertyChanged("Scherwert");
-					this.OnScherwertChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Matten", DbType="Int")]
-		public System.Nullable<int> Id_Matten
-		{
-			get
-			{
-				return this._Id_Matten;
-			}
-			set
-			{
-				if ((this._Id_Matten != value))
-				{
-					if (this._Matten.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnId_MattenChanging(value);
-					this.SendPropertyChanging();
-					this._Id_Matten = value;
-					this.SendPropertyChanged("Id_Matten");
-					this.OnId_MattenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Matten_Scherung", Storage="_Matten", ThisKey="Id_Matten", OtherKey="Id", IsForeignKey=true)]
-		public Matten Matten
-		{
-			get
-			{
-				return this._Matten.Entity;
-			}
-			set
-			{
-				Matten previousValue = this._Matten.Entity;
-				if (((previousValue != value) 
-							|| (this._Matten.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Matten.Entity = null;
-						previousValue.Scherung.Remove(this);
-					}
-					this._Matten.Entity = value;
-					if ((value != null))
-					{
-						value.Scherung.Add(this);
-						this._Id_Matten = value.Id;
-					}
-					else
-					{
-						this._Id_Matten = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Matten");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Schweissmaschine")]
 	public partial class Schweissmaschine : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2068,6 +1172,583 @@ namespace Mattenprüfprogramm
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Matten")]
+	public partial class Matten : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.DateTime _Datum;
+		
+		private int _Prüfnummer;
+		
+		private int _Id_Prüfer;
+		
+		private int _Id_Maschine;
+		
+		private int _Id_Mattentyp;
+		
+		private string _Kommentar;
+		
+		private System.Nullable<double> _Temperatur;
+		
+		private System.Nullable<bool> _Tiefgerippt;
+		
+		private System.Nullable<int> _Anzahl_l;
+		
+		private System.Nullable<int> _Anzahl_r;
+		
+		private System.Nullable<int> _Anzahl_q;
+		
+		private System.Nullable<int> _Fehlversuche_l;
+		
+		private System.Nullable<int> _Fehlversuche_r;
+		
+		private System.Nullable<int> _Fehlversuche_q;
+		
+		private EntitySet<Zug> _Zug;
+		
+		private EntitySet<Scherung> _Scherung;
+		
+		private EntityRef<Mattentypen> _Mattentypen;
+		
+		private EntityRef<Prüfer> _Prüfer;
+		
+		private EntityRef<Schweissmaschine> _Schweissmaschine;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnDatumChanging(System.DateTime value);
+    partial void OnDatumChanged();
+    partial void OnPrüfnummerChanging(int value);
+    partial void OnPrüfnummerChanged();
+    partial void OnId_PrüferChanging(int value);
+    partial void OnId_PrüferChanged();
+    partial void OnId_MaschineChanging(int value);
+    partial void OnId_MaschineChanged();
+    partial void OnId_MattentypChanging(int value);
+    partial void OnId_MattentypChanged();
+    partial void OnKommentarChanging(string value);
+    partial void OnKommentarChanged();
+    partial void OnTemperaturChanging(System.Nullable<double> value);
+    partial void OnTemperaturChanged();
+    partial void OnTiefgeripptChanging(System.Nullable<bool> value);
+    partial void OnTiefgeripptChanged();
+    partial void OnAnzahl_lChanging(System.Nullable<int> value);
+    partial void OnAnzahl_lChanged();
+    partial void OnAnzahl_rChanging(System.Nullable<int> value);
+    partial void OnAnzahl_rChanged();
+    partial void OnAnzahl_qChanging(System.Nullable<int> value);
+    partial void OnAnzahl_qChanged();
+    partial void OnFehlversuche_lChanging(System.Nullable<int> value);
+    partial void OnFehlversuche_lChanged();
+    partial void OnFehlversuche_rChanging(System.Nullable<int> value);
+    partial void OnFehlversuche_rChanged();
+    partial void OnFehlversuche_qChanging(System.Nullable<int> value);
+    partial void OnFehlversuche_qChanged();
+    #endregion
+		
+		public Matten()
+		{
+			this._Zug = new EntitySet<Zug>(new Action<Zug>(this.attach_Zug), new Action<Zug>(this.detach_Zug));
+			this._Scherung = new EntitySet<Scherung>(new Action<Scherung>(this.attach_Scherung), new Action<Scherung>(this.detach_Scherung));
+			this._Mattentypen = default(EntityRef<Mattentypen>);
+			this._Prüfer = default(EntityRef<Prüfer>);
+			this._Schweissmaschine = default(EntityRef<Schweissmaschine>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Datum", DbType="DateTime NOT NULL")]
+		public System.DateTime Datum
+		{
+			get
+			{
+				return this._Datum;
+			}
+			set
+			{
+				if ((this._Datum != value))
+				{
+					this.OnDatumChanging(value);
+					this.SendPropertyChanging();
+					this._Datum = value;
+					this.SendPropertyChanged("Datum");
+					this.OnDatumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prüfnummer", DbType="Int NOT NULL")]
+		public int Prüfnummer
+		{
+			get
+			{
+				return this._Prüfnummer;
+			}
+			set
+			{
+				if ((this._Prüfnummer != value))
+				{
+					this.OnPrüfnummerChanging(value);
+					this.SendPropertyChanging();
+					this._Prüfnummer = value;
+					this.SendPropertyChanged("Prüfnummer");
+					this.OnPrüfnummerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Prüfer", DbType="Int NOT NULL")]
+		public int Id_Prüfer
+		{
+			get
+			{
+				return this._Id_Prüfer;
+			}
+			set
+			{
+				if ((this._Id_Prüfer != value))
+				{
+					if (this._Prüfer.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_PrüferChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Prüfer = value;
+					this.SendPropertyChanged("Id_Prüfer");
+					this.OnId_PrüferChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Maschine", DbType="Int NOT NULL")]
+		public int Id_Maschine
+		{
+			get
+			{
+				return this._Id_Maschine;
+			}
+			set
+			{
+				if ((this._Id_Maschine != value))
+				{
+					if (this._Schweissmaschine.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_MaschineChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Maschine = value;
+					this.SendPropertyChanged("Id_Maschine");
+					this.OnId_MaschineChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Mattentyp", DbType="Int NOT NULL")]
+		public int Id_Mattentyp
+		{
+			get
+			{
+				return this._Id_Mattentyp;
+			}
+			set
+			{
+				if ((this._Id_Mattentyp != value))
+				{
+					if (this._Mattentypen.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_MattentypChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Mattentyp = value;
+					this.SendPropertyChanged("Id_Mattentyp");
+					this.OnId_MattentypChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Kommentar", DbType="VarChar(MAX)")]
+		public string Kommentar
+		{
+			get
+			{
+				return this._Kommentar;
+			}
+			set
+			{
+				if ((this._Kommentar != value))
+				{
+					this.OnKommentarChanging(value);
+					this.SendPropertyChanging();
+					this._Kommentar = value;
+					this.SendPropertyChanged("Kommentar");
+					this.OnKommentarChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Temperatur", DbType="Float")]
+		public System.Nullable<double> Temperatur
+		{
+			get
+			{
+				return this._Temperatur;
+			}
+			set
+			{
+				if ((this._Temperatur != value))
+				{
+					this.OnTemperaturChanging(value);
+					this.SendPropertyChanging();
+					this._Temperatur = value;
+					this.SendPropertyChanged("Temperatur");
+					this.OnTemperaturChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tiefgerippt", DbType="Bit")]
+		public System.Nullable<bool> Tiefgerippt
+		{
+			get
+			{
+				return this._Tiefgerippt;
+			}
+			set
+			{
+				if ((this._Tiefgerippt != value))
+				{
+					this.OnTiefgeripptChanging(value);
+					this.SendPropertyChanging();
+					this._Tiefgerippt = value;
+					this.SendPropertyChanged("Tiefgerippt");
+					this.OnTiefgeripptChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anzahl_l", DbType="Int")]
+		public System.Nullable<int> Anzahl_l
+		{
+			get
+			{
+				return this._Anzahl_l;
+			}
+			set
+			{
+				if ((this._Anzahl_l != value))
+				{
+					this.OnAnzahl_lChanging(value);
+					this.SendPropertyChanging();
+					this._Anzahl_l = value;
+					this.SendPropertyChanged("Anzahl_l");
+					this.OnAnzahl_lChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anzahl_r", DbType="Int")]
+		public System.Nullable<int> Anzahl_r
+		{
+			get
+			{
+				return this._Anzahl_r;
+			}
+			set
+			{
+				if ((this._Anzahl_r != value))
+				{
+					this.OnAnzahl_rChanging(value);
+					this.SendPropertyChanging();
+					this._Anzahl_r = value;
+					this.SendPropertyChanged("Anzahl_r");
+					this.OnAnzahl_rChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Anzahl_q", DbType="Int")]
+		public System.Nullable<int> Anzahl_q
+		{
+			get
+			{
+				return this._Anzahl_q;
+			}
+			set
+			{
+				if ((this._Anzahl_q != value))
+				{
+					this.OnAnzahl_qChanging(value);
+					this.SendPropertyChanging();
+					this._Anzahl_q = value;
+					this.SendPropertyChanged("Anzahl_q");
+					this.OnAnzahl_qChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fehlversuche_l", DbType="Int")]
+		public System.Nullable<int> Fehlversuche_l
+		{
+			get
+			{
+				return this._Fehlversuche_l;
+			}
+			set
+			{
+				if ((this._Fehlversuche_l != value))
+				{
+					this.OnFehlversuche_lChanging(value);
+					this.SendPropertyChanging();
+					this._Fehlversuche_l = value;
+					this.SendPropertyChanged("Fehlversuche_l");
+					this.OnFehlversuche_lChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fehlversuche_r", DbType="Int")]
+		public System.Nullable<int> Fehlversuche_r
+		{
+			get
+			{
+				return this._Fehlversuche_r;
+			}
+			set
+			{
+				if ((this._Fehlversuche_r != value))
+				{
+					this.OnFehlversuche_rChanging(value);
+					this.SendPropertyChanging();
+					this._Fehlversuche_r = value;
+					this.SendPropertyChanged("Fehlversuche_r");
+					this.OnFehlversuche_rChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fehlversuche_q", DbType="Int")]
+		public System.Nullable<int> Fehlversuche_q
+		{
+			get
+			{
+				return this._Fehlversuche_q;
+			}
+			set
+			{
+				if ((this._Fehlversuche_q != value))
+				{
+					this.OnFehlversuche_qChanging(value);
+					this.SendPropertyChanging();
+					this._Fehlversuche_q = value;
+					this.SendPropertyChanged("Fehlversuche_q");
+					this.OnFehlversuche_qChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Matten_Zug", Storage="_Zug", ThisKey="Id", OtherKey="Id_Matten")]
+		public EntitySet<Zug> Zug
+		{
+			get
+			{
+				return this._Zug;
+			}
+			set
+			{
+				this._Zug.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Matten_Scherung", Storage="_Scherung", ThisKey="Id", OtherKey="Id_Matten")]
+		public EntitySet<Scherung> Scherung
+		{
+			get
+			{
+				return this._Scherung;
+			}
+			set
+			{
+				this._Scherung.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Mattentypen_Matten", Storage="_Mattentypen", ThisKey="Id_Mattentyp", OtherKey="Id", IsForeignKey=true)]
+		public Mattentypen Mattentypen
+		{
+			get
+			{
+				return this._Mattentypen.Entity;
+			}
+			set
+			{
+				Mattentypen previousValue = this._Mattentypen.Entity;
+				if (((previousValue != value) 
+							|| (this._Mattentypen.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Mattentypen.Entity = null;
+						previousValue.Matten.Remove(this);
+					}
+					this._Mattentypen.Entity = value;
+					if ((value != null))
+					{
+						value.Matten.Add(this);
+						this._Id_Mattentyp = value.Id;
+					}
+					else
+					{
+						this._Id_Mattentyp = default(int);
+					}
+					this.SendPropertyChanged("Mattentypen");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Prüfer_Matten", Storage="_Prüfer", ThisKey="Id_Prüfer", OtherKey="Id", IsForeignKey=true)]
+		public Prüfer Prüfer
+		{
+			get
+			{
+				return this._Prüfer.Entity;
+			}
+			set
+			{
+				Prüfer previousValue = this._Prüfer.Entity;
+				if (((previousValue != value) 
+							|| (this._Prüfer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Prüfer.Entity = null;
+						previousValue.Matten.Remove(this);
+					}
+					this._Prüfer.Entity = value;
+					if ((value != null))
+					{
+						value.Matten.Add(this);
+						this._Id_Prüfer = value.Id;
+					}
+					else
+					{
+						this._Id_Prüfer = default(int);
+					}
+					this.SendPropertyChanged("Prüfer");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Schweissmaschine_Matten", Storage="_Schweissmaschine", ThisKey="Id_Maschine", OtherKey="Id", IsForeignKey=true)]
+		public Schweissmaschine Schweissmaschine
+		{
+			get
+			{
+				return this._Schweissmaschine.Entity;
+			}
+			set
+			{
+				Schweissmaschine previousValue = this._Schweissmaschine.Entity;
+				if (((previousValue != value) 
+							|| (this._Schweissmaschine.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Schweissmaschine.Entity = null;
+						previousValue.Matten.Remove(this);
+					}
+					this._Schweissmaschine.Entity = value;
+					if ((value != null))
+					{
+						value.Matten.Add(this);
+						this._Id_Maschine = value.Id;
+					}
+					else
+					{
+						this._Id_Maschine = default(int);
+					}
+					this.SendPropertyChanged("Schweissmaschine");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Zug(Zug entity)
+		{
+			this.SendPropertyChanging();
+			entity.Matten = this;
+		}
+		
+		private void detach_Zug(Zug entity)
+		{
+			this.SendPropertyChanging();
+			entity.Matten = null;
+		}
+		
+		private void attach_Scherung(Scherung entity)
+		{
+			this.SendPropertyChanging();
+			entity.Matten = this;
+		}
+		
+		private void detach_Scherung(Scherung entity)
+		{
+			this.SendPropertyChanging();
+			entity.Matten = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Zug")]
 	public partial class Zug : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2084,33 +1765,33 @@ namespace Mattenprüfprogramm
 		
 		private string _Prüfer;
 		
-		private System.Nullable<double> _Durchmesser;
+		private System.Nullable<double> _D;
 		
-		private System.Nullable<double> _Masse;
+		private System.Nullable<double> _M;
 		
 		private string _Richtung;
 		
-		private System.Nullable<double> _Zugfestigkeit;
+		private System.Nullable<double> _Rm;
 		
-		private System.Nullable<double> _Dehngrenze;
+		private System.Nullable<double> _Rp;
 		
-		private System.Nullable<double> _DehnungHöchstkraft;
+		private System.Nullable<double> _Agt;
 		
-		private System.Nullable<double> _Bruchdehnung;
+		private System.Nullable<double> _A;
 		
-		private System.Nullable<double> _Streckengrenzverhältnis;
+		private System.Nullable<double> _RmRp;
 		
-		private System.Nullable<double> _AbweichungNenngewicht;
+		private System.Nullable<double> _Dgs;
 		
-		private string _Bruchlage;
+		private string _Br;
 		
 		private System.Nullable<int> _Id_Matten;
 		
-		private System.Nullable<double> _Se1;
+		private System.Nullable<double> _se1;
 		
-		private System.Nullable<double> _Se2;
+		private System.Nullable<double> _se2;
 		
-		private System.Nullable<double> _Se3;
+		private System.Nullable<double> _se3;
 		
 		private System.Nullable<double> _H1m;
 		
@@ -2130,9 +1811,13 @@ namespace Mattenprüfprogramm
 		
 		private System.Nullable<double> _H375;
 		
-		private System.Nullable<double> _C;
+		private System.Nullable<double> _c1;
 		
-		private System.Nullable<double> _Fr;
+		private System.Nullable<double> _c2;
+		
+		private System.Nullable<double> _c3;
+		
+		private System.Nullable<double> _fR;
 		
 		private EntityRef<Matten> _Matten;
 		
@@ -2150,34 +1835,34 @@ namespace Mattenprüfprogramm
     partial void OnMattentypChanged();
     partial void OnPrüferChanging(string value);
     partial void OnPrüferChanged();
-    partial void OnDurchmesserChanging(System.Nullable<double> value);
-    partial void OnDurchmesserChanged();
-    partial void OnMasseChanging(System.Nullable<double> value);
-    partial void OnMasseChanged();
+    partial void OnDChanging(System.Nullable<double> value);
+    partial void OnDChanged();
+    partial void OnMChanging(System.Nullable<double> value);
+    partial void OnMChanged();
     partial void OnRichtungChanging(string value);
     partial void OnRichtungChanged();
-    partial void OnZugfestigkeitChanging(System.Nullable<double> value);
-    partial void OnZugfestigkeitChanged();
-    partial void OnDehngrenzeChanging(System.Nullable<double> value);
-    partial void OnDehngrenzeChanged();
-    partial void OnDehnungHöchstkraftChanging(System.Nullable<double> value);
-    partial void OnDehnungHöchstkraftChanged();
-    partial void OnBruchdehnungChanging(System.Nullable<double> value);
-    partial void OnBruchdehnungChanged();
-    partial void OnStreckengrenzverhältnisChanging(System.Nullable<double> value);
-    partial void OnStreckengrenzverhältnisChanged();
-    partial void OnAbweichungNenngewichtChanging(System.Nullable<double> value);
-    partial void OnAbweichungNenngewichtChanged();
-    partial void OnBruchlageChanging(string value);
-    partial void OnBruchlageChanged();
+    partial void OnRmChanging(System.Nullable<double> value);
+    partial void OnRmChanged();
+    partial void OnRpChanging(System.Nullable<double> value);
+    partial void OnRpChanged();
+    partial void OnAgtChanging(System.Nullable<double> value);
+    partial void OnAgtChanged();
+    partial void OnAChanging(System.Nullable<double> value);
+    partial void OnAChanged();
+    partial void OnRmRpChanging(System.Nullable<double> value);
+    partial void OnRmRpChanged();
+    partial void OnDgsChanging(System.Nullable<double> value);
+    partial void OnDgsChanged();
+    partial void OnBrChanging(string value);
+    partial void OnBrChanged();
     partial void OnId_MattenChanging(System.Nullable<int> value);
     partial void OnId_MattenChanged();
-    partial void OnSe1Changing(System.Nullable<double> value);
-    partial void OnSe1Changed();
-    partial void OnSe2Changing(System.Nullable<double> value);
-    partial void OnSe2Changed();
-    partial void OnSe3Changing(System.Nullable<double> value);
-    partial void OnSe3Changed();
+    partial void Onse1Changing(System.Nullable<double> value);
+    partial void Onse1Changed();
+    partial void Onse2Changing(System.Nullable<double> value);
+    partial void Onse2Changed();
+    partial void Onse3Changing(System.Nullable<double> value);
+    partial void Onse3Changed();
     partial void OnH1mChanging(System.Nullable<double> value);
     partial void OnH1mChanged();
     partial void OnH2mChanging(System.Nullable<double> value);
@@ -2196,10 +1881,14 @@ namespace Mattenprüfprogramm
     partial void OnH275Changed();
     partial void OnH375Changing(System.Nullable<double> value);
     partial void OnH375Changed();
-    partial void OnCChanging(System.Nullable<double> value);
-    partial void OnCChanged();
-    partial void OnFrChanging(System.Nullable<double> value);
-    partial void OnFrChanged();
+    partial void Onc1Changing(System.Nullable<double> value);
+    partial void Onc1Changed();
+    partial void Onc2Changing(System.Nullable<double> value);
+    partial void Onc2Changed();
+    partial void Onc3Changing(System.Nullable<double> value);
+    partial void Onc3Changed();
+    partial void OnfRChanging(System.Nullable<double> value);
+    partial void OnfRChanged();
     #endregion
 		
 		public Zug()
@@ -2308,42 +1997,42 @@ namespace Mattenprüfprogramm
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Durchmesser", DbType="Float")]
-		public System.Nullable<double> Durchmesser
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_D", DbType="Float")]
+		public System.Nullable<double> D
 		{
 			get
 			{
-				return this._Durchmesser;
+				return this._D;
 			}
 			set
 			{
-				if ((this._Durchmesser != value))
+				if ((this._D != value))
 				{
-					this.OnDurchmesserChanging(value);
+					this.OnDChanging(value);
 					this.SendPropertyChanging();
-					this._Durchmesser = value;
-					this.SendPropertyChanged("Durchmesser");
-					this.OnDurchmesserChanged();
+					this._D = value;
+					this.SendPropertyChanged("D");
+					this.OnDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Masse", DbType="Float")]
-		public System.Nullable<double> Masse
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_M", DbType="Float")]
+		public System.Nullable<double> M
 		{
 			get
 			{
-				return this._Masse;
+				return this._M;
 			}
 			set
 			{
-				if ((this._Masse != value))
+				if ((this._M != value))
 				{
-					this.OnMasseChanging(value);
+					this.OnMChanging(value);
 					this.SendPropertyChanging();
-					this._Masse = value;
-					this.SendPropertyChanged("Masse");
-					this.OnMasseChanged();
+					this._M = value;
+					this.SendPropertyChanged("M");
+					this.OnMChanged();
 				}
 			}
 		}
@@ -2368,142 +2057,142 @@ namespace Mattenprüfprogramm
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Zugfestigkeit", DbType="Float")]
-		public System.Nullable<double> Zugfestigkeit
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rm", DbType="Float")]
+		public System.Nullable<double> Rm
 		{
 			get
 			{
-				return this._Zugfestigkeit;
+				return this._Rm;
 			}
 			set
 			{
-				if ((this._Zugfestigkeit != value))
+				if ((this._Rm != value))
 				{
-					this.OnZugfestigkeitChanging(value);
+					this.OnRmChanging(value);
 					this.SendPropertyChanging();
-					this._Zugfestigkeit = value;
-					this.SendPropertyChanged("Zugfestigkeit");
-					this.OnZugfestigkeitChanged();
+					this._Rm = value;
+					this.SendPropertyChanged("Rm");
+					this.OnRmChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dehngrenze", DbType="Float")]
-		public System.Nullable<double> Dehngrenze
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rp", DbType="Float")]
+		public System.Nullable<double> Rp
 		{
 			get
 			{
-				return this._Dehngrenze;
+				return this._Rp;
 			}
 			set
 			{
-				if ((this._Dehngrenze != value))
+				if ((this._Rp != value))
 				{
-					this.OnDehngrenzeChanging(value);
+					this.OnRpChanging(value);
 					this.SendPropertyChanging();
-					this._Dehngrenze = value;
-					this.SendPropertyChanged("Dehngrenze");
-					this.OnDehngrenzeChanged();
+					this._Rp = value;
+					this.SendPropertyChanged("Rp");
+					this.OnRpChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DehnungHöchstkraft", DbType="Float")]
-		public System.Nullable<double> DehnungHöchstkraft
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Agt", DbType="Float")]
+		public System.Nullable<double> Agt
 		{
 			get
 			{
-				return this._DehnungHöchstkraft;
+				return this._Agt;
 			}
 			set
 			{
-				if ((this._DehnungHöchstkraft != value))
+				if ((this._Agt != value))
 				{
-					this.OnDehnungHöchstkraftChanging(value);
+					this.OnAgtChanging(value);
 					this.SendPropertyChanging();
-					this._DehnungHöchstkraft = value;
-					this.SendPropertyChanged("DehnungHöchstkraft");
-					this.OnDehnungHöchstkraftChanged();
+					this._Agt = value;
+					this.SendPropertyChanged("Agt");
+					this.OnAgtChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bruchdehnung", DbType="Float")]
-		public System.Nullable<double> Bruchdehnung
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_A", DbType="Float")]
+		public System.Nullable<double> A
 		{
 			get
 			{
-				return this._Bruchdehnung;
+				return this._A;
 			}
 			set
 			{
-				if ((this._Bruchdehnung != value))
+				if ((this._A != value))
 				{
-					this.OnBruchdehnungChanging(value);
+					this.OnAChanging(value);
 					this.SendPropertyChanging();
-					this._Bruchdehnung = value;
-					this.SendPropertyChanged("Bruchdehnung");
-					this.OnBruchdehnungChanged();
+					this._A = value;
+					this.SendPropertyChanged("A");
+					this.OnAChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Streckengrenzverhältnis", DbType="Float")]
-		public System.Nullable<double> Streckengrenzverhältnis
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RmRp", DbType="Float")]
+		public System.Nullable<double> RmRp
 		{
 			get
 			{
-				return this._Streckengrenzverhältnis;
+				return this._RmRp;
 			}
 			set
 			{
-				if ((this._Streckengrenzverhältnis != value))
+				if ((this._RmRp != value))
 				{
-					this.OnStreckengrenzverhältnisChanging(value);
+					this.OnRmRpChanging(value);
 					this.SendPropertyChanging();
-					this._Streckengrenzverhältnis = value;
-					this.SendPropertyChanged("Streckengrenzverhältnis");
-					this.OnStreckengrenzverhältnisChanged();
+					this._RmRp = value;
+					this.SendPropertyChanged("RmRp");
+					this.OnRmRpChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AbweichungNenngewicht", DbType="Float")]
-		public System.Nullable<double> AbweichungNenngewicht
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dgs", DbType="Float")]
+		public System.Nullable<double> Dgs
 		{
 			get
 			{
-				return this._AbweichungNenngewicht;
+				return this._Dgs;
 			}
 			set
 			{
-				if ((this._AbweichungNenngewicht != value))
+				if ((this._Dgs != value))
 				{
-					this.OnAbweichungNenngewichtChanging(value);
+					this.OnDgsChanging(value);
 					this.SendPropertyChanging();
-					this._AbweichungNenngewicht = value;
-					this.SendPropertyChanged("AbweichungNenngewicht");
-					this.OnAbweichungNenngewichtChanged();
+					this._Dgs = value;
+					this.SendPropertyChanged("Dgs");
+					this.OnDgsChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bruchlage", DbType="VarChar(5)")]
-		public string Bruchlage
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Br", DbType="VarChar(5)")]
+		public string Br
 		{
 			get
 			{
-				return this._Bruchlage;
+				return this._Br;
 			}
 			set
 			{
-				if ((this._Bruchlage != value))
+				if ((this._Br != value))
 				{
-					this.OnBruchlageChanging(value);
+					this.OnBrChanging(value);
 					this.SendPropertyChanging();
-					this._Bruchlage = value;
-					this.SendPropertyChanged("Bruchlage");
-					this.OnBruchlageChanged();
+					this._Br = value;
+					this.SendPropertyChanged("Br");
+					this.OnBrChanged();
 				}
 			}
 		}
@@ -2532,62 +2221,62 @@ namespace Mattenprüfprogramm
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Se1", DbType="Float")]
-		public System.Nullable<double> Se1
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_se1", DbType="Float")]
+		public System.Nullable<double> se1
 		{
 			get
 			{
-				return this._Se1;
+				return this._se1;
 			}
 			set
 			{
-				if ((this._Se1 != value))
+				if ((this._se1 != value))
 				{
-					this.OnSe1Changing(value);
+					this.Onse1Changing(value);
 					this.SendPropertyChanging();
-					this._Se1 = value;
-					this.SendPropertyChanged("Se1");
-					this.OnSe1Changed();
+					this._se1 = value;
+					this.SendPropertyChanged("se1");
+					this.Onse1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Se2", DbType="Float")]
-		public System.Nullable<double> Se2
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_se2", DbType="Float")]
+		public System.Nullable<double> se2
 		{
 			get
 			{
-				return this._Se2;
+				return this._se2;
 			}
 			set
 			{
-				if ((this._Se2 != value))
+				if ((this._se2 != value))
 				{
-					this.OnSe2Changing(value);
+					this.Onse2Changing(value);
 					this.SendPropertyChanging();
-					this._Se2 = value;
-					this.SendPropertyChanged("Se2");
-					this.OnSe2Changed();
+					this._se2 = value;
+					this.SendPropertyChanged("se2");
+					this.Onse2Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Se3", DbType="Float")]
-		public System.Nullable<double> Se3
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_se3", DbType="Float")]
+		public System.Nullable<double> se3
 		{
 			get
 			{
-				return this._Se3;
+				return this._se3;
 			}
 			set
 			{
-				if ((this._Se3 != value))
+				if ((this._se3 != value))
 				{
-					this.OnSe3Changing(value);
+					this.Onse3Changing(value);
 					this.SendPropertyChanging();
-					this._Se3 = value;
-					this.SendPropertyChanged("Se3");
-					this.OnSe3Changed();
+					this._se3 = value;
+					this.SendPropertyChanged("se3");
+					this.Onse3Changed();
 				}
 			}
 		}
@@ -2772,42 +2461,82 @@ namespace Mattenprüfprogramm
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_C", DbType="Float")]
-		public System.Nullable<double> C
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c1", DbType="Float")]
+		public System.Nullable<double> c1
 		{
 			get
 			{
-				return this._C;
+				return this._c1;
 			}
 			set
 			{
-				if ((this._C != value))
+				if ((this._c1 != value))
 				{
-					this.OnCChanging(value);
+					this.Onc1Changing(value);
 					this.SendPropertyChanging();
-					this._C = value;
-					this.SendPropertyChanged("C");
-					this.OnCChanged();
+					this._c1 = value;
+					this.SendPropertyChanged("c1");
+					this.Onc1Changed();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fr", DbType="Float")]
-		public System.Nullable<double> Fr
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c2", DbType="Float")]
+		public System.Nullable<double> c2
 		{
 			get
 			{
-				return this._Fr;
+				return this._c2;
 			}
 			set
 			{
-				if ((this._Fr != value))
+				if ((this._c2 != value))
 				{
-					this.OnFrChanging(value);
+					this.Onc2Changing(value);
 					this.SendPropertyChanging();
-					this._Fr = value;
-					this.SendPropertyChanged("Fr");
-					this.OnFrChanged();
+					this._c2 = value;
+					this.SendPropertyChanged("c2");
+					this.Onc2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_c3", DbType="Float")]
+		public System.Nullable<double> c3
+		{
+			get
+			{
+				return this._c3;
+			}
+			set
+			{
+				if ((this._c3 != value))
+				{
+					this.Onc3Changing(value);
+					this.SendPropertyChanging();
+					this._c3 = value;
+					this.SendPropertyChanged("c3");
+					this.Onc3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fR", DbType="Float")]
+		public System.Nullable<double> fR
+		{
+			get
+			{
+				return this._fR;
+			}
+			set
+			{
+				if ((this._fR != value))
+				{
+					this.OnfRChanging(value);
+					this.SendPropertyChanging();
+					this._fR = value;
+					this.SendPropertyChanged("fR");
+					this.OnfRChanged();
 				}
 			}
 		}
@@ -2835,6 +2564,325 @@ namespace Mattenprüfprogramm
 					if ((value != null))
 					{
 						value.Zug.Add(this);
+						this._Id_Matten = value.Id;
+					}
+					else
+					{
+						this._Id_Matten = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Matten");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Scherung")]
+	public partial class Scherung : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.Nullable<System.DateTime> _Datum;
+		
+		private System.Nullable<int> _Maschine;
+		
+		private string _Mattentyp;
+		
+		private string _Prüfer;
+		
+		private System.Nullable<double> _D;
+		
+		private string _Richtung;
+		
+		private System.Nullable<double> _Fm;
+		
+		private System.Nullable<double> _Sw;
+		
+		private System.Nullable<int> _Id_Matten;
+		
+		private EntityRef<Matten> _Matten;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnDatumChanging(System.Nullable<System.DateTime> value);
+    partial void OnDatumChanged();
+    partial void OnMaschineChanging(System.Nullable<int> value);
+    partial void OnMaschineChanged();
+    partial void OnMattentypChanging(string value);
+    partial void OnMattentypChanged();
+    partial void OnPrüferChanging(string value);
+    partial void OnPrüferChanged();
+    partial void OnDChanging(System.Nullable<double> value);
+    partial void OnDChanged();
+    partial void OnRichtungChanging(string value);
+    partial void OnRichtungChanged();
+    partial void OnFmChanging(System.Nullable<double> value);
+    partial void OnFmChanged();
+    partial void OnSwChanging(System.Nullable<double> value);
+    partial void OnSwChanged();
+    partial void OnId_MattenChanging(System.Nullable<int> value);
+    partial void OnId_MattenChanged();
+    #endregion
+		
+		public Scherung()
+		{
+			this._Matten = default(EntityRef<Matten>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Datum", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Datum
+		{
+			get
+			{
+				return this._Datum;
+			}
+			set
+			{
+				if ((this._Datum != value))
+				{
+					this.OnDatumChanging(value);
+					this.SendPropertyChanging();
+					this._Datum = value;
+					this.SendPropertyChanged("Datum");
+					this.OnDatumChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Maschine", DbType="Int")]
+		public System.Nullable<int> Maschine
+		{
+			get
+			{
+				return this._Maschine;
+			}
+			set
+			{
+				if ((this._Maschine != value))
+				{
+					this.OnMaschineChanging(value);
+					this.SendPropertyChanging();
+					this._Maschine = value;
+					this.SendPropertyChanged("Maschine");
+					this.OnMaschineChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mattentyp", DbType="VarChar(10)")]
+		public string Mattentyp
+		{
+			get
+			{
+				return this._Mattentyp;
+			}
+			set
+			{
+				if ((this._Mattentyp != value))
+				{
+					this.OnMattentypChanging(value);
+					this.SendPropertyChanging();
+					this._Mattentyp = value;
+					this.SendPropertyChanged("Mattentyp");
+					this.OnMattentypChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Prüfer", DbType="VarChar(50)")]
+		public string Prüfer
+		{
+			get
+			{
+				return this._Prüfer;
+			}
+			set
+			{
+				if ((this._Prüfer != value))
+				{
+					this.OnPrüferChanging(value);
+					this.SendPropertyChanging();
+					this._Prüfer = value;
+					this.SendPropertyChanged("Prüfer");
+					this.OnPrüferChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_D", DbType="Float")]
+		public System.Nullable<double> D
+		{
+			get
+			{
+				return this._D;
+			}
+			set
+			{
+				if ((this._D != value))
+				{
+					this.OnDChanging(value);
+					this.SendPropertyChanging();
+					this._D = value;
+					this.SendPropertyChanged("D");
+					this.OnDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Richtung", DbType="VarChar(5)")]
+		public string Richtung
+		{
+			get
+			{
+				return this._Richtung;
+			}
+			set
+			{
+				if ((this._Richtung != value))
+				{
+					this.OnRichtungChanging(value);
+					this.SendPropertyChanging();
+					this._Richtung = value;
+					this.SendPropertyChanged("Richtung");
+					this.OnRichtungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fm", DbType="Float")]
+		public System.Nullable<double> Fm
+		{
+			get
+			{
+				return this._Fm;
+			}
+			set
+			{
+				if ((this._Fm != value))
+				{
+					this.OnFmChanging(value);
+					this.SendPropertyChanging();
+					this._Fm = value;
+					this.SendPropertyChanged("Fm");
+					this.OnFmChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sw", DbType="Float")]
+		public System.Nullable<double> Sw
+		{
+			get
+			{
+				return this._Sw;
+			}
+			set
+			{
+				if ((this._Sw != value))
+				{
+					this.OnSwChanging(value);
+					this.SendPropertyChanging();
+					this._Sw = value;
+					this.SendPropertyChanged("Sw");
+					this.OnSwChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id_Matten", DbType="Int")]
+		public System.Nullable<int> Id_Matten
+		{
+			get
+			{
+				return this._Id_Matten;
+			}
+			set
+			{
+				if ((this._Id_Matten != value))
+				{
+					if (this._Matten.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnId_MattenChanging(value);
+					this.SendPropertyChanging();
+					this._Id_Matten = value;
+					this.SendPropertyChanged("Id_Matten");
+					this.OnId_MattenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Matten_Scherung", Storage="_Matten", ThisKey="Id_Matten", OtherKey="Id", IsForeignKey=true)]
+		public Matten Matten
+		{
+			get
+			{
+				return this._Matten.Entity;
+			}
+			set
+			{
+				Matten previousValue = this._Matten.Entity;
+				if (((previousValue != value) 
+							|| (this._Matten.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Matten.Entity = null;
+						previousValue.Scherung.Remove(this);
+					}
+					this._Matten.Entity = value;
+					if ((value != null))
+					{
+						value.Scherung.Add(this);
 						this._Id_Matten = value.Id;
 					}
 					else

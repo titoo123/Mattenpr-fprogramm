@@ -46,20 +46,20 @@ namespace Mattenprüfprogramm.Erweiterungen
                 {
                     Zug z = new Zug()
                     {
-                        Durchmesser = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Durchmesser").InnerText),
+                        D = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Durchmesser").InnerText),
                         Richtung = x.SelectSingleNode(n1).SelectSingleNode("Richtung").InnerText,
-                        Masse = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
-                        Zugfestigkeit = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("zugfestigkeit").InnerText),
-                        Dehngrenze = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Dehngrenze").InnerText),
-                        DehnungHöchstkraft = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("DehnungHöchstkraft").InnerText),
-                        Bruchdehnung = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Bruchdehnung").InnerText),
-                        Streckengrenzverhältnis = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Streckengrenzverhältnis").InnerText),
-                        AbweichungNenngewicht = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("AbweichungNenngewicht").InnerText),
-                        Bruchlage = x.SelectSingleNode(n1).SelectSingleNode("Bruchlage").InnerText,
+                        M = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
+                        Rm = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("zugfestigkeit").InnerText),
+                        Rp = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Dehngrenze").InnerText),
+                        Agt = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("DehnungHöchstkraft").InnerText),
+                        A = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Bruchdehnung").InnerText),
+                        RmRp = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Streckengrenzverhältnis").InnerText),
+                        Dgs = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("AbweichungNenngewicht").InnerText),
+                        Br = x.SelectSingleNode(n1).SelectSingleNode("Bruchlage").InnerText,
 
-                        Se1 = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
-                        Se2 = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
-                        Se3 = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
+                        se1 = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
+                        se2 = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
+                        se3 = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
                         H1m = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
                         H2m = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
                         H3m = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
@@ -69,8 +69,10 @@ namespace Mattenprüfprogramm.Erweiterungen
                         H175 = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
                         H275 = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
                         H375 = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
-                        C = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
-                        Fr = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText)
+                        c1 = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
+                        c2 = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
+                        c3 = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText),
+                        fR = Convert.ToDouble(x.SelectSingleNode(n1).SelectSingleNode("Masse").InnerText)
 
 
                     };
@@ -88,10 +90,10 @@ namespace Mattenprüfprogramm.Erweiterungen
                 {
                     Scherung s = new Scherung()
                     {
-                        Durchmesser = Convert.ToInt32(x.SelectSingleNode(n1).SelectSingleNode("Durchmesser").InnerText),
+                        D = Convert.ToInt32(x.SelectSingleNode(n1).SelectSingleNode("Durchmesser").InnerText),
                         Richtung = x.SelectSingleNode(n1).SelectSingleNode("Richtung").InnerText,
-                        Höchstkraft = Convert.ToInt32(x.SelectSingleNode(n1).SelectSingleNode("Höchstkraft").InnerText),
-                        Scherwert = Convert.ToInt32(x.SelectSingleNode(n1).SelectSingleNode("Scherwert").InnerText)
+                        Fm = Convert.ToInt32(x.SelectSingleNode(n1).SelectSingleNode("Höchstkraft").InnerText),
+                        Sw = Convert.ToInt32(x.SelectSingleNode(n1).SelectSingleNode("Scherwert").InnerText)
 
                     };
                 }

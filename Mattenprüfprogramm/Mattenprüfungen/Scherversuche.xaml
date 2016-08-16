@@ -41,12 +41,12 @@
         <DataGrid AutoGenerateColumns="true" AutoGeneratingColumn="dataGrid_scherversuche_AutoGeneratingColumn"  LoadingRow="dataGrid_scherversuche_LoadingRow" Height="200" HorizontalAlignment="Left" Margin="12,167,0,0" Name="dataGrid_scherversuche" VerticalAlignment="Top" Width="754" SelectionChanged="dataGrid_scherversuche_SelectionChanged" />
         <GroupBox Header="Scherdaten" Height="88" HorizontalAlignment="Left" Margin="12,373,0,0" Name="groupBox3" VerticalAlignment="Top" Width="754">
             <Grid>
-                <Label Content="Durchmesser" Height="28" HorizontalAlignment="Left" Name="label12" VerticalAlignment="Top" Margin="6,6,0,0" />
+                <Label Content="D" Height="28" HorizontalAlignment="Left" Name="label12" VerticalAlignment="Top" Margin="6,6,0,0" />
                 <Label Content="Richtung" Height="28" HorizontalAlignment="Left" Margin="6,32,0,0" Name="label13" VerticalAlignment="Top" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="85,8,0,0" Name="textBox_scherdaten_durchmesser" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                 <ComboBox Height="23" Margin="85,37,537,0" Name="comboBox_scherdaten_richtung" VerticalAlignment="Top" IsEnabled="False" ItemsSource="{Binding}" />
-                <Label Content="Höchstkraft [N]" Height="28" HorizontalAlignment="Left" Margin="236,6,0,0" Name="label14" VerticalAlignment="Top" />
-                <Label Content="Scherwert" Height="28" HorizontalAlignment="Left" Margin="236,35,0,0" Name="label15" VerticalAlignment="Top" />
+                <Label Content="Fm" Height="28" HorizontalAlignment="Left" Margin="236,6,0,0" Name="label14" VerticalAlignment="Top" />
+                <Label Content="Sw" Height="28" HorizontalAlignment="Left" Margin="236,35,0,0" Name="label15" VerticalAlignment="Top" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="333,8,0,0" Name="textBox_scherdaten_hoechstkraft" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="333,35,0,0" Name="textBox_scherdaten_scherwert" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                 <Button Content="Speichern" Height="23" HorizontalAlignment="Left" Margin="616,33,0,0" Name="button_scherung_speichern" VerticalAlignment="Top" Width="120" IsEnabled="False" Click="button_scherung_speichern_Click" />

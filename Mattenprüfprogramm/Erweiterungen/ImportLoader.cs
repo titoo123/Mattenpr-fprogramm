@@ -56,37 +56,15 @@ namespace Mattenprüfprogramm.Erweiterungen
                         xml.Load(f.FullName);
                         try
                         {
-                            // XMLParser x = new XMLParser(xml, "Testknoten", f.Name);
+                            XMLParser x = new XMLParser(xml, "Testknoten", f.Name);
 
-                            //if (x.S != null)
-                            //{
-                            //    sList.Add(x.S);
-                            //}
-                            //if (x.Z != null)
-                            //{
-                            //    zList.Add(x.Z);
-                            //}
-
-                            // d.Import.InsertOnSubmit(new Import() { Name = f.Name });
-                        }
-                        catch (Exception e)
-                        {
-                            MessageBox.Show("Import der Datei " + f.Name + " fehlgeschlagen!\n\n" + e, "Fehler!");
-                        }
-                    }
-                    else if (f.Name.Contains(".dat"))
-                    {
-                        try
-                        {
-                            DATParser p = new DATParser( f.FullName, f.Name);
-
-                            if (p.S != null)
+                            if (x.S != null)
                             {
-                                sList.Add(p.S);
+                                sList.Add(x.S);
                             }
-                            if (p.Z != null)
+                            if (x.Z != null)
                             {
-                                zList.Add(p.Z);
+                                zList.Add(x.Z);
                             }
 
                             d.Import.InsertOnSubmit(new Import() { Name = f.Name });
@@ -95,6 +73,28 @@ namespace Mattenprüfprogramm.Erweiterungen
                         {
                             MessageBox.Show("Import der Datei " + f.Name + " fehlgeschlagen!\n\n" + e, "Fehler!");
                         }
+                    }
+                    else if (f.Name.Contains(".dat"))
+                    {
+                        //try
+                        //{
+                        //    DATParser p = new DATParser( f.FullName, f.Name);
+
+                        //    if (p.S != null)
+                        //    {
+                        //        sList.Add(p.S);
+                        //    }
+                        //    if (p.Z != null)
+                        //    {
+                        //        zList.Add(p.Z);
+                        //    }
+
+                        //    d.Import.InsertOnSubmit(new Import() { Name = f.Name });
+                        //}
+                        //catch (Exception e)
+                        //{
+                        //    MessageBox.Show("Import der Datei " + f.Name + " fehlgeschlagen!\n\n" + e, "Fehler!");
+                        //}
                     }
 
                     try

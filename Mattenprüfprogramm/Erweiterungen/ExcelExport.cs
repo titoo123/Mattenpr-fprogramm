@@ -78,38 +78,38 @@ namespace Mattenprüfprogramm.Erweiterungen
                     {
                         case "Längs":
                         
-                            ws.Cells[11 + i, 3] = matten.Zug[i].Durchmesser;
-                            ws.Cells[11 + i, 4] = matten.Zug[i].Streckengrenzverhältnis;
-                            ws.Cells[11 + i, 5] = matten.Zug[i].Zugfestigkeit;
-                            ws.Cells[11 + i, 6] = (matten.Zug[i].Zugfestigkeit / matten.Zug[i].Streckengrenzverhältnis);
-                            ws.Cells[11 + i, 7] = matten.Zug[i].DehnungHöchstkraft;
+                            ws.Cells[11 + i, 3] = matten.Zug[i].D;
+                            ws.Cells[11 + i, 4] = matten.Zug[i].RmRp;
+                            ws.Cells[11 + i, 5] = matten.Zug[i].Rm;
+                            ws.Cells[11 + i, 6] = (matten.Zug[i].Rm / matten.Zug[i].RmRp);
+                            ws.Cells[11 + i, 7] = matten.Zug[i].Agt;
                             ws.Cells[11 + i, 8] = "In Arbeit!";
-                            ws.Cells[11 + i, 9] = matten.Zug[i].AbweichungNenngewicht;
-                            ws.Cells[11 + i, 10] = matten.Zug[i].Fr;
+                            ws.Cells[11 + i, 9] = matten.Zug[i].Dgs;
+                            ws.Cells[11 + i, 10] = matten.Zug[i].fR;
 
                             break;
                         case "Quer":
 
-                            ws.Cells[36 + i, 3] = matten.Zug[i].Durchmesser;
-                            ws.Cells[36 + i, 4] = matten.Zug[i].Streckengrenzverhältnis;
-                            ws.Cells[36 + i, 5] = matten.Zug[i].Zugfestigkeit;
-                            ws.Cells[36 + i, 6] = (matten.Zug[i].Zugfestigkeit / matten.Zug[i].Streckengrenzverhältnis);
-                            ws.Cells[36 + i, 7] = matten.Zug[i].DehnungHöchstkraft;
+                            ws.Cells[36 + i, 3] = matten.Zug[i].D;
+                            ws.Cells[36 + i, 4] = matten.Zug[i].RmRp;
+                            ws.Cells[36 + i, 5] = matten.Zug[i].Rm;
+                            ws.Cells[36 + i, 6] = (matten.Zug[i].Rm / matten.Zug[i].RmRp);
+                            ws.Cells[36 + i, 7] = matten.Zug[i].Agt;
                             ws.Cells[36 + i, 8] = "In Arbeit!";
-                            ws.Cells[36 + i, 9] = matten.Zug[i].AbweichungNenngewicht;
-                            ws.Cells[36 + i, 10] = matten.Zug[i].Fr;
+                            ws.Cells[36 + i, 9] = matten.Zug[i].Dgs;
+                            ws.Cells[36 + i, 10] = matten.Zug[i].fR;
 
                             break;
                         case "Rand":
                             
-                            ws.Cells[42 + i, 3] = matten.Zug[i].Durchmesser;
-                            ws.Cells[42 + i, 4] = matten.Zug[i].Streckengrenzverhältnis;
-                            ws.Cells[42 + i, 5] = matten.Zug[i].Zugfestigkeit;
-                            ws.Cells[42 + i, 6] = (matten.Zug[i].Zugfestigkeit / matten.Zug[i].Streckengrenzverhältnis);
-                            ws.Cells[42 + i, 7] = matten.Zug[i].DehnungHöchstkraft;
+                            ws.Cells[42 + i, 3] = matten.Zug[i].D;
+                            ws.Cells[42 + i, 4] = matten.Zug[i].RmRp;
+                            ws.Cells[42 + i, 5] = matten.Zug[i].Rm;
+                            ws.Cells[42 + i, 6] = (matten.Zug[i].Rm / matten.Zug[i].RmRp);
+                            ws.Cells[42 + i, 7] = matten.Zug[i].Agt;
                             ws.Cells[42 + i, 8] = "In Arbeit!";
-                            ws.Cells[42 + i, 9] = matten.Zug[i].AbweichungNenngewicht;
-                            ws.Cells[42 + i, 10] = matten.Zug[i].Fr;
+                            ws.Cells[42 + i, 9] = matten.Zug[i].Dgs;
+                            ws.Cells[42 + i, 10] = matten.Zug[i].fR;
 
                             break;
                         default:    
@@ -124,20 +124,20 @@ namespace Mattenprüfprogramm.Erweiterungen
                     {
                         case "Längs":
                    
-                            ws.Cells[11 + j, 11] = matten.Scherung[j].Durchmesser;
+                            ws.Cells[11 + j, 11] = matten.Scherung[j].D;
                             ws.Cells[11 + j, 13] = "In Arbeit!";
                             ws.Cells[11 + j, 15] = "In Arbeit!";
 
                             break;
                         case "Quer":
 
-                            ws.Cells[36 + j, 11] = matten.Scherung[j].Durchmesser;
+                            ws.Cells[36 + j, 11] = matten.Scherung[j].D;
                             ws.Cells[36 + j, 13] = "In Arbeit!";
                             ws.Cells[36 + j, 15] = "In Arbeit!";
                             break;
                         case "Rand":
 
-                            ws.Cells[42 + j, 11] = matten.Scherung[j].Durchmesser;
+                            ws.Cells[42 + j, 11] = matten.Scherung[j].D;
                             ws.Cells[42 + j, 13] = "In Arbeit!";
                             ws.Cells[42 + j, 15] = "In Arbeit!";
                             break;

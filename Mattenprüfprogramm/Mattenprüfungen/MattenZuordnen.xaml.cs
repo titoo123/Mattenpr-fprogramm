@@ -53,7 +53,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             DatabaseConnectionDataContext d = new DatabaseConnectionDataContext();
             var sch = from s in d.Scherung
                       where s.Id_Matten == null && !sList.Contains(s.Id)
-                      select new { s.Id , s.Richtung , s.Höchstkraft, s.Durchmesser, s.Scherwert };
+                      select new { s.Id, s.Datum , s.Richtung , s.Fm, s.D, s.Sw };
 
             dataGrid_scherung.ItemsSource = sch.ToList();
             
@@ -145,6 +145,9 @@ namespace Mattenprüfprogramm.Mattenprüfungen
 
         private void dataGrid_scherung_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
+            if (e.PropertyType == typeof(System.DateTime) || e.Column.Header.ToString() == "Datum")
+                (e.Column as DataGridTextColumn).Binding.StringFormat = "dd/MM/yyyy";
+
             if (e.Column.Header.ToString() == "Id" || e.Column.Header.ToString() == "Matten")
             {
                 e.Column.MinWidth = 0;
@@ -154,12 +157,16 @@ namespace Mattenprüfprogramm.Mattenprüfungen
 
         private void dataGrid_zug_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
+            if (e.PropertyType == typeof(System.DateTime) || e.Column.Header.ToString() == "Datum")
+                (e.Column as DataGridTextColumn).Binding.StringFormat = "dd/MM/yyyy";
+
             if (e.Column.Header.ToString() == "Id" || e.Column.Header.ToString() == "Matten")
             {
                 e.Column.MinWidth = 0;
                 e.Column.Width = 0;
             }
         }
+       
     }
 
 }
