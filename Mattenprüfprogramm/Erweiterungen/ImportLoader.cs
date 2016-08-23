@@ -56,7 +56,7 @@ namespace Mattenprüfprogramm.Erweiterungen
                         xml.Load(f.FullName);
                         try
                         {
-                            XMLParser x = new XMLParser(xml, "Testknoten", f.Name);
+                            XMLParser x = new XMLParser(xml, @"TestParameters\TestParameter", f.Name);
 
                             if (x.S != null)
                             {

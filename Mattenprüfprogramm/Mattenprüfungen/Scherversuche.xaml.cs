@@ -51,7 +51,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             comboBox_maschine.SelectedValue = m.Schweissmaschine.Nummer.ToString();
 
             datePicker_matten.SelectedDate = m.Datum;
-            textBox_gluetemp.Text = Convert.ToString(m.Temperatur);
+
             textBox_kommentar.Text = m.Kommentar;
 
             //Füllt Richtung
@@ -77,7 +77,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
         private void button_matte_bearbeiten_Click(object sender, RoutedEventArgs e)
         {
             datePicker_matten.IsEnabled = true;
-            textBox_gluetemp.IsEnabled = true;
+
             textBox_kommentar.IsEnabled = true;
             comboBox_maschine.IsEnabled = true;
             comboBox_mattentyp.IsEnabled = true;
@@ -117,14 +117,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             mat.First().Fehlversuche_r = Convert.ToInt32(textBox_randstab_fehlversuche.Text);
             mat.First().Fehlversuche_q = Convert.ToInt32(textBox_querstab_fehlversuche.Text);
 
-            if (textBox_gluetemp.Text != String.Empty)
-            {
-                mat.First().Temperatur = Convert.ToDouble(textBox_gluetemp.Text);
-            }
-            else
-            {
-                mat.First().Temperatur = null;
-            }
+
 
             try
             {
@@ -140,7 +133,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             comboBox_maschine.IsEnabled = false;
             comboBox_mattentyp.IsEnabled = false;
             comboBox_pruefer.IsEnabled = false;
-            textBox_gluetemp.IsEnabled = false;
+
             textBox_kommentar.IsEnabled = false;
             checkBox_tiefgerippt.IsEnabled = false;
             button_matte_speichern.IsEnabled = false;

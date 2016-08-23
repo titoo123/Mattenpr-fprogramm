@@ -64,7 +64,7 @@ namespace Mattenprüfprogramm
 
         public void ActivateMenu(User user, bool value)
         {
-
+            MenuItemExport.IsEnabled = value;
             MenuItemStammdaten.IsEnabled = value;
             MenuItemEinstellungen.IsEnabled = value;
 
@@ -152,15 +152,12 @@ namespace Mattenprüfprogramm
 
         //Exporte
         private void Excel_Click(object sender, RoutedEventArgs e)
-        { 
-            ExcelExport eex = new ExcelExport(Erweiterungen.Helper.GetMatteByDataGrid(0, dataGrid_Matten), this);
-        }
-        private void AS400_Click(object sender, RoutedEventArgs e)
         {
-            Window as400 = new Export.AS400Export();
-            as400.Show();
-        }
+            Export.ExcelExport_Window eep = new Export.ExcelExport_Window();
+            eep.Show(); 
 
+        }
+    
         //Extras
         private void Informationen_Click(object sender, RoutedEventArgs e)
         {
@@ -190,7 +187,7 @@ namespace Mattenprüfprogramm
                 button_zugversuche.IsEnabled = false;
                 button_löschen.IsEnabled = false;
                 button_zuordnen.IsEnabled = false;
-                MenuItemExport.IsEnabled = false;
+                //MenuItemExport.IsEnabled = false;
             }
 
         }

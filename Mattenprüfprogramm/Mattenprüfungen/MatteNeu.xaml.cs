@@ -31,7 +31,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
 
         private void button_SuS_Click(object sender, RoutedEventArgs e)
         {
-            if (datePicker_matte!= null && textBox_prüfnummer.Text != null && textBox_kommentar.Text != null && textBox_temperatur != null
+            if (datePicker_matte!= null && textBox_prüfnummer.Text != null && textBox_kommentar.Text != null 
                 && comboBox_prüfer.SelectedIndex != -1 && comboBox_mattentyp.SelectedIndex != -1 && comboBox_maschine.SelectedIndex != -1)
             {
                 DatabaseConnectionDataContext d = new DatabaseConnectionDataContext();

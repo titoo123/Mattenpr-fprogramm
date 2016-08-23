@@ -42,7 +42,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             textBox_mattentyp.Text = m.Mattentypen.Name;
             textBox_pnummer.Text = m.Prüfnummer.ToString();
             textBox_pru.Text = m.Prüfer.Name;
-            textBox_temperatur.Text = Convert.ToString(m.Temperatur);
+
 
             LoadGridScherung();
             LoadGridZug();

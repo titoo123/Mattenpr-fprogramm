@@ -1192,8 +1192,6 @@ namespace Mattenprüfprogramm
 		
 		private string _Kommentar;
 		
-		private System.Nullable<double> _Temperatur;
-		
 		private System.Nullable<bool> _Tiefgerippt;
 		
 		private System.Nullable<int> _Anzahl_l;
@@ -1236,8 +1234,6 @@ namespace Mattenprüfprogramm
     partial void OnId_MattentypChanged();
     partial void OnKommentarChanging(string value);
     partial void OnKommentarChanged();
-    partial void OnTemperaturChanging(System.Nullable<double> value);
-    partial void OnTemperaturChanged();
     partial void OnTiefgeripptChanging(System.Nullable<bool> value);
     partial void OnTiefgeripptChanged();
     partial void OnAnzahl_lChanging(System.Nullable<int> value);
@@ -1412,26 +1408,6 @@ namespace Mattenprüfprogramm
 					this._Kommentar = value;
 					this.SendPropertyChanged("Kommentar");
 					this.OnKommentarChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Temperatur", DbType="Float")]
-		public System.Nullable<double> Temperatur
-		{
-			get
-			{
-				return this._Temperatur;
-			}
-			set
-			{
-				if ((this._Temperatur != value))
-				{
-					this.OnTemperaturChanging(value);
-					this.SendPropertyChanging();
-					this._Temperatur = value;
-					this.SendPropertyChanged("Temperatur");
-					this.OnTemperaturChanged();
 				}
 			}
 		}
@@ -1783,8 +1759,6 @@ namespace Mattenprüfprogramm
 		
 		private System.Nullable<double> _Dgs;
 		
-		private string _Br;
-		
 		private System.Nullable<int> _Id_Matten;
 		
 		private System.Nullable<double> _se1;
@@ -1853,8 +1827,6 @@ namespace Mattenprüfprogramm
     partial void OnRmRpChanged();
     partial void OnDgsChanging(System.Nullable<double> value);
     partial void OnDgsChanged();
-    partial void OnBrChanging(string value);
-    partial void OnBrChanged();
     partial void OnId_MattenChanging(System.Nullable<int> value);
     partial void OnId_MattenChanged();
     partial void Onse1Changing(System.Nullable<double> value);
@@ -2173,26 +2145,6 @@ namespace Mattenprüfprogramm
 					this._Dgs = value;
 					this.SendPropertyChanged("Dgs");
 					this.OnDgsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Br", DbType="VarChar(5)")]
-		public string Br
-		{
-			get
-			{
-				return this._Br;
-			}
-			set
-			{
-				if ((this._Br != value))
-				{
-					this.OnBrChanging(value);
-					this.SendPropertyChanging();
-					this._Br = value;
-					this.SendPropertyChanged("Br");
-					this.OnBrChanged();
 				}
 			}
 		}

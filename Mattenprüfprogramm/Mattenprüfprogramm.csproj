@@ -116,14 +116,15 @@
     <Compile Include="Einstellungen\Informationen.xaml.cs">
       <DependentUpon>Informationen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Erweiterungen\CreateExcelSheet.cs" />
     <Compile Include="Erweiterungen\DATParser.cs" />
     <Compile Include="Erweiterungen\ExcelExport.cs" />
     <Compile Include="Erweiterungen\Helper.cs" />
     <Compile Include="Erweiterungen\ImportLoader.cs" />
     <Compile Include="Erweiterungen\MattenMatcher.cs" />
     <Compile Include="Erweiterungen\XMLParser.cs" />
-    <Compile Include="Export\AS400Export.xaml.cs">
-      <DependentUpon>AS400Export.xaml</DependentUpon>
+    <Compile Include="Export\ExcelExport_Window.xaml.cs">
+      <DependentUpon>ExcelExport_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Mattenprüfungen\MatteNeu.xaml.cs">
       <DependentUpon>MatteNeu.xaml</DependentUpon>
@@ -173,7 +174,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Export\AS400Export.xaml">
+    <Page Include="Export\ExcelExport_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -271,7 +272,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Mattenprüfprogramm_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
     </None>
@@ -280,9 +280,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <EmbeddedResource Include="Pruefbogen_V04.3.xlsx">
+    <Resource Include="MATTE_Vorlage.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="iconb_knQ_icon.ico" />

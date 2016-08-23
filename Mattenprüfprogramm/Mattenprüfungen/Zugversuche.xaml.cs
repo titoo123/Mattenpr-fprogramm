@@ -45,7 +45,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             comboBox_maschine.SelectedValue = m.Schweissmaschine.Nummer.ToString();
 
             datePicker_matten.SelectedDate = m.Datum;
-            textBox_gluetemp.Text = Convert.ToString(m.Temperatur);
+
             textBox_kommentar.Text = m.Kommentar;
 
             comboBox_zugdaten_richtung.Items.Add("Quer");
@@ -68,7 +68,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
         private void button_matte_bearbeiten_Click(object sender, RoutedEventArgs e)
         {
             datePicker_matten.IsEnabled = true;
-            textBox_gluetemp.IsEnabled = true;
+
             textBox_kommentar.IsEnabled = true;
             comboBox_maschine.IsEnabled = true;
             comboBox_mattentyp.IsEnabled = true;
@@ -109,14 +109,6 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             mat.First().Fehlversuche_r = Convert.ToInt32(textBox_randstab_fehlversuche.Text);
             mat.First().Fehlversuche_q = Convert.ToInt32(textBox_querstab_fehlversuche.Text);
 
-            if (textBox_gluetemp.Text != String.Empty)
-            {
-                mat.First().Temperatur = Convert.ToDouble(textBox_gluetemp.Text);
-            }
-            else
-            {
-                mat.First().Temperatur = null;
-            }
 
             try
             {
@@ -132,7 +124,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             comboBox_maschine.IsEnabled = false;
             comboBox_mattentyp.IsEnabled = false;
             comboBox_pruefer.IsEnabled = false;
-            textBox_gluetemp.IsEnabled = false;
+
             textBox_kommentar.IsEnabled = false;
             checkBox_tiefgerippt.IsEnabled = false;
             button_matte_speichern.IsEnabled = false;
@@ -159,7 +151,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             textBox_bruchdehnung.IsEnabled = true;
             textBox_streckengrenzverhältnis.IsEnabled = true;
             textBox_abweichungNenngewicht.IsEnabled = true;
-            textBox_bruchlage.IsEnabled = true;
+
 
             textBox_Hnm_1.IsEnabled = true;
             textBox_Hnm_2.IsEnabled = true;
@@ -205,7 +197,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             esr.First().A = Convert.ToDouble(textBox_bruchdehnung.Text);
             esr.First().RmRp = Convert.ToDouble(textBox_streckengrenzverhältnis.Text);
             esr.First().Dgs = Convert.ToDouble(textBox_abweichungNenngewicht.Text);
-            esr.First().Br = Convert.ToString(textBox_bruchlage.Text);
+
 
             esr.First().H1m = Convert.ToDouble(textBox_Hnm_1.Text);
             esr.First().H2m = Convert.ToDouble(textBox_Hnm_2.Text);
@@ -247,7 +239,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             textBox_bruchdehnung.IsEnabled = false;
             textBox_streckengrenzverhältnis.IsEnabled = false;
             textBox_abweichungNenngewicht.IsEnabled = false;
-            textBox_bruchlage.IsEnabled = false;
+
 
             textBox_Hnm_1.IsEnabled = false;
             textBox_Hnm_2.IsEnabled = false;
@@ -334,28 +326,28 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                 textBox_bruchdehnung.Text =                 Erweiterungen.Helper.GetStringFromDataGrid(8, dataGrid_zugversuche);
                 textBox_streckengrenzverhältnis.Text =      Erweiterungen.Helper.GetStringFromDataGrid(9, dataGrid_zugversuche);
                 textBox_abweichungNenngewicht.Text =        Erweiterungen.Helper.GetStringFromDataGrid(10, dataGrid_zugversuche);
-                textBox_bruchlage.Text =                    Erweiterungen.Helper.GetStringFromDataGrid(11, dataGrid_zugversuche);
 
-                textBox_Hnm_1.Text = Erweiterungen.Helper.GetStringFromDataGrid(12, dataGrid_zugversuche);
-                textBox_Hnm_2.Text = Erweiterungen.Helper.GetStringFromDataGrid(13, dataGrid_zugversuche);
-                textBox_Hnm_3.Text = Erweiterungen.Helper.GetStringFromDataGrid(14, dataGrid_zugversuche);
 
-                textBox_Hn25_1.Text = Erweiterungen.Helper.GetStringFromDataGrid(18, dataGrid_zugversuche);
-                textBox_Hn25_2.Text = Erweiterungen.Helper.GetStringFromDataGrid(19, dataGrid_zugversuche);
-                textBox_Hn25_3.Text = Erweiterungen.Helper.GetStringFromDataGrid(20, dataGrid_zugversuche);
+                textBox_Hnm_1.Text = Erweiterungen.Helper.GetStringFromDataGrid(11, dataGrid_zugversuche);
+                textBox_Hnm_2.Text = Erweiterungen.Helper.GetStringFromDataGrid(12, dataGrid_zugversuche);
+                textBox_Hnm_3.Text = Erweiterungen.Helper.GetStringFromDataGrid(13, dataGrid_zugversuche);
 
-                textBox_Hn75_1.Text = Erweiterungen.Helper.GetStringFromDataGrid(21, dataGrid_zugversuche);
-                textBox_Hn75_2.Text = Erweiterungen.Helper.GetStringFromDataGrid(22, dataGrid_zugversuche);
-                textBox_Hn75_3.Text = Erweiterungen.Helper.GetStringFromDataGrid(23, dataGrid_zugversuche);
+                textBox_Hn25_1.Text = Erweiterungen.Helper.GetStringFromDataGrid(17, dataGrid_zugversuche);
+                textBox_Hn25_2.Text = Erweiterungen.Helper.GetStringFromDataGrid(18, dataGrid_zugversuche);
+                textBox_Hn25_3.Text = Erweiterungen.Helper.GetStringFromDataGrid(19, dataGrid_zugversuche);
 
-                textBox_c1.Text =       Erweiterungen.Helper.GetStringFromDataGrid(24, dataGrid_zugversuche);
-                textBox_c2.Text =       Erweiterungen.Helper.GetStringFromDataGrid(25, dataGrid_zugversuche);
-                textBox_c3.Text =       Erweiterungen.Helper.GetStringFromDataGrid(26, dataGrid_zugversuche);
-                textBox_se_1.Text =     Erweiterungen.Helper.GetStringFromDataGrid(15, dataGrid_zugversuche);
-                textBox_se_2.Text =     Erweiterungen.Helper.GetStringFromDataGrid(16, dataGrid_zugversuche);
-                textBox_se_3.Text =     Erweiterungen.Helper.GetStringFromDataGrid(17, dataGrid_zugversuche);
+                textBox_Hn75_1.Text = Erweiterungen.Helper.GetStringFromDataGrid(20, dataGrid_zugversuche);
+                textBox_Hn75_2.Text = Erweiterungen.Helper.GetStringFromDataGrid(21, dataGrid_zugversuche);
+                textBox_Hn75_3.Text = Erweiterungen.Helper.GetStringFromDataGrid(22, dataGrid_zugversuche);
 
-                textBox_fr.Text =       Erweiterungen.Helper.GetStringFromDataGrid(27, dataGrid_zugversuche);
+                textBox_c1.Text =       Erweiterungen.Helper.GetStringFromDataGrid(23, dataGrid_zugversuche);
+                textBox_c2.Text =       Erweiterungen.Helper.GetStringFromDataGrid(24, dataGrid_zugversuche);
+                textBox_c3.Text =       Erweiterungen.Helper.GetStringFromDataGrid(25, dataGrid_zugversuche);
+                textBox_se_1.Text =     Erweiterungen.Helper.GetStringFromDataGrid(14, dataGrid_zugversuche);
+                textBox_se_2.Text =     Erweiterungen.Helper.GetStringFromDataGrid(15, dataGrid_zugversuche);
+                textBox_se_3.Text =     Erweiterungen.Helper.GetStringFromDataGrid(16, dataGrid_zugversuche);
+
+                textBox_fr.Text =       Erweiterungen.Helper.GetStringFromDataGrid(26, dataGrid_zugversuche);
                
             }
 
@@ -428,7 +420,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                           s.A, 
                           s.RmRp,
                           s.Dgs, //10
-                          s.Br,
+
 
                           s.H1m,
                           s.H2m,

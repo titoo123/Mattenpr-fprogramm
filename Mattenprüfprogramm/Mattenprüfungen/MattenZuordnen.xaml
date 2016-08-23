@@ -18,14 +18,12 @@
                 <Label Content="Maschine" Height="27" HorizontalAlignment="Left" Margin="223,11,0,0" Name="label6" VerticalAlignment="Top" />
                 <Label Content="Mattentyp" Height="26" HorizontalAlignment="Left" Margin="223,40,0,0" Name="label7" VerticalAlignment="Top" />
                 <Label Content="Kommentar" Height="25" HorizontalAlignment="Left" Margin="223,69,0,0" Name="label8" VerticalAlignment="Top" />
-                <Label Content="Temperatur" Height="27" HorizontalAlignment="Left" Margin="446,11,0,0" Name="label9" VerticalAlignment="Top" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="93,11,0,0" Name="textBox_date" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="93,40,0,0" Name="textBox_pnummer" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="93,69,0,0" Name="textBox_pru" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="316,11,0,0" Name="textBox_maschine" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="316,40,0,0" Name="textBox_mattentyp" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="316,69,0,0" Name="textBox_kommentar" VerticalAlignment="Top" Width="120" IsEnabled="False" />
-                <TextBox Height="23" HorizontalAlignment="Left" Margin="524,11,0,0" Name="textBox_temperatur" VerticalAlignment="Top" Width="45" IsEnabled="False" />
             </Grid>
         </GroupBox>
         <Button Content="Hinzufügen" Height="29" HorizontalAlignment="Left" Margin="12,285,0,0" Name="button_scherung_hinzufügen" VerticalAlignment="Top" Width="120" IsEnabled="False" Click="button_scherung_hinzufügen_Click" />

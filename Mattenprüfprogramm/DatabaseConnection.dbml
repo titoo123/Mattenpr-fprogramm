@@ -69,7 +69,6 @@
       <Column Name="Id_Maschine" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Id_Mattentyp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Kommentar" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Temperatur" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Tiefgerippt" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Anzahl_l" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Anzahl_r" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -100,7 +99,6 @@
       <Column Name="A" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="RmRp" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Dgs" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Br" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
       <Column Name="Id_Matten" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="se1" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="se2" Type="System.Double" DbType="Float" CanBeNull="true" />
