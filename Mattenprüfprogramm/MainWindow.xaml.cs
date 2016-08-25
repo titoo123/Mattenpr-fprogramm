@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 using Mattenprüfprogramm.Erweiterungen;
+using Mattenprüfprogramm.Einstellungen;
 
 namespace Mattenprüfprogramm
 {
@@ -66,7 +67,7 @@ namespace Mattenprüfprogramm
         {
             MenuItemExport.IsEnabled = value;
             MenuItemStammdaten.IsEnabled = value;
-            MenuItemEinstellungen.IsEnabled = value;
+            //MenuItemEinstellungen.IsEnabled = value;
 
             button_neu.IsEnabled = value;
             button_drucken.IsEnabled = value;
@@ -164,11 +165,11 @@ namespace Mattenprüfprogramm
             Window informationen = new Einstellungen.Informationen();
             informationen.Show();
         }
-        private void Optionen_Click(object sender, RoutedEventArgs e)
-        {
-            Window optionen = new Einstellungen.Optionen(this);
-            optionen.Show();
-        }
+        //private void Optionen_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Window optionen = new Einstellungen.Pfad_Window(this);
+        //    optionen.Show();
+        //}
 
         //DataGrid
         private void dataGrid_Matten_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -279,7 +280,16 @@ namespace Mattenprüfprogramm
             label_zug.Content = "und " + daz.Count() + " Züge offen.";
         }
 
+        private void button_P_importPfad_Click(object sender, RoutedEventArgs e)
+        {
+            Pfad_Window pw = new Pfad_Window();
+            pw.Show();
+        }
 
-
+        private void button_P_einlesen_Click(object sender, RoutedEventArgs e)
+        {
+            Erweiterungen.ImportLoader i = new Erweiterungen.ImportLoader(this);
+            i.Load(ProgressBar_XML);
+        }
     }
 }

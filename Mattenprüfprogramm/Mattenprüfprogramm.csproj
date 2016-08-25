@@ -147,8 +147,8 @@
     <Compile Include="Stammdaten\Grenzwerte.xaml.cs">
       <DependentUpon>Grenzwerte.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Einstellungen\Optionen.xaml.cs">
-      <DependentUpon>Optionen.xaml</DependentUpon>
+    <Compile Include="Einstellungen\Pfad_Window.xaml.cs">
+      <DependentUpon>Pfad_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Stammdaten\Mattentypen.xaml.cs">
       <DependentUpon>Mattentypen.xaml</DependentUpon>
@@ -224,7 +224,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Einstellungen\Optionen.xaml">
+    <Page Include="Einstellungen\Pfad_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -280,9 +280,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <Resource Include="MATTE_Vorlage.xlsx">
+    <EmbeddedResource Include="MATTE_Vorlage.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="iconb_knQ_icon.ico" />

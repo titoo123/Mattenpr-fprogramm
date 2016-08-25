@@ -44,25 +44,30 @@ namespace Mattenprüfprogramm.Export
                     }
 
 
-                    //// Excel Datei anlegen: Workbook
-                    //var myCount = myExcelApplication.Workbooks.Count;
-                    //myExcelWorkbook = (Excel.Workbook)(myExcelApplication.Workbooks.Add(System.Reflection.Missing.Value));
-                    //myExcelWorkSheet = (Excel.Worksheet)myExcelWorkbook.ActiveSheet;
+                    // Excel Datei anlegen: Workbook
+                    var myCount = myExcelApplication.Workbooks.Count;
+                    myExcelWorkbook = (Excel.Workbook)(myExcelApplication.Workbooks.Add(System.Reflection.Missing.Value));
+                    myExcelWorkSheet = (Excel.Worksheet)myExcelWorkbook.ActiveSheet;
 
-                    ////Überschrift erstellen
-                    //myExcelWorkSheet = MakeHeaders(myExcelWorkSheet);
+                    //Überschrift erstellen
+                    myExcelWorkSheet = MakeHeaders(myExcelWorkSheet);
 
-                 
-                    //myExcelWorkSheet.Name = "Prüfungen";
-                    //myExcelWorkSheet = MakeValues(myExcelWorkSheet, Convert.ToDateTime(d1), Convert.ToDateTime(d2), false);
 
-                    //if (print)
-                    //{
-                    //    myExcelWorkSheet.Columns.Font.Size = 6;
+                    // myExcelWorkSheet.Name = "Prüfungen";
+                    myExcelWorkSheet = MakeValues(myExcelWorkSheet, Convert.ToDateTime(d1), Convert.ToDateTime(d2), false);
 
-                    //    myExcelWorkSheet.Columns.AutoFit();
-                    //    Print(myExcelWorkSheet, myExcelWorkbook);
-                    //}
+                    if (print)
+                    {
+                        myExcelWorkSheet.Columns.Font.Size = 6;
+
+                        myExcelWorkSheet.Columns.AutoFit();
+                        //Print(myExcelWorkSheet, myExcelWorkbook);
+                    }
+                    else
+                    {
+                        myExcelWorkSheet.Columns.AutoFit();
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -71,7 +76,8 @@ namespace Mattenprüfprogramm.Export
                 }
             }
             else //Mit Vorlage
-            {   Excel.Application excelApp = new Excel.Application();
+            {
+                Excel.Application excelApp = new Excel.Application();
                 String fileString = Directory.GetCurrentDirectory() + @"\MATTE_Vorlage.xlsx";
 
                 try
@@ -82,13 +88,18 @@ namespace Mattenprüfprogramm.Export
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                     Type.Missing, Type.Missing);
 
-                    wb = MakeValues(excelApp.ActiveSheet,Convert.ToDateTime(d1), Convert.ToDateTime( d2), true);
+                    if (visible)
+                    {
+                        excelApp.Visible = true;
+                        //excelApp.ScreenUpdating = true;
+                    }
 
-                    excelApp.Visible = true;
+                     wb = MakeValues(excelApp.ActiveSheet,Convert.ToDateTime(d1), Convert.ToDateTime( d2), true);
+
                 }
                 catch (Exception ex)
                 {
-                    System.Windows.MessageBox.Show("Konnte Excel Mappe nicht öffnen!\n\n" + fileString + "\n\n" + Directory.GetCurrentDirectory() + "\n\n" + ex, "Nee!");
+                 //   System.Windows.MessageBox.Show("Es gibt Probleme mit dem Excel-Export!\n\n" + fileString + "\n\n" + Directory.GetCurrentDirectory() + "\n\n" + ex, "Nee!");
                 }
             }
         }
@@ -191,7 +202,7 @@ namespace Mattenprüfprogramm.Export
                 //Sucht passende Scherungen
                 var sch = from s in d.Scherung
                           where s.Id_Matten == i.Id
-                          select zug;
+                          select s;
 
                 int z_n = zug.Count();
                 int s_n = sch.Count();
@@ -219,7 +230,7 @@ namespace Mattenprüfprogramm.Export
                         w.Cells[j + 3, 10] = u.Rp / 500;
                         w.Cells[j + 3, 11] = u.Agt;
                         w.Cells[j + 3, 14] = u.fR;
-
+                        j = j + 1;
                     }
                     foreach (Scherung e in sch)
                     {
@@ -231,12 +242,13 @@ namespace Mattenprüfprogramm.Export
                         {
                             w.Cells[j + 3, 2] = "Unbekannt";
                         }
-                        w.Cells[j + 3, 6] = i.Mattentypen.Name;
-                        w.Cells[j + 3, 7] = i.Datum;
-                        w.Cells[j + 3, 8] = e.D;
+                        w.Cells[j + 3, 3] = i.Mattentypen.Name;
+                        w.Cells[j + 3, 4] = i.Datum;
+                        w.Cells[j + 3, 5] = e.D;
 
-                        w.Cells[j + 3, 15] = e.Fm;
-                        w.Cells[j + 3, 16] = e.Sw;
+                        w.Cells[j + 3, 12] = e.Fm;
+                        w.Cells[j + 3, 13] = e.Sw;
+                        j = j + 1;
                     }
 
 
@@ -255,6 +267,7 @@ namespace Mattenprüfprogramm.Export
                         w.Cells[j + 6, 13] = u.Rp / 500;
                         w.Cells[j + 6, 14] = u.Agt;
                         w.Cells[j + 6, 17] = u.fR;
+                        j = j + 1;
                     }
                     foreach (Scherung e in sch)
                     {
@@ -264,6 +277,7 @@ namespace Mattenprüfprogramm.Export
 
                         w.Cells[j + 6, 15] = e.Fm;
                         w.Cells[j + 6, 16] = e.Sw;
+                        j = j + 1;
                     }
                 }
 
@@ -301,7 +315,7 @@ namespace Mattenprüfprogramm.Export
 
                 //myExcelWorkSheet.Cells[j + 3, 26] = i.C;
                 //myExcelWorkSheet.Cells[j + 3, 27] = i.AgtM;
-                j = j + 1;
+                
             }
             return w;
         }

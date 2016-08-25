@@ -49,7 +49,7 @@ namespace Mattenprüfprogramm.Export
                 }
                 else if (((ComboBoxItem)comboBox_excel_export.SelectedItem).Content.ToString() == "Vorlage")
                 {
-                   // new CreateExcelSheet(d1, d2, true, false,true);
+                    new CreateExcelSheet(d1, d2, true, false,true);
                     this.Close();
                 }
 

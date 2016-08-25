@@ -56,15 +56,27 @@ namespace Mattenprüfprogramm.Erweiterungen
                         xml.Load(f.FullName);
                         try
                         {
-                            XMLParser x = new XMLParser(xml, @"TestParameters\TestParameter", f.Name);
+                            XMLParser x = new XMLParser(xml, "TestParameters/TestParameter", f.Name);
 
-                            if (x.S != null)
+                            if (f.Name.Substring(5).Contains("S"))
                             {
-                                sList.Add(x.S);
+                                Scherung ls = x.ReadData_Scherung();
+
+                                if (s != null)
+                                {
+                                    sList.Add(ls);
+                                }
+
                             }
-                            if (x.Z != null)
+                            else
                             {
-                                zList.Add(x.Z);
+                                Zug lz = x.ReadData_Zug();
+
+                                if (lz != null)
+                                {
+                                    zList.Add(lz);
+                                }
+
                             }
 
                             d.Import.InsertOnSubmit(new Import() { Name = f.Name });
@@ -76,25 +88,7 @@ namespace Mattenprüfprogramm.Erweiterungen
                     }
                     else if (f.Name.Contains(".dat"))
                     {
-                        //try
-                        //{
-                        //    DATParser p = new DATParser( f.FullName, f.Name);
-
-                        //    if (p.S != null)
-                        //    {
-                        //        sList.Add(p.S);
-                        //    }
-                        //    if (p.Z != null)
-                        //    {
-                        //        zList.Add(p.Z);
-                        //    }
-
-                        //    d.Import.InsertOnSubmit(new Import() { Name = f.Name });
-                        //}
-                        //catch (Exception e)
-                        //{
-                        //    MessageBox.Show("Import der Datei " + f.Name + " fehlgeschlagen!\n\n" + e, "Fehler!");
-                        //}
+                       
                     }
 
                     try
