@@ -5,17 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Mattenprüfprogramm.Export"
         mc:Ignorable="d"
-        Title="Export zu Excel" Height="216" Width="300">
+        Title="Export zu Excel" Height="150" Width="400" ResizeMode="NoResize">
     <Grid>
-        <DatePicker x:Name="D1_Picker" HorizontalAlignment="Left" Margin="5,36,0,0" VerticalAlignment="Top"/>
-        <DatePicker  x:Name="D2_Picker" HorizontalAlignment="Left" Margin="146,35,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label" Content="Von:" HorizontalAlignment="Left" Margin="6,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label1" Content="Bis:" HorizontalAlignment="Left" Margin="147,9,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="button_ExportierenUndSchließen" Content="Exportieren und Schließen" HorizontalAlignment="Left" Margin="65,131,0,0" VerticalAlignment="Top" Width="150" Height="29" Click="button_ExportierenUndSchließen_Click"/>
-        <ComboBox x:Name="comboBox_excel_export" HorizontalAlignment="Left" Margin="65,80,0,0" VerticalAlignment="Top" Width="150" Height="30">
-            <ComboBoxItem Content="Einfach" HorizontalAlignment="Left" Width="148"/>
-            <ComboBoxItem Content="Vorlage" HorizontalAlignment="Left" Width="148"/>
+        <Grid.RowDefinitions  >
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <!--<RowDefinition ></RowDefinition>-->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--<Label x:Name="label" Content="Von:" Grid.Row="0" Grid.Column="0"/>
+        <Label x:Name="label1" Content="Bis:"  Grid.Row="0" Grid.Column="2"/>-->
+        <DatePicker x:Name="D1_Picker" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="1">
+            <DatePicker.Resources>
+                <Style TargetType="DatePickerTextBox">
+                    <Setter Property="Text" Value="Datum 'von' auswählen"/>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <DatePicker x:Name="D2_Picker" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="1">
+        <DatePicker.Resources>
+            <Style TargetType="DatePickerTextBox">
+                <Setter Property="Text" Value="Datum 'bis' auswählen"/>
+            </Style>
+        </DatePicker.Resources>
+        </DatePicker>
+        <ComboBox x:Name="comboBox_excel_export"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="1">
+            <ComboBoxItem Content="Einfach" IsSelected="True" />
+            <ComboBoxItem Content="Vorlage"/>
         </ComboBox>
+
+        <Button x:Name="button_ExportierenUndSchließen" Content="Exportieren und Schließen"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="1" Click="button_ExportierenUndSchließen_Click"/>
+
 
     </Grid>
 </Window>

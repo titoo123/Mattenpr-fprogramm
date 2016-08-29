@@ -66,8 +66,29 @@ namespace Mattenprüfprogramm.Erweiterungen
                         case "318":  //Agt
                             z.Agt = Parse_Double("Agt", xNode, STRING_VALUE, file_Name);
                             break;
-                        case "199":  //Bediener
-                            z.Prüfer = xNode[STRING_VALUE].InnerText;
+                        case "602":  //Bediener
+                            string p = xNode[STRING_VALUE].InnerText;
+
+                            var pru = from k in d.Prüfer
+                                      where k.Name == p
+                                      select k.Id;
+
+                            if (pru.Count() == 0)
+                            {
+                                d.Prüfer.InsertOnSubmit(new Prüfer { Name = p });
+
+                                try
+                                {
+                                    d.SubmitChanges();
+                                }
+                                catch (Exception)
+                                {
+
+                                }
+                            }
+
+                            z.Prüfer = p;
+
                             break;
                         case "607":  //Datum
 
@@ -82,16 +103,15 @@ namespace Mattenprüfprogramm.Erweiterungen
 
                             break;
                         case "599":  // Mattentyp
-                            string p = xNode[STRING_VALUE].InnerText;
-                            DatabaseConnectionDataContext d = new DatabaseConnectionDataContext();
+                            string v = xNode[STRING_VALUE].InnerText;
 
                             var mtt = from m in d.Mattentypen
-                                      where m.Name == p
+                                      where m.Name == v
                                       select m;
 
                             if (mtt.Count() < 1)
                             {
-                                d.Mattentypen.InsertOnSubmit(new Mattentypen() { Name = p });
+                                d.Mattentypen.InsertOnSubmit(new Mattentypen() { Name = v });
                                 try
                                 {
                                     d.SubmitChanges();
@@ -102,7 +122,7 @@ namespace Mattenprüfprogramm.Erweiterungen
                                 }
                             }
 
-                            z.Mattentyp = p;
+                            z.Mattentyp = v;
 
                             break;
 
@@ -111,7 +131,7 @@ namespace Mattenprüfprogramm.Erweiterungen
                     }
                 }
             }
-
+            z.Maschine = 12;
             return z;
 
         }
@@ -132,8 +152,29 @@ namespace Mattenprüfprogramm.Erweiterungen
                         case "190":  //Durchmesser
                             sc.D = Parse_Double("Durchmesser", xNode, STRING_VALUE, file_Name);
                             break;
-                        case "199":  //Bediener
-                            sc.Prüfer = xNode[STRING_VALUE].InnerText;
+                        case "602":  //Bediener
+
+                            string p = xNode[STRING_VALUE].InnerText;
+
+                            var pru = from k in d.Prüfer
+                                      where k.Name == p
+                                      select k.Id;
+
+                            if (pru.Count() == 0)
+                            {
+                                d.Prüfer.InsertOnSubmit(new Prüfer { Name = p });
+                            
+                            try
+                                {
+                                    d.SubmitChanges();
+                                }
+                                catch (Exception)
+                                {
+
+                                }
+                            }
+
+                            sc.Prüfer = p;
                             break;
                         case "607":  //Datum
 
@@ -153,12 +194,35 @@ namespace Mattenprüfprogramm.Erweiterungen
                         case "609":  //Scherfaktor 
                             sc.Sw = Parse_Double("Scherfaktor", xNode, STRING_VALUE, file_Name);
                             break;
+                        case "599":  // Mattentyp
+                            string o = xNode[STRING_VALUE].InnerText;
 
+                            var mtt = from m in d.Mattentypen
+                                      where m.Name == o
+                                      select m;
+
+                            if (mtt.Count() < 1)
+                            {
+                                d.Mattentypen.InsertOnSubmit(new Mattentypen() { Name = o });
+                                try
+                                {
+                                    d.SubmitChanges();
+                                }
+                                catch (Exception)
+                                {
+
+                                }
+                            }
+
+                            sc.Mattentyp = o;
+
+                            break;
                         default:
                             break;
                     }
                 }
             }
+            sc.Maschine = 12;
             return sc;
         }
 

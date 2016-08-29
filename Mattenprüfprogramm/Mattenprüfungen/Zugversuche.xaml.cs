@@ -52,7 +52,11 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             comboBox_zugdaten_richtung.Items.Add("Längs");
             comboBox_zugdaten_richtung.Items.Add("Rand");
 
-            checkBox_tiefgerippt.IsChecked = m.Tiefgerippt.Value;
+            if (m.Tiefgerippt != null)
+            {
+                checkBox_tiefgerippt.IsChecked = m.Tiefgerippt.Value;
+            }
+
 
             textBox_langstab_anzahl.Text = Convert.ToString(m.Anzahl_l);
             textBox_randstab_anzahl.Text = Convert.ToString(m.Anzahl_r);

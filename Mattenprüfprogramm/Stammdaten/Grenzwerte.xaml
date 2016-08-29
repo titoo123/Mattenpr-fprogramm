@@ -3,42 +3,113 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Grenzwerte" Height="500" Width="800" Icon="/Mattenprüfprogramm;component/IconB.png" WindowStartupLocation="CenterOwner">
     <Grid>
-        <GroupBox Header="Felder" Height="437" HorizontalAlignment="Left" Margin="12,12,0,0" Name="groupBox1" VerticalAlignment="Top" Width="345">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <!--<Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>-->
+
+        <GroupBox Header="Felder" Grid.Column="0">
             <Grid>
-                <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="dataGrid_feld_AutoGeneratingColumn"  Height="230" HorizontalAlignment="Left" Margin="6,6,0,0" Name="dataGrid_feld" VerticalAlignment="Top" Width="321" SelectionChanged="dataGrid_feld_SelectionChanged" SelectionMode="Single" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeRows="True" />
-                <GroupBox Header="Grenzwert" Height="166" HorizontalAlignment="Left" Margin="6,242,0,0" Name="groupBox3" VerticalAlignment="Top" Width="321">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="dataGrid_feld_AutoGeneratingColumn"  Name="dataGrid_feld" SelectionChanged="dataGrid_feld_SelectionChanged" SelectionMode="Single" CanUserAddRows="True" CanUserDeleteRows="True" CanUserResizeRows="True" />
+                <GroupBox Header="Grenzwert" Grid.Row="1">
                     <Grid>
-                        <Label Content="Feld" Height="28" HorizontalAlignment="Left" Margin="8,6,0,0" Name="label1" VerticalAlignment="Top" />
-                        <TextBox Height="23" HorizontalAlignment="Left" Margin="50,35,0,0" Name="textBox_feld_min" VerticalAlignment="Top" Width="120" IsEnabled="False" TextChanged="textBox_feld_min_TextChanged" />
-                        <ComboBox Height="23" HorizontalAlignment="Left" Margin="50,6,0,0" Name="comboBox_feld_feld" VerticalAlignment="Top" Width="120" IsEnabled="False" />
-                        <Label Content="Min" Height="28" HorizontalAlignment="Left" Margin="8,35,0,0" Name="label2" VerticalAlignment="Top" />
-                        <Label Content="Max" Height="28" HorizontalAlignment="Left" Margin="8,64,0,0" Name="label3" VerticalAlignment="Top" />
-                        <TextBox Height="23" HorizontalAlignment="Left" Margin="50,64,0,0" Name="textBox_feld_max" VerticalAlignment="Top" Width="120" IsEnabled="False" />
-                        <Button Content="Speichern" Height="29" HorizontalAlignment="Left" IsEnabled="False" Margin="196,76,0,0" Name="button_feld_Speichern" VerticalAlignment="Top" Width="98" Click="button_feld_Speichern_Click" />
-                        <Button Content="Löschen" Height="29" HorizontalAlignment="Left" IsEnabled="False" Margin="196,111,0,0" Name="button_feld_löschen" VerticalAlignment="Top" Width="98" Click="button_feld_löschen_Click" />
-                        <Button Content="Bearbeiten" Height="29" HorizontalAlignment="Left" IsEnabled="False" Margin="196,41,0,0" Name="button_feld_bearbeiten" VerticalAlignment="Top" Width="98" Click="button_feld_bearbeiten_Click" />
-                        <Button Content="Neu" Height="29" HorizontalAlignment="Left" IsEnabled="True" Margin="196,6,0,0" Name="button_feld_neu" VerticalAlignment="Top" Width="98" Click="button_feld_neu_Click" />
+                        <Grid.RowDefinitions>
+                            <RowDefinition ></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Feld" Name="label1"  Grid.Column="0" Grid.Row="0"/>
+                        <ComboBox Name="comboBox_feld_feld"  IsEnabled="False"  Grid.Column="1"  Grid.ColumnSpan="3"/>
+
+                        <Label Content="Min" Name="label2"  Grid.Column="0" Grid.Row="1"/>
+                        <TextBox  Name="textBox_feld_min" IsEnabled="False" TextChanged="textBox_feld_min_TextChanged" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3"/>
+
+                        <Label Content="Max" Name="label3"  Grid.Column="0" Grid.Row="2"/>
+                        <TextBox Name="textBox_feld_max" IsEnabled="False"  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3"/>
+
+                        <Button Content="Neu"  IsEnabled="True" Name="button_feld_neu" Click="button_feld_neu_Click" Grid.Column="0" Grid.Row="5"/>
+                        <Button Content="Bearbeiten" IsEnabled="False" Name="button_feld_bearbeiten" Click="button_feld_bearbeiten_Click" Grid.Column="1" Grid.Row="5"/>
+                        <Button Content="Speichern" IsEnabled="False" Name="button_feld_Speichern" Click="button_feld_Speichern_Click" Grid.Row="5" Grid.Column="2" />
+                        <Button Content="Löschen" IsEnabled="False" Name="button_feld_löschen" Click="button_feld_löschen_Click" Grid.Row="5" Grid.Column="4" />
                     </Grid>
                 </GroupBox>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Rippenflächen" Height="437" HorizontalAlignment="Left" Margin="363,12,0,0" Name="groupBox2" VerticalAlignment="Top" Width="346">
+
+        <GroupBox Header="Rippenflächen" Grid.Column="1">
             <Grid>
-                <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="dataGrid_rippen_AutoGeneratingColumn" Height="230" HorizontalAlignment="Left" Margin="6,6,0,0" Name="dataGrid_rippen" VerticalAlignment="Top" Width="320" SelectionChanged="dataGrid_rippen_SelectionChanged" />
-                <GroupBox Header="Rippen" Height="166" HorizontalAlignment="Left" Margin="6,242,0,0" Name="groupBox4" VerticalAlignment="Top" Width="322">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="dataGrid_rippen_AutoGeneratingColumn"  Name="dataGrid_rippen" SelectionChanged="dataGrid_rippen_SelectionChanged" />
+                <!--<GroupBox Header="Rippen" Height="166" HorizontalAlignment="Left" Margin="6,242,0,0" Name="groupBox4" VerticalAlignment="Top" Width="322">
                     <Grid>
                         <Button Content="Speichern" Height="29" HorizontalAlignment="Left" IsEnabled="False" Margin="206,76,0,0" Name="button_rippen_speichern" VerticalAlignment="Top" Width="98" Click="button_rippen_speichern_Click" />
                         <Button Content="Löschen" Height="29" HorizontalAlignment="Left" IsEnabled="False" Margin="206,111,0,0" Name="button_rippen_löschen" VerticalAlignment="Top" Width="98" Click="button_rippen_löschen_Click" />
                         <Button Content="Bearbeiten" Height="29" HorizontalAlignment="Left" IsEnabled="False" Margin="206,41,0,0" Name="button_rippen_bearbeiten" VerticalAlignment="Top" Width="98" Click="button_rippen_bearbeiten_Click" />
                         <Button Content="Neu" Height="29" HorizontalAlignment="Right" IsEnabled="True" Margin="0,6,6,0" Name="button_rippen_neu" VerticalAlignment="Top" Width="98" Click="button_rippen_neu_Click" />
+                        
                         <TextBox Height="23" HorizontalAlignment="Left" Margin="64,6,0,0" Name="textBox_rippen_nenndurchmesser" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                         <Label Content="NennDM" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label4" VerticalAlignment="Top" />
+                
                         <Label Content="Min" Height="28" HorizontalAlignment="Left" Margin="6,35,0,0" Name="label5" VerticalAlignment="Top" />
                         <TextBox Height="23" HorizontalAlignment="Left" Margin="64,35,0,0" Name="textBox_rippen_min" VerticalAlignment="Top" Width="120" IsEnabled="False" />
+                
                         <Label Content="Max" Height="28" HorizontalAlignment="Left" Margin="6,64,0,0" Name="label6" VerticalAlignment="Top" />
                         <TextBox Height="23" HorizontalAlignment="Left" Margin="64,64,0,0" Name="textBox_rippen_max" VerticalAlignment="Top" Width="120" IsEnabled="False" />
                     </Grid>
+                </GroupBox>-->
+                <GroupBox Header="Durchmesser" Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition ></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Label Content="NennDM" Name="label11"  Grid.Column="0" Grid.Row="0"/>
+                        <ComboBox Name="textBox_rippen_nenndurchmesser"  IsEnabled="False"  Grid.Column="1"  Grid.ColumnSpan="3"/>
+
+                        <Label Content="Min" Name="label21"  Grid.Column="0" Grid.Row="1"/>
+                        <TextBox  Name="textBox_rippen_min" IsEnabled="False" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3"/>
+
+                        <Label Content="Max" Name="label31"  Grid.Column="0" Grid.Row="2"/>
+                        <TextBox Name="textBox_rippen_max" IsEnabled="False"  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3"/>
+
+                        <Button Content="Neu"  IsEnabled="True" Name="button_rippen_neu" Click="button_rippen_neu_Click" Grid.Column="0" Grid.Row="5"/>
+                        <Button Content="Bearbeiten" IsEnabled="False" Name="button_rippen_bearbeiten" Click="button_rippen_bearbeiten_Click" Grid.Column="1" Grid.Row="5"/>
+                        <Button Content="Speichern" IsEnabled="False" Name="button_rippen_speichern" Click="button_rippen_speichern_Click" Grid.Row="5" Grid.Column="2" />
+                        <Button Content="Löschen" IsEnabled="False" Name="button_rippen_löschen" Click="button_rippen_löschen_Click" Grid.Row="5" Grid.Column="4" />
+                    </Grid>
                 </GroupBox>
+
             </Grid>
         </GroupBox>
     </Grid>

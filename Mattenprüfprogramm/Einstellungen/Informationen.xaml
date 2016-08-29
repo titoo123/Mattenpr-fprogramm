@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Mattenprüfprogramm.Einstellungen.Informationen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Informationen" Height="300" Width="300" WindowStartupLocation="CenterOwner" Icon="/Mattenprüfprogramm;component/IconB.png">
+        Title="Informationen" Height="300" Width="300" WindowStartupLocation="CenterOwner" Icon="/Mattenprüfprogramm;component/IconB.png" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="label" Content="Entwickelt von:" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.392,-2.497" FontWeight="Bold"/>
         <Label x:Name="label1" Content="Tino Schmittat" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top"/>

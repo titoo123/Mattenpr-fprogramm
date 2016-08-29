@@ -49,7 +49,7 @@ namespace Mattenprüfprogramm.Stammdaten
        
         }
 
-        private void Button_Neu_Click(object sender, RoutedEventArgs e)
+        private void button_neu_Click(object sender, RoutedEventArgs e)
         {
             neu = true;
             button_Speichern.IsEnabled = true;
@@ -58,13 +58,13 @@ namespace Mattenprüfprogramm.Stammdaten
             textBox_Mattentypen.Text = String.Empty;
         }
 
-        private void Button_Bearbeiten_Click(object sender, RoutedEventArgs e)
+        private void button_bearbeiten_Click(object sender, RoutedEventArgs e)
         {
             textBox_Mattentypen.IsEnabled = true;
             button_Speichern.IsEnabled = true;
         }
 
-        private void Button_Speichern_Click(object sender, RoutedEventArgs e)
+        private void button_speichern_Click(object sender, RoutedEventArgs e)
         {
             DatabaseConnectionDataContext db = new DatabaseConnectionDataContext();
             if (neu)
@@ -86,7 +86,7 @@ namespace Mattenprüfprogramm.Stammdaten
             LoadDatagrid();
         }
 
-        private void Button_Löschen_Click(object sender, RoutedEventArgs e)
+        private void button_löschen_Click(object sender, RoutedEventArgs e)
         {
             DatabaseConnectionDataContext db = new DatabaseConnectionDataContext();
             string tmp = "" + ((TextBlock)dataGrid_Mattentypen.Columns[0].GetCellContent(dataGrid_Mattentypen.SelectedItem)).Text;

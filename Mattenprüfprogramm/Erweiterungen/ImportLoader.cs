@@ -16,9 +16,6 @@ namespace Mattenprüfprogramm.Erweiterungen
         private string pfad;
         private MainWindow m;
 
-        private MattenMatcher mmz;
-        private MattenMatcher mms;
-
         private List<Scherung> sList = new List<Scherung>();
         private List<Zug> zList = new List<Zug>();
 
@@ -37,6 +34,7 @@ namespace Mattenprüfprogramm.Erweiterungen
         }
         public void Load(ProgressBar progressBar)
         {
+            int i = 0;
             System.IO.DirectoryInfo directory = new System.IO.DirectoryInfo(pfad);
             DatabaseConnectionDataContext d = new DatabaseConnectionDataContext();
             
@@ -62,7 +60,7 @@ namespace Mattenprüfprogramm.Erweiterungen
                             {
                                 Scherung ls = x.ReadData_Scherung();
 
-                                if (s != null)
+                                if (s != null )
                                 {
                                     sList.Add(ls);
                                 }
@@ -78,7 +76,7 @@ namespace Mattenprüfprogramm.Erweiterungen
                                 }
 
                             }
-
+                            i++;
                             d.Import.InsertOnSubmit(new Import() { Name = f.Name });
                         }
                         catch (Exception e)
@@ -105,17 +103,19 @@ namespace Mattenprüfprogramm.Erweiterungen
             }
 
             //Erzeugt speichert Matten
-            mmz = new MattenMatcher(zList);
-            mms = new MattenMatcher(sList);
+            new MattenMatcher(zList);
+            new MattenMatcher(sList);
+
+
+            //Meldet ob Import fertig
+            MessageBox.Show("Import von " + i + " Dateien abgeschlossen!","Information");
 
             //Setzt Balken auf 0
             progressBar.Value = 0;
 
-            //Meldet ob Import fertig
-            MessageBox.Show("Import abgeschlossen!","Information");
-
             //Refresh Mainwindow
             m.label_infos_LoadData();
+            m.dataGrid_matten_LoadData();
         }
     }
 }

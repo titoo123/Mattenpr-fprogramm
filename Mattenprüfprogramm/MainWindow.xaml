@@ -17,12 +17,12 @@
             <MenuItem Header="Stammdaten" Name="MenuItemStammdaten" IsEnabled="False">
                 <MenuItem Header="Mattentyp" Click="Mattentyp_Click"></MenuItem>
                 <MenuItem Header="Prüfer" Click="Prüfer_Click"></MenuItem>
-                <MenuItem Header="Schweissmaschinen" Click="Schweissmaschinen_Click"></MenuItem>
+                <MenuItem Header="Maschinen" Click="Schweissmaschinen_Click"></MenuItem>
                 <MenuItem Header="Nenngewicht" Click="Nenngewicht_Click"></MenuItem>
                 <MenuItem Header="Grenzwerte" Click="Grenzwerte_Click"></MenuItem>
                 
             </MenuItem>
-            <MenuItem Header="Extras"  Name="MenuItemMattenprüfungen"  IsEnabled="False">
+            <MenuItem Header="Extras"  Name="MenuItemMattenprüfungen" >
                 <MenuItem Header="Informationen"  Click="Informationen_Click"></MenuItem>
             </MenuItem>
             
@@ -97,13 +97,13 @@
                         <RowDefinition ></RowDefinition>
                         <RowDefinition ></RowDefinition>
                         <RowDefinition ></RowDefinition>
-                        <RowDefinition ></RowDefinition>
+                        <!--<RowDefinition ></RowDefinition>-->
                     </Grid.RowDefinitions>
 
-                    <Label Content="Status" Grid.Row="0" Margin="1"/>
-                    <ProgressBar x:Name="ProgressBar_XML" Grid.Row="1"  Margin="1"/>
-                    <Button x:Name="button_P_importPfad" Content="Pfad auswählen"  Click="button_P_importPfad_Click" Grid.Row="2"  Margin="1"/>
-                    <Button x:Name="button_P_einlesen" Content="Prüfungen einlesen" Click="button_P_einlesen_Click" Grid.Row="3"  Margin="1"/>
+                    <!--<Label Content="Status" Grid.Row="0" Margin="1"/>-->
+                    <ProgressBar x:Name="ProgressBar_XML" Grid.Row="0"  Margin="1"/>
+                    <Button x:Name="button_P_importPfad" Content="Pfad auswählen"  Click="button_P_importPfad_Click" Grid.Row="1"  Margin="1"/>
+                    <Button x:Name="button_P_einlesen" Content="Prüfungen einlesen" Click="button_P_einlesen_Click" Grid.Row="2"  Margin="1"/>
 
 
                 </Grid>

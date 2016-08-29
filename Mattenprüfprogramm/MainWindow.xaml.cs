@@ -156,7 +156,6 @@ namespace Mattenprüfprogramm
         {
             Export.ExcelExport_Window eep = new Export.ExcelExport_Window();
             eep.Show(); 
-
         }
     
         //Extras
@@ -165,11 +164,6 @@ namespace Mattenprüfprogramm
             Window informationen = new Einstellungen.Informationen();
             informationen.Show();
         }
-        //private void Optionen_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Window optionen = new Einstellungen.Pfad_Window(this);
-        //    optionen.Show();
-        //}
 
         //DataGrid
         private void dataGrid_Matten_SelectionChanged(object sender, SelectionChangedEventArgs e)
