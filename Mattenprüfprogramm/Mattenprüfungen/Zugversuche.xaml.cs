@@ -42,7 +42,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
 
             comboBox_pruefer.SelectedValue = m.Prüfer.Name;
             comboBox_mattentyp.SelectedValue = m.Mattentypen.Name;
-            comboBox_maschine.SelectedValue = m.Schweissmaschine.Nummer.ToString();
+            comboBox_maschine.SelectedValue = m.Schweissmaschine.Name;
 
             datePicker_matten.SelectedDate = m.Datum;
 
@@ -52,10 +52,10 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             comboBox_zugdaten_richtung.Items.Add("Längs");
             comboBox_zugdaten_richtung.Items.Add("Rand");
 
-            if (m.Tiefgerippt != null)
-            {
-                checkBox_tiefgerippt.IsChecked = m.Tiefgerippt.Value;
-            }
+            //if (m.Tiefgerippt != null)
+            //{
+            //    checkBox_tiefgerippt.IsChecked = m.Tiefgerippt.Value;
+            //}
 
 
             textBox_langstab_anzahl.Text = Convert.ToString(m.Anzahl_l);
@@ -77,7 +77,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             comboBox_maschine.IsEnabled = true;
             comboBox_mattentyp.IsEnabled = true;
             comboBox_pruefer.IsEnabled = true;
-            checkBox_tiefgerippt.IsEnabled = true;
+            //checkBox_tiefgerippt.IsEnabled = true;
             button_matte_speichern.IsEnabled = true;
 
             textBox_langstab_anzahl.IsEnabled = true;
@@ -102,7 +102,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             mat.First().Id_Maschine = Erweiterungen.Helper.GetSchweissmaschinenIdByName(Convert.ToString(comboBox_maschine.SelectedItem));
             mat.First().Id_Mattentyp = Erweiterungen.Helper.GetMattentypIdByName(Convert.ToString(comboBox_mattentyp.SelectedItem));
             mat.First().Id_Prüfer = Erweiterungen.Helper.GetPrüferIdByName(Convert.ToString(comboBox_pruefer.SelectedItem));
-            mat.First().Tiefgerippt = checkBox_tiefgerippt.IsChecked;
+            //mat.First().Tiefgerippt = checkBox_tiefgerippt.IsChecked;
 
 
             mat.First().Anzahl_l = Convert.ToInt32(textBox_langstab_anzahl.Text);
@@ -130,7 +130,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             comboBox_pruefer.IsEnabled = false;
 
             textBox_kommentar.IsEnabled = false;
-            checkBox_tiefgerippt.IsEnabled = false;
+            //checkBox_tiefgerippt.IsEnabled = false;
             button_matte_speichern.IsEnabled = false;
 
 
@@ -147,12 +147,12 @@ namespace Mattenprüfprogramm.Mattenprüfungen
         private void button_zug_bearbeiten_Click(object sender, RoutedEventArgs e)
         {
             textBox_zugdaten_durchmesser.IsEnabled = true;
-            textBox_zugdaten_masse.IsEnabled = true;
+            //textBox_zugdaten_masse.IsEnabled = true;
             comboBox_zugdaten_richtung.IsEnabled = true;
             textBox_zugfestigkeit.IsEnabled = true;
             textBox_dehngrenze.IsEnabled = true;
             textBox_zugdaten_dehnhöchstkraft.IsEnabled = true;
-            textBox_bruchdehnung.IsEnabled = true;
+            //textBox_bruchdehnung.IsEnabled = true;
             textBox_streckengrenzverhältnis.IsEnabled = true;
             textBox_abweichungNenngewicht.IsEnabled = true;
 
@@ -177,10 +177,10 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             textBox_se_2.IsEnabled = true;
             textBox_se_3.IsEnabled = true;
 
-            textBox_fr.IsEnabled = true;
+            //textBox_fr.IsEnabled = true;
             button_zug_speichern.IsEnabled = true;
           //  button_matte_speichern.IsEnabled = true;
-            button_fr_berechnen.IsEnabled = true;
+            //button_fr_berechnen.IsEnabled = true;
 
         }
         private void button_zug_speichern_Click(object sender, RoutedEventArgs e)
@@ -193,12 +193,12 @@ namespace Mattenprüfprogramm.Mattenprüfungen
 
 
             esr.First().D = Convert.ToDouble( textBox_zugdaten_durchmesser.Text);
-            esr.First().M = Convert.ToDouble(textBox_zugdaten_masse.Text);
+            //esr.First().M = Convert.ToDouble(textBox_zugdaten_masse.Text);
             esr.First().Richtung = Convert.ToString(comboBox_zugdaten_richtung.SelectedValue);
             esr.First().Rm = Convert.ToDouble(textBox_zugfestigkeit.Text);
             esr.First().Rp = Convert.ToDouble(textBox_dehngrenze.Text);
             esr.First().Agt = Convert.ToDouble(textBox_zugdaten_dehnhöchstkraft.Text);
-            esr.First().A = Convert.ToDouble(textBox_bruchdehnung.Text);
+            //esr.First().A = Convert.ToDouble(textBox_bruchdehnung.Text);
             esr.First().RmRp = Convert.ToDouble(textBox_streckengrenzverhältnis.Text);
             esr.First().Dgs = Convert.ToDouble(textBox_abweichungNenngewicht.Text);
 
@@ -223,7 +223,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             esr.First().se2 = Convert.ToDouble(textBox_se_2.Text);
             esr.First().se3 = Convert.ToDouble(textBox_se_3.Text);
 
-            esr.First().fR = Convert.ToDouble(textBox_fr.Text);
+            //esr.First().fR = Convert.ToDouble(textBox_fr.Text);
 
             try
             {
@@ -235,12 +235,12 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             }
             datagrid_zugversuche_LoadData();
             textBox_zugdaten_durchmesser.IsEnabled = false;
-            textBox_zugdaten_masse.IsEnabled = false;
+            //textBox_zugdaten_masse.IsEnabled = false;
             comboBox_zugdaten_richtung.IsEnabled = false;
             textBox_zugfestigkeit.IsEnabled = false;
             textBox_dehngrenze.IsEnabled = false;
             textBox_zugdaten_dehnhöchstkraft.IsEnabled = false;
-            textBox_bruchdehnung.IsEnabled = false;
+            //textBox_bruchdehnung.IsEnabled = false;
             textBox_streckengrenzverhältnis.IsEnabled = false;
             textBox_abweichungNenngewicht.IsEnabled = false;
 
@@ -265,8 +265,8 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             textBox_se_2.IsEnabled = false;
             textBox_se_3.IsEnabled = false;
 
-            textBox_fr.IsEnabled = false;
-            button_fr_berechnen.IsEnabled = false;
+            //textBox_fr.IsEnabled = false;
+            //button_fr_berechnen.IsEnabled = false;
         }
 
         private void button_fr_berechnen_Click(object sender, RoutedEventArgs e)
@@ -304,7 +304,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
 
             double fr = ((ds * Math.PI - es) * (h + 2 * (h14 + h34))) / (6 * ds * Math.PI * c);
 
-            textBox_fr.Text = fr.ToString();
+            //textBox_fr.Text = fr.ToString();
         }
 
         private void dataGrid_zugversuche_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -322,12 +322,12 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             if (dataGrid_zugversuche.SelectedItem != null)
             {
                 textBox_zugdaten_durchmesser.Text =         Erweiterungen.Helper.GetStringFromDataGrid(2, dataGrid_zugversuche);
-                textBox_zugdaten_masse.Text =               Erweiterungen.Helper.GetStringFromDataGrid(3, dataGrid_zugversuche);
+                //textBox_zugdaten_masse.Text =               Erweiterungen.Helper.GetStringFromDataGrid(3, dataGrid_zugversuche);
                 comboBox_zugdaten_richtung.SelectedValue =  Erweiterungen.Helper.GetStringFromDataGrid(4, dataGrid_zugversuche);
                 textBox_zugfestigkeit.Text =                Erweiterungen.Helper.GetStringFromDataGrid(5, dataGrid_zugversuche);
                 textBox_dehngrenze.Text =                   Erweiterungen.Helper.GetStringFromDataGrid(6, dataGrid_zugversuche);
                 textBox_zugdaten_dehnhöchstkraft.Text =     Erweiterungen.Helper.GetStringFromDataGrid(7, dataGrid_zugversuche);
-                textBox_bruchdehnung.Text =                 Erweiterungen.Helper.GetStringFromDataGrid(8, dataGrid_zugversuche);
+                //textBox_bruchdehnung.Text =                 Erweiterungen.Helper.GetStringFromDataGrid(8, dataGrid_zugversuche);
                 textBox_streckengrenzverhältnis.Text =      Erweiterungen.Helper.GetStringFromDataGrid(9, dataGrid_zugversuche);
                 textBox_abweichungNenngewicht.Text =        Erweiterungen.Helper.GetStringFromDataGrid(10, dataGrid_zugversuche);
 
@@ -351,7 +351,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                 textBox_se_2.Text =     Erweiterungen.Helper.GetStringFromDataGrid(15, dataGrid_zugversuche);
                 textBox_se_3.Text =     Erweiterungen.Helper.GetStringFromDataGrid(16, dataGrid_zugversuche);
 
-                textBox_fr.Text =       Erweiterungen.Helper.GetStringFromDataGrid(26, dataGrid_zugversuche);
+                //textBox_fr.Text =       Erweiterungen.Helper.GetStringFromDataGrid(26, dataGrid_zugversuche);
                
             }
 
@@ -415,36 +415,35 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                       {
                           s.Id,
                           s.Datum,
-                          s.D,
-                          s.M,
-                          s.Richtung,
-                          s.Rm,
+                          d = s.D,
+                          dGs = s.Dgs,
+                          // s.Richtung,
                           s.Rp,
-                          s.Agt,
-                          s.A, 
+                          s.Rm,
                           s.RmRp,
-                          s.Dgs, //10
+                          s.Agt,
+                          s.fR,
 
-
-                          s.H1m,
-                          s.H2m,
-                          s.H3m,
-
-                          s.se1, //15
+                          s.se1,
                           s.se2,
                           s.se3,
 
-                          s.H125,
-                          s.H225,
-                          s.H325,
-                          s.H175,
-                          s.H275,
-                          s.H375,
+                          a1m = s.H1m,
+                          a2m = s.H2m,
+                          a3m = s.H3m,
+                          
+                          a1025 = s.H125,
+                          a2025 = s.H225,
+                          a3025 = s.H325,
+
+                          a1075 = s.H175,
+                          a2075 = s.H275,
+                          a3075 = s.H375,
 
                           s.c1,
                           s.c2,
-                          s.c3,
-                          s.fR
+                          s.c3
+                          
                       };
 
             int i = 0;
@@ -460,7 +459,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                 foreach (var du in dur)
                 {
 
-                        if (du.Feld == "Durchmesser" && (sc.D < du.Min || sc.D > du.Max))
+                        if (du.Feld == "Durchmesser" && (sc.d < du.Min || sc.d > du.Max))
                         {
                             TgW.Add(new Tuple<int, string>(i, "Durchmesser"));
                         }
@@ -472,15 +471,15 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                         {
                             TgW.Add(new Tuple<int, string>(i, "Dehngrenze"));
                         }
-                        if (du.Feld == "Bruchdehnung" && (sc.A < du.Min || sc.A > du.Max))
-                        {
-                            TgW.Add(new Tuple<int, string>(i, "Bruchdehnung"));
-                        }
+                        //if (du.Feld == "Bruchdehnung" && (sc.A < du.Min || sc.A > du.Max))
+                        //{
+                        //    TgW.Add(new Tuple<int, string>(i, "Bruchdehnung"));
+                        //}
                         if (du.Feld == "Streckengrenzverhältnis" && (sc.RmRp < du.Min || sc.RmRp > du.Max))
                         {
                             TgW.Add(new Tuple<int, string>(i, "Streckgrenzverhältnis"));
                         }
-                        if (du.Feld == "AbweichungNenngewicht" && (sc.Dgs < du.Min || sc.Dgs > du.Max))
+                        if (du.Feld == "AbweichungNenngewicht" && (sc.dGs < du.Min || sc.dGs > du.Max))
                         {
                             TgW.Add(new Tuple<int, string>(i, "Abweichung Nenngewicht"));
                         }

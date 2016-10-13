@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 14.875" name="DatabaseConnection">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 15.5" name="DatabaseConnection">
   <DataContextMoniker Name="/DatabaseConnectionDataContext" />
   <nestedChildShapes>
     <classShape Id="5b6041eb-bd7b-4444-b152-cdd8ea235ebd" absoluteBounds="1.5, 1.25, 2, 1.5785953776041666">
@@ -38,69 +38,69 @@
         <elementListCompartment Id="07008d3d-4d3e-4e4c-80c9-8da654b8db9b" absoluteBounds="7.14, 4.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="aaf73bde-841b-49a4-b6f8-935547b7ea09" absoluteBounds="7.125, 6.25, 2, 1.1939925130208333">
-      <DataClassMoniker Name="/DatabaseConnectionDataContext/Schweissmaschine" />
-      <nestedChildShapes>
-        <elementListCompartment Id="2581d0f4-4436-4598-b7fe-bbe5ed6a7747" absoluteBounds="7.1400000000000006, 6.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="a1632526-58a9-4f36-940f-42c737db929f" absoluteBounds="7.125, 8, 2, 1.9631982421875">
       <DataClassMoniker Name="/DatabaseConnectionDataContext/User" />
       <nestedChildShapes>
         <elementListCompartment Id="caf17ffc-5c32-4813-996c-4a99fe7e74a2" absoluteBounds="7.1400000000000006, 8.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="ca91c42f-88cb-4c84-acd6-76627a604ef1" absoluteBounds="4.375, 3.25, 2, 3.5016097005208326">
+    <classShape Id="12d63824-e503-4c23-b1ed-3fff8affc361" absoluteBounds="4.375, 4.5, 2, 3.5016097005208326">
       <DataClassMoniker Name="/DatabaseConnectionDataContext/Matten" />
       <nestedChildShapes>
-        <elementListCompartment Id="f3ee9a6f-44ad-41ba-b993-b9723f986eed" absoluteBounds="4.39, 3.71, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="6e5b884c-3d7a-4f5d-a663-5df4ce49aae3" absoluteBounds="4.39, 4.96, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.5 : 3.78449625651042); (4.375 : 3.78449625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.5 : 3.72199625651042); (5.375 : 3.72199625651042); (5.375 : 4.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DatabaseConnectionDataContext/Mattentypen/Mattentypen_Matten" />
       <nodes>
         <classShapeMoniker Id="8a605450-20cf-45c9-a2ef-8cbac4407602" />
-        <classShapeMoniker Id="ca91c42f-88cb-4c84-acd6-76627a604ef1" />
+        <classShapeMoniker Id="12d63824-e503-4c23-b1ed-3fff8affc361" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.125 : 3.65949625651042); (6.375 : 3.65949625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.125 : 3.29849812825521); (5.9062525 : 3.29849812825521); (5.9062525 : 4.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DatabaseConnectionDataContext/Prüfer/Prüfer_Matten" />
       <nodes>
         <classShapeMoniker Id="c14f01c1-12e1-4930-b171-c74a023de0be" />
-        <classShapeMoniker Id="ca91c42f-88cb-4c84-acd6-76627a604ef1" />
+        <classShapeMoniker Id="12d63824-e503-4c23-b1ed-3fff8affc361" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.125 : 6.50080485026042); (6.375 : 6.50080485026042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/DatabaseConnectionDataContext/Schweissmaschine/Schweissmaschine_Matten" />
-      <nodes>
-        <classShapeMoniker Id="aaf73bde-841b-49a4-b6f8-935547b7ea09" />
-        <classShapeMoniker Id="ca91c42f-88cb-4c84-acd6-76627a604ef1" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="76436804-22ff-4f59-91a1-6eb4c361776a" absoluteBounds="4.375, 7.875, 2, 6.7707340494791657">
+    <classShape Id="babaf4de-c23b-4677-95a7-3242a400bb15" absoluteBounds="1.625, 8.5, 2, 6.7707340494791657">
       <DataClassMoniker Name="/DatabaseConnectionDataContext/Zug" />
       <nestedChildShapes>
-        <elementListCompartment Id="092aefd8-e498-4cfe-8014-adebdd59e4df" absoluteBounds="4.3900000000000006, 8.335, 1.9700000000000002, 6.2107340494791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="913ec248-2eb3-4bba-aae5-cab0904c7312" absoluteBounds="1.6400000000000001, 8.96, 1.9700000000000002, 6.2107340494791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.375 : 6.75160970052083); (5.375 : 7.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.375 : 7.03770182291667); (3.59375 : 7.03770182291667); (3.59375 : 8.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DatabaseConnectionDataContext/Matten/Matten_Zug" />
       <nodes>
-        <classShapeMoniker Id="ca91c42f-88cb-4c84-acd6-76627a604ef1" />
-        <classShapeMoniker Id="76436804-22ff-4f59-91a1-6eb4c361776a" />
+        <classShapeMoniker Id="12d63824-e503-4c23-b1ed-3fff8affc361" />
+        <classShapeMoniker Id="babaf4de-c23b-4677-95a7-3242a400bb15" />
       </nodes>
     </associationConnector>
-    <classShape Id="64fb6b8f-b22d-4714-918f-138a52f1e0be" absoluteBounds="1.5, 7.875, 2, 2.7324039713541666">
+    <classShape Id="6ce67e64-b59b-43a4-a690-6e8c558d2df6" absoluteBounds="4.375, 8.5, 2, 2.7324039713541666">
       <DataClassMoniker Name="/DatabaseConnectionDataContext/Scherung" />
       <nestedChildShapes>
-        <elementListCompartment Id="f5145c19-1e4e-4d1b-9e84-ee4cfb76161d" absoluteBounds="1.5150000000000001, 8.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="58945c09-8f08-41c0-b895-3e5fe7b50c94" absoluteBounds="4.39, 8.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.375 : 6.75160970052083); (4 : 7.12660970052083); (4 : 9.24120198567708); (3.5 : 9.24120198567708)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.375 : 8.00160970052083); (5.375 : 8.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DatabaseConnectionDataContext/Matten/Matten_Scherung" />
       <nodes>
-        <classShapeMoniker Id="ca91c42f-88cb-4c84-acd6-76627a604ef1" />
-        <classShapeMoniker Id="64fb6b8f-b22d-4714-918f-138a52f1e0be" />
+        <classShapeMoniker Id="12d63824-e503-4c23-b1ed-3fff8affc361" />
+        <classShapeMoniker Id="6ce67e64-b59b-43a4-a690-6e8c558d2df6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="b1a345a5-af5f-4c02-8fcd-b1a74453f8f6" absoluteBounds="7.125, 6.25, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/DatabaseConnectionDataContext/Schweissmaschine" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a3865fc7-0092-4607-840c-e74fc87fe14a" absoluteBounds="7.14, 6.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.125 : 6.84699625651042); (6.375 : 6.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseConnectionDataContext/Schweissmaschine/Schweissmaschine_Matten" />
+      <nodes>
+        <classShapeMoniker Id="b1a345a5-af5f-4c02-8fcd-b1a74453f8f6" />
+        <classShapeMoniker Id="12d63824-e503-4c23-b1ed-3fff8affc361" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

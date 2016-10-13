@@ -28,7 +28,7 @@ namespace Mattenprüfprogramm.Erweiterungen
             this.x = x;
 
             clean_file_Name = file_Name.Substring(5);
-            
+
         }
         public Zug ReadData_Zug()
         {
@@ -48,23 +48,21 @@ namespace Mattenprüfprogramm.Erweiterungen
                     }
                     switch (s)
                     {
-                        case "190":  //Durchmesser
-                            z.D = Parse_Double("Durchmesser", xNode, STRING_VALUE, file_Name);
+                        case "51":  //Durchmesser
+                            z.D = Parse_Double("Durchmesser", xNode, STRING_VALUE, file_Name, 0);
                             break;
-                        case "533": //Dgs
-                            z.D = Parse_Double("Dgs", xNode, STRING_VALUE, file_Name);
-                            break;
-                        case "244": //Verhältniswert Rm/Rp0,2 = 244
-                            z.RmRp = Parse_Double("Verhältniswert Rm/Rp", xNode, STRING_VALUE, file_Name);
+                        case "163": //Dgs
+                            z.D = Parse_Double("Dgs", xNode, STRING_VALUE, file_Name, 0);
                             break;
                         case "308": //Zugfestigkeit
-                            z.Rm = Parse_Double("Zugfestigkeit", xNode, STRING_VALUE, file_Name);
+                            z.Rm = Parse_Double("Zugfestigkeit", xNode, STRING_VALUE, file_Name, 0);
                             break;
                         case "257": //Streckgrenze
-                            z.Rp = Parse_Double("Streckgrenze", xNode, STRING_VALUE, file_Name);
+                            z.Rp = Parse_Double("Streckgrenze", xNode, STRING_VALUE, file_Name, 2);
                             break;
+
                         case "318":  //Agt
-                            z.Agt = Parse_Double("Agt", xNode, STRING_VALUE, file_Name);
+                            z.Agt = Parse_Double("Agt", xNode, STRING_VALUE, file_Name, 2);
                             break;
                         case "602":  //Bediener
                             string p = xNode[STRING_VALUE].InnerText;
@@ -86,6 +84,7 @@ namespace Mattenprüfprogramm.Erweiterungen
 
                                 }
                             }
+
 
                             z.Prüfer = p;
 
@@ -125,13 +124,27 @@ namespace Mattenprüfprogramm.Erweiterungen
                             z.Mattentyp = v;
 
                             break;
+                        case "313": //Maschine
+                            try
+                            {
+                                z.Maschine = xNode[STRING_VALUE].InnerText;
+                                // Convert.ToInt32(xNode[STRING_VALUE].InnerText);
+                            }
+                            catch (Exception)
+                            {
+
+                            }
+
+                            break;
 
                         default:
                             break;
                     }
+
                 }
             }
-            z.Maschine = 12;
+            z.RmRp = z.Rm / z.Rp;
+
             return z;
 
         }
@@ -150,7 +163,7 @@ namespace Mattenprüfprogramm.Erweiterungen
                     switch (s)
                     {
                         case "190":  //Durchmesser
-                            sc.D = Parse_Double("Durchmesser", xNode, STRING_VALUE, file_Name);
+                            sc.D = Parse_Double("Durchmesser", xNode, STRING_VALUE, file_Name, 0);
                             break;
                         case "602":  //Bediener
 
@@ -163,8 +176,8 @@ namespace Mattenprüfprogramm.Erweiterungen
                             if (pru.Count() == 0)
                             {
                                 d.Prüfer.InsertOnSubmit(new Prüfer { Name = p });
-                            
-                            try
+
+                                try
                                 {
                                     d.SubmitChanges();
                                 }
@@ -189,10 +202,10 @@ namespace Mattenprüfprogramm.Erweiterungen
 
                             break;
                         case "143": //Scherkraft 
-                            sc.Fm = Parse_Double("Scherkraft", xNode, STRING_VALUE, file_Name);
+                            sc.Fm = Parse_Double("Scherkraft", xNode, STRING_VALUE, file_Name, 2);
                             break;
                         case "609":  //Scherfaktor 
-                            sc.Sw = Parse_Double("Scherfaktor", xNode, STRING_VALUE, file_Name);
+                            sc.Sw = Parse_Double("Scherfaktor", xNode, STRING_VALUE, file_Name, 2);
                             break;
                         case "599":  // Mattentyp
                             string o = xNode[STRING_VALUE].InnerText;
@@ -217,12 +230,24 @@ namespace Mattenprüfprogramm.Erweiterungen
                             sc.Mattentyp = o;
 
                             break;
+                        case "313": //Maschine
+                            try
+                            {
+                                sc.Maschine = xNode[STRING_VALUE].InnerText;
+                                //Convert.ToInt32(xNode[STRING_VALUE].InnerText);
+                            }
+                            catch (Exception)
+                            {
+
+                            }
+
+                            break;
                         default:
                             break;
                     }
                 }
             }
-            sc.Maschine = 12;
+
             return sc;
         }
 
@@ -232,22 +257,22 @@ namespace Mattenprüfprogramm.Erweiterungen
         /// <summary>
         /// Parst String-Werte zu Double-Werten
         /// </summary>
-        /// <param name="s">Name das Parameters</param>
-        /// <param name="xNode">Name des XML Knotens</param>
-        /// <param name="u">Name das XML Unterknotens</param>
-        /// <param name="n">Name der XML Datei</param>
+        /// <param name="valueName">Name das Parameters</param>
+        /// <param name="node">Name des XML Knotens</param>
+        /// <param name="subNode">Name das XML Unterknotens</param>
+        /// <param name="dataName">Name der XML Datei</param>
         /// <returns></returns>
-        private double Parse_Double(string s, XmlNode xNode, string u, string n)
+        private double Parse_Double(string valueName, XmlNode node, string subNode, string dataName, int digits)
         {
             double d = 0;
 
-            if (Double.TryParse(xNode[u].InnerText.Replace('.', ','), out d))
+            if (Double.TryParse(node[subNode].InnerText.Replace('.', ','), out d))
             {
-                return d;
+                return Math.Round(d, digits);
             }
             else
             {
-                MessageBox.Show("Es konnte kein " + s + " in der XML-Datei: " + n + " gefunden werden!", "Fehler!");
+                MessageBox.Show("Es konnte kein " + valueName + " in der XML-Datei: " + dataName + " gefunden werden!", "Fehler!");
                 return 0;
             }
 

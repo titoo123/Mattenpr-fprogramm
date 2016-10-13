@@ -57,7 +57,7 @@ namespace Mattenprüfprogramm.Erweiterungen
             {
                 Worksheet ws = excelApp.ActiveSheet;
                 ws.Cells[4, 2] = matten.Prüfnummer;
-                ws.Cells[5, 2] = matten.Schweissmaschine.Nummer;
+                ws.Cells[5, 2] = matten.Schweissmaschine.Name;
                 ws.Cells[6, 2] = matten.Mattentypen.Name;
 
                 ws.Cells[4, 13] = matten.Datum;

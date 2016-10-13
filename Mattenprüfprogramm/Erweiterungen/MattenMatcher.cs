@@ -37,7 +37,7 @@ namespace Mattenprüfprogramm.Erweiterungen
                           //a.Datum.Hour == scherung.Datum.Value.Hour
                           //&&
 
-                          a.Schweissmaschine.Nummer == Convert.ToInt32(scherung.Maschine) &&
+                          a.Schweissmaschine.Name == scherung.Maschine &&
                           a.Mattentypen.Name == scherung.Mattentyp &&
                           a.Prüfer.Name == scherung.Prüfer
 
@@ -53,7 +53,7 @@ namespace Mattenprüfprogramm.Erweiterungen
                                  select p).First().Id;
 
                     int? s_Id = (from k in d.Schweissmaschine
-                                 where k.Nummer == scherung.Maschine
+                                 where k.Name == scherung.Maschine
                                  select k).First().Id;
 
                     int? m_Id = (from r in d.Mattentypen
@@ -133,7 +133,7 @@ namespace Mattenprüfprogramm.Erweiterungen
                           //a.Datum.Hour == scherung.Datum.Value.Hour
                           //&&
 
-                          a.Schweissmaschine.Nummer == Convert.ToInt32(zug.Maschine) &&
+                          a.Schweissmaschine.Name == zug.Maschine &&
                           a.Mattentypen.Name == zug.Mattentyp &&
                           a.Prüfer.Name == zug.Prüfer
 
@@ -148,7 +148,7 @@ namespace Mattenprüfprogramm.Erweiterungen
                                  select p).First().Id;
 
                     int? s_Id = (from k in d.Schweissmaschine
-                                 where k.Nummer == zug.Maschine
+                                 where k.Name == zug.Maschine
                                  select k).First().Id;
 
                     int? m_Id = (from r in d.Mattentypen

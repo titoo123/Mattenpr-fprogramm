@@ -74,7 +74,7 @@ namespace Mattenprüfprogramm.Stammdaten
             {
                 try
                 {
-                    Schweissmaschine m = new Schweissmaschine() { Nummer = Convert.ToInt32(  textBox_Schweissmaschinen.Text ) };
+                    Schweissmaschine m = new Schweissmaschine() { Name = textBox_Schweissmaschinen.Text };
                     db.Schweissmaschine.InsertOnSubmit(m);
                 }
                 catch (Exception)
@@ -92,7 +92,7 @@ namespace Mattenprüfprogramm.Stammdaten
 
                 try
                 {
-                    mat.First().Nummer = Convert.ToInt32( textBox_Schweissmaschinen.Text);
+                    mat.First().Name = textBox_Schweissmaschinen.Text;
                 }
                 catch (Exception)
                 {

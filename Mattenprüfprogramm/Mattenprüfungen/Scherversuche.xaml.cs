@@ -48,22 +48,22 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             //Wählt betroffene Daten aus           
             comboBox_pruefer.SelectedValue = m.Prüfer.Name;
             comboBox_mattentyp.SelectedValue = m.Mattentypen.Name;
-            comboBox_maschine.SelectedValue = m.Schweissmaschine.Nummer.ToString();
+            comboBox_maschine.SelectedValue = m.Schweissmaschine.Name;
 
             datePicker_matten.SelectedDate = m.Datum;
 
             textBox_kommentar.Text = m.Kommentar;
 
             //Füllt Richtung
-            comboBox_scherdaten_richtung.Items.Add("Quer");
-            comboBox_scherdaten_richtung.Items.Add("Längs");
-            comboBox_scherdaten_richtung.Items.Add("Rand");
-            comboBox_scherdaten_richtung.Items.Add("");
+            //comboBox_scherdaten_richtung.Items.Add("Quer");
+            //comboBox_scherdaten_richtung.Items.Add("Längs");
+            //comboBox_scherdaten_richtung.Items.Add("Rand");
+            //comboBox_scherdaten_richtung.Items.Add("");
 
-            if (m.Tiefgerippt != null)
-            {
-                checkBox_tiefgerippt.IsChecked = m.Tiefgerippt.Value;
-            }
+            //if (m.Tiefgerippt != null)
+            //{
+            //    checkBox_tiefgerippt.IsChecked = m.Tiefgerippt.Value;
+            //}
 
 
             textBox_langstab_anzahl.Text = Convert.ToString(m.Anzahl_l);
@@ -86,7 +86,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             comboBox_maschine.IsEnabled = true;
             comboBox_mattentyp.IsEnabled = true;
             comboBox_pruefer.IsEnabled = true;
-            checkBox_tiefgerippt.IsEnabled = true;
+            //checkBox_tiefgerippt.IsEnabled = true;
             button_matte_speichern.IsEnabled = true;
 
             textBox_langstab_anzahl.IsEnabled = true;
@@ -111,7 +111,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             mat.First().Id_Maschine = Erweiterungen.Helper.GetSchweissmaschinenIdByName(Convert.ToString(comboBox_maschine.SelectedItem));
             mat.First().Id_Mattentyp = Erweiterungen.Helper.GetMattentypIdByName(Convert.ToString(comboBox_mattentyp.SelectedItem));
             mat.First().Id_Prüfer = Erweiterungen.Helper.GetPrüferIdByName(Convert.ToString(comboBox_pruefer.SelectedItem));
-            mat.First().Tiefgerippt = checkBox_tiefgerippt.IsChecked;
+            //mat.First().Tiefgerippt = checkBox_tiefgerippt.IsChecked;
 
             mat.First().Anzahl_l = Convert.ToInt32( textBox_langstab_anzahl.Text);
             mat.First().Anzahl_r = Convert.ToInt32(textBox_randstab_anzahl.Text);
@@ -139,7 +139,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             comboBox_pruefer.IsEnabled = false;
 
             textBox_kommentar.IsEnabled = false;
-            checkBox_tiefgerippt.IsEnabled = false;
+            //checkBox_tiefgerippt.IsEnabled = false;
             button_matte_speichern.IsEnabled = false;
 
 
@@ -158,7 +158,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             textBox_scherdaten_scherwert.IsEnabled = true;
             textBox_scherdaten_hoechstkraft.IsEnabled = true;
             textBox_scherdaten_durchmesser.IsEnabled = true;
-            comboBox_scherdaten_richtung.IsEnabled = true;
+            //comboBox_scherdaten_richtung.IsEnabled = true;
             button_scherung_speichern.IsEnabled = true;
         }
         private void button_scherung_speichern_Click(object sender, RoutedEventArgs e)
@@ -170,11 +170,11 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                       select s;
             esr.First().Fm = Convert.ToDouble(textBox_scherdaten_hoechstkraft);
             esr.First().Sw = Convert.ToDouble(textBox_scherdaten_scherwert);
-            esr.First().Richtung = comboBox_scherdaten_richtung.SelectedValue.ToString();
+            //esr.First().Richtung = comboBox_scherdaten_richtung.SelectedValue.ToString();
             esr.First().D = Convert.ToDouble(textBox_scherdaten_durchmesser);
 
             textBox_scherdaten_durchmesser.IsEnabled = false;
-            comboBox_scherdaten_richtung.IsEnabled = false;
+            //comboBox_scherdaten_richtung.IsEnabled = false;
             textBox_scherdaten_hoechstkraft.IsEnabled = false;
             textBox_scherdaten_scherwert.IsEnabled = false;
 
@@ -197,13 +197,13 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             if (dataGrid_scherversuche.SelectedItem != null)
             {
                 textBox_scherdaten_durchmesser.Text = Erweiterungen.Helper.GetStringFromDataGrid(2, dataGrid_scherversuche);
-                comboBox_scherdaten_richtung.SelectedValue = Erweiterungen.Helper.GetStringFromDataGrid(3, dataGrid_scherversuche);
+                //comboBox_scherdaten_richtung.SelectedValue = Erweiterungen.Helper.GetStringFromDataGrid(3, dataGrid_scherversuche);
                 textBox_scherdaten_hoechstkraft.Text = Erweiterungen.Helper.GetStringFromDataGrid(4, dataGrid_scherversuche);
                 textBox_scherdaten_scherwert.Text = Erweiterungen.Helper.GetStringFromDataGrid(5, dataGrid_scherversuche);
             }
 
             textBox_scherdaten_durchmesser.IsEnabled = false;
-            comboBox_scherdaten_richtung.IsEnabled = false;
+            //comboBox_scherdaten_richtung.IsEnabled = false;
             textBox_scherdaten_hoechstkraft.IsEnabled = false;
             textBox_scherdaten_scherwert.IsEnabled = false;
         }

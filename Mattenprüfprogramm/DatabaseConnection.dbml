@@ -43,13 +43,6 @@
       <Column Name="Max" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Schweissmaschine" Member="Schweissmaschine">
-    <Type Name="Schweissmaschine">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nummer" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Schweissmaschine_Matten" Member="Matten" ThisKey="Id" OtherKey="Id_Maschine" Type="Matten" />
-    </Type>
-  </Table>
   <Table Name="dbo.[User]" Member="User">
     <Type Name="User">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -87,7 +80,7 @@
     <Type Name="Zug">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Datum" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Maschine" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Maschine" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Mattentyp" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="Prüfer" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="D" Type="System.Double" DbType="Float" CanBeNull="true" />
@@ -123,7 +116,7 @@
     <Type Name="Scherung">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Datum" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Maschine" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Maschine" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Mattentyp" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="Prüfer" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="D" Type="System.Double" DbType="Float" CanBeNull="true" />
@@ -132,6 +125,13 @@
       <Column Name="Sw" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Id_Matten" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Matten_Scherung" Member="Matten" ThisKey="Id_Matten" OtherKey="Id" Type="Matten" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Schweissmaschine" Member="Schweissmaschine">
+    <Type Name="Schweissmaschine">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Schweissmaschine_Matten" Member="Matten" ThisKey="Id" OtherKey="Id_Maschine" Type="Matten" />
     </Type>
   </Table>
 </Database>

@@ -17,7 +17,16 @@ namespace Mattenprüfprogramm.Erweiterungen
     class Helper
     {
         public static string GetStringFromDataGrid(int l, DataGrid g) {
-          return "" + ((TextBlock)g.Columns[l].GetCellContent(g.SelectedItem)).Text;
+
+            try
+            {
+                return "" + ((TextBlock)g.Columns[l].GetCellContent(g.SelectedItem)).Text;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
         }
         public static int GetIntFromDataGrid(int l, DataGrid g){
             return Convert.ToInt32(GetStringFromDataGrid(l, g));
@@ -66,11 +75,11 @@ namespace Mattenprüfprogramm.Erweiterungen
             DatabaseConnectionDataContext db = new DatabaseConnectionDataContext();
             //Prüfer
             var mas = from a in db.Schweissmaschine
-                      select new { a.Nummer };
+                      select new { a.Name };
             List<String> mList = new List<string>();
             foreach (var item in mas)
             {
-                mList.Add(Convert.ToString(item.Nummer));
+                mList.Add(item.Name);
             }
             c.ItemsSource = mList;
 
@@ -93,7 +102,7 @@ namespace Mattenprüfprogramm.Erweiterungen
             DatabaseConnectionDataContext d = new DatabaseConnectionDataContext();
 
             var pru = from p in d.Schweissmaschine
-                      where p.Nummer == Convert.ToInt32( n )
+                      where p.Name == n 
                       select p;
 
             return pru.First().Id;

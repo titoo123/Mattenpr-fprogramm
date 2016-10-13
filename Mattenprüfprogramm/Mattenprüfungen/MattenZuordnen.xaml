@@ -1,32 +1,70 @@
 ﻿<Window x:Class="Mattenprüfprogramm.Mattenprüfungen.MattenZuordnen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Matten zuordnen" Height="583" Width="644" Icon="/Mattenprüfprogramm;component/IconB.png" WindowStartupLocation="CenterOwner">
+        Title="Matten zuordnen" Height="583" Width="644" Icon="/Mattenprüfprogramm;component/IconB.png" WindowStartupLocation="CenterOwner" MinHeight="500" MinWidth="600">
     <Grid>
-        <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="dataGrid_scherung_AutoGeneratingColumn" Height="95" Margin="12,184,12,0"  Name="dataGrid_scherung" VerticalAlignment="Top" Width="598" CanUserSortColumns="False" CanUserAddRows="false" CanUserReorderColumns="False" CanUserResizeRows="False" MinColumnWidth="90" SelectionChanged="dataGrid_scherung_SelectionChanged">
-        </DataGrid>
-        <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="dataGrid_zug_AutoGeneratingColumn" Height="99" HorizontalAlignment="Left" Margin="12,347,0,0" Name="dataGrid_zug" VerticalAlignment="Top" Width="598" CanUserSortColumns="False" CanUserAddRows="false" CanUserReorderColumns="False" CanUserResizeRows="False"  MinColumnWidth="90" SelectionChanged="dataGrid_zug_SelectionChanged">
-        </DataGrid>
-        <Label Content="Scherungen" Height="28" HorizontalAlignment="Left" Margin="22,157,0,0" Name="label1" VerticalAlignment="Top" />
-        <Label Content="Züge" Height="28" HorizontalAlignment="Left" Margin="22,319,0,0" Name="label2" VerticalAlignment="Top" />
-        <Button Content="Speichern und Schließen" Height="29" HorizontalAlignment="Left" Margin="227,503,0,0" Name="button_SuS" VerticalAlignment="Top" Width="150" Click="button_SuS_Click" />
-        <GroupBox Header="Details" Height="136" HorizontalAlignment="Left" Margin="12,12,0,0" Name="groupBox1" VerticalAlignment="Top" Width="598">
-            <Grid Height="108">
-                <Label Content="Datum" Height="27" HorizontalAlignment="Left" Margin="4,11,0,0" Name="label3" VerticalAlignment="Top" />
-                <Label Content="Prüfnummer" Height="28" HorizontalAlignment="Left" Margin="4,40,0,0" Name="label4" VerticalAlignment="Top" />
-                <Label Content="Prüfer" Height="25" HorizontalAlignment="Left" Margin="4,69,0,0" Name="label5" VerticalAlignment="Top" />
-                <Label Content="Maschine" Height="27" HorizontalAlignment="Left" Margin="223,11,0,0" Name="label6" VerticalAlignment="Top" />
-                <Label Content="Mattentyp" Height="26" HorizontalAlignment="Left" Margin="223,40,0,0" Name="label7" VerticalAlignment="Top" />
-                <Label Content="Kommentar" Height="25" HorizontalAlignment="Left" Margin="223,69,0,0" Name="label8" VerticalAlignment="Top" />
-                <TextBox Height="23" HorizontalAlignment="Left" Margin="93,11,0,0" Name="textBox_date" VerticalAlignment="Top" Width="120" IsEnabled="False" />
-                <TextBox Height="23" HorizontalAlignment="Left" Margin="93,40,0,0" Name="textBox_pnummer" VerticalAlignment="Top" Width="120" IsEnabled="False" />
-                <TextBox Height="23" HorizontalAlignment="Left" Margin="93,69,0,0" Name="textBox_pru" VerticalAlignment="Top" Width="120" IsEnabled="False" />
-                <TextBox Height="23" HorizontalAlignment="Left" Margin="316,11,0,0" Name="textBox_maschine" VerticalAlignment="Top" Width="120" IsEnabled="False" />
-                <TextBox Height="23" HorizontalAlignment="Left" Margin="316,40,0,0" Name="textBox_mattentyp" VerticalAlignment="Top" Width="120" IsEnabled="False" />
-                <TextBox Height="23" HorizontalAlignment="Left" Margin="316,69,0,0" Name="textBox_kommentar" VerticalAlignment="Top" Width="120" IsEnabled="False" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <GroupBox Header="Details" Grid.Row="0" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Content="Datum"      Grid.Row="0" Grid.Column="0" />
+                <Label Content="Prüfnummer" Grid.Row="0" Grid.Column="2" />
+                <Label Content="Prüfer"     Grid.Row="1" Grid.Column="0"  />
+                <Label Content="Maschine"   Grid.Row="1" Grid.Column="2"  />
+                <Label Content="Mattentyp"  Grid.Row="2" Grid.Column="0" />
+                <Label Content="Kommentar"  Grid.Row="2" Grid.Column="2"  />
+
+                <TextBox Name="textBox_date"        IsEnabled="False" Grid.Row="0" Grid.Column="1" Margin="1" />
+                <TextBox Name="textBox_pnummer"     IsEnabled="False" Grid.Row="0" Grid.Column="3" Margin="1" />
+                <TextBox Name="textBox_pru"         IsEnabled="False" Grid.Row="1" Grid.Column="1" Margin="1" />
+                <TextBox Name="textBox_maschine"    IsEnabled="False" Grid.Row="1" Grid.Column="3" Margin="1" />
+                <TextBox Name="textBox_mattentyp"   IsEnabled="False" Grid.Row="2" Grid.Column="1" Margin="1" />
+                <TextBox Name="textBox_kommentar"   IsEnabled="False" Grid.Row="2" Grid.Column="3" Margin="1" />
             </Grid>
         </GroupBox>
-        <Button Content="Hinzufügen" Height="29" HorizontalAlignment="Left" Margin="12,285,0,0" Name="button_scherung_hinzufügen" VerticalAlignment="Top" Width="120" IsEnabled="False" Click="button_scherung_hinzufügen_Click" />
-        <Button Content="Hinzufügen" Height="29" HorizontalAlignment="Left" Margin="12,452,0,0" Name="button_zug_hinzufügen" VerticalAlignment="Top" Width="120" IsEnabled="False" Click="button_zug_hinzufügen_Click" />
+
+        <GroupBox Header="Scherungen" Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="dataGrid_scherung_AutoGeneratingColumn"  Name="dataGrid_scherung" CanUserSortColumns="False" CanUserAddRows="false" CanUserReorderColumns="False" CanUserResizeRows="False" MinColumnWidth="90" SelectionChanged="dataGrid_scherung_SelectionChanged">
+                </DataGrid>
+                <Button Grid.Row="1" Content="Hinzufügen" Name="button_scherung_hinzufügen"  Width="120" IsEnabled="False" Click="button_scherung_hinzufügen_Click" Margin="1" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Züge" Grid.Row="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <DataGrid AutoGenerateColumns="True" AutoGeneratingColumn="dataGrid_zug_AutoGeneratingColumn" Name="dataGrid_zug" CanUserSortColumns="False" CanUserAddRows="false" CanUserReorderColumns="False" CanUserResizeRows="False"  MinColumnWidth="90" SelectionChanged="dataGrid_zug_SelectionChanged">
+                </DataGrid>
+                <Button Grid.Row="1" Content="Hinzufügen" Name="button_zug_hinzufügen" Width="120" IsEnabled="False" Click="button_zug_hinzufügen_Click" Margin="1"  />
+            </Grid>
+           
+        </GroupBox>
+
+        <Button Grid.Row="3" Content="Speichern und Schließen" Name="button_SuS" Width="150" Click="button_SuS_Click" />
     </Grid>
 </Window>

@@ -97,7 +97,7 @@ namespace Mattenprüfprogramm.Export
                      wb = MakeValues(excelApp.ActiveSheet,Convert.ToDateTime(d1), Convert.ToDateTime( d2), true);
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                  //   System.Windows.MessageBox.Show("Es gibt Probleme mit dem Excel-Export!\n\n" + fileString + "\n\n" + Directory.GetCurrentDirectory() + "\n\n" + ex, "Nee!");
                 }
@@ -140,7 +140,7 @@ namespace Mattenprüfprogramm.Export
             w.Cells[2, 7] = "Festigkeit Rp";       
             w.Cells[2, 8] = "Festigkeit Rm";      
             w.Cells[2, 9] = "Verhältnis Rm/Rp";
-            w.Cells[2, 10] = "Verhältnis Rm ist/Rp nenn";
+            w.Cells[2, 10] = "Verhältnis Rp ist/Rp nenn";
 
 
             w.Cells[2, 11] = "Agt %";     

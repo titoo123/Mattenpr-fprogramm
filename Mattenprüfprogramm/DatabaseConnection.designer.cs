@@ -48,9 +48,6 @@ namespace Mattenprüfprogramm
     partial void InsertRippenflächen(Rippenflächen instance);
     partial void UpdateRippenflächen(Rippenflächen instance);
     partial void DeleteRippenflächen(Rippenflächen instance);
-    partial void InsertSchweissmaschine(Schweissmaschine instance);
-    partial void UpdateSchweissmaschine(Schweissmaschine instance);
-    partial void DeleteSchweissmaschine(Schweissmaschine instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
@@ -63,6 +60,9 @@ namespace Mattenprüfprogramm
     partial void InsertScherung(Scherung instance);
     partial void UpdateScherung(Scherung instance);
     partial void DeleteScherung(Scherung instance);
+    partial void InsertSchweissmaschine(Schweissmaschine instance);
+    partial void UpdateSchweissmaschine(Schweissmaschine instance);
+    partial void DeleteSchweissmaschine(Schweissmaschine instance);
     #endregion
 		
 		public DatabaseConnectionDataContext() : 
@@ -143,14 +143,6 @@ namespace Mattenprüfprogramm
 			}
 		}
 		
-		public System.Data.Linq.Table<Schweissmaschine> Schweissmaschine
-		{
-			get
-			{
-				return this.GetTable<Schweissmaschine>();
-			}
-		}
-		
 		public System.Data.Linq.Table<User> User
 		{
 			get
@@ -180,6 +172,14 @@ namespace Mattenprüfprogramm
 			get
 			{
 				return this.GetTable<Scherung>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Schweissmaschine> Schweissmaschine
+		{
+			get
+			{
+				return this.GetTable<Schweissmaschine>();
 			}
 		}
 	}
@@ -873,120 +873,6 @@ namespace Mattenprüfprogramm
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Schweissmaschine")]
-	public partial class Schweissmaschine : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private int _Nummer;
-		
-		private EntitySet<Matten> _Matten;
-		
-    #region Definitionen der Erweiterungsmethoden
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnNummerChanging(int value);
-    partial void OnNummerChanged();
-    #endregion
-		
-		public Schweissmaschine()
-		{
-			this._Matten = new EntitySet<Matten>(new Action<Matten>(this.attach_Matten), new Action<Matten>(this.detach_Matten));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nummer", DbType="Int NOT NULL")]
-		public int Nummer
-		{
-			get
-			{
-				return this._Nummer;
-			}
-			set
-			{
-				if ((this._Nummer != value))
-				{
-					this.OnNummerChanging(value);
-					this.SendPropertyChanging();
-					this._Nummer = value;
-					this.SendPropertyChanged("Nummer");
-					this.OnNummerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Schweissmaschine_Matten", Storage="_Matten", ThisKey="Id", OtherKey="Id_Maschine")]
-		public EntitySet<Matten> Matten
-		{
-			get
-			{
-				return this._Matten;
-			}
-			set
-			{
-				this._Matten.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Matten(Matten entity)
-		{
-			this.SendPropertyChanging();
-			entity.Schweissmaschine = this;
-		}
-		
-		private void detach_Matten(Matten entity)
-		{
-			this.SendPropertyChanging();
-			entity.Schweissmaschine = null;
 		}
 	}
 	
@@ -1735,7 +1621,7 @@ namespace Mattenprüfprogramm
 		
 		private System.Nullable<System.DateTime> _Datum;
 		
-		private System.Nullable<int> _Maschine;
+		private string _Maschine;
 		
 		private string _Mattentyp;
 		
@@ -1803,7 +1689,7 @@ namespace Mattenprüfprogramm
     partial void OnIdChanged();
     partial void OnDatumChanging(System.Nullable<System.DateTime> value);
     partial void OnDatumChanged();
-    partial void OnMaschineChanging(System.Nullable<int> value);
+    partial void OnMaschineChanging(string value);
     partial void OnMaschineChanged();
     partial void OnMattentypChanging(string value);
     partial void OnMattentypChanged();
@@ -1909,8 +1795,8 @@ namespace Mattenprüfprogramm
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Maschine", DbType="Int")]
-		public System.Nullable<int> Maschine
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Maschine", DbType="VarChar(20)")]
+		public string Maschine
 		{
 			get
 			{
@@ -2558,7 +2444,7 @@ namespace Mattenprüfprogramm
 		
 		private System.Nullable<System.DateTime> _Datum;
 		
-		private System.Nullable<int> _Maschine;
+		private string _Maschine;
 		
 		private string _Mattentyp;
 		
@@ -2584,7 +2470,7 @@ namespace Mattenprüfprogramm
     partial void OnIdChanged();
     partial void OnDatumChanging(System.Nullable<System.DateTime> value);
     partial void OnDatumChanged();
-    partial void OnMaschineChanging(System.Nullable<int> value);
+    partial void OnMaschineChanging(string value);
     partial void OnMaschineChanged();
     partial void OnMattentypChanging(string value);
     partial void OnMattentypChanged();
@@ -2648,8 +2534,8 @@ namespace Mattenprüfprogramm
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Maschine", DbType="Int")]
-		public System.Nullable<int> Maschine
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Maschine", DbType="VarChar(20)")]
+		public string Maschine
 		{
 			get
 			{
@@ -2864,6 +2750,120 @@ namespace Mattenprüfprogramm
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Schweissmaschine")]
+	public partial class Schweissmaschine : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private EntitySet<Matten> _Matten;
+		
+    #region Definitionen der Erweiterungsmethoden
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    #endregion
+		
+		public Schweissmaschine()
+		{
+			this._Matten = new EntitySet<Matten>(new Action<Matten>(this.attach_Matten), new Action<Matten>(this.detach_Matten));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Schweissmaschine_Matten", Storage="_Matten", ThisKey="Id", OtherKey="Id_Maschine")]
+		public EntitySet<Matten> Matten
+		{
+			get
+			{
+				return this._Matten;
+			}
+			set
+			{
+				this._Matten.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Matten(Matten entity)
+		{
+			this.SendPropertyChanging();
+			entity.Schweissmaschine = this;
+		}
+		
+		private void detach_Matten(Matten entity)
+		{
+			this.SendPropertyChanging();
+			entity.Schweissmaschine = null;
 		}
 	}
 }

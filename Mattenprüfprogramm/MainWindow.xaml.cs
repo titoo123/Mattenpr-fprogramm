@@ -70,7 +70,7 @@ namespace Mattenprüfprogramm
             //MenuItemEinstellungen.IsEnabled = value;
 
             button_neu.IsEnabled = value;
-            button_drucken.IsEnabled = value;
+            //button_drucken.IsEnabled = value;
 
 
             MainMenu_Abmelden.IsEnabled = value;
@@ -144,12 +144,6 @@ namespace Mattenprüfprogramm
             Grenzwerte.Show();
         }
         
-        //Nicht mehr vorhanden
-        private void Mattenprüfungen_Click(object sender, RoutedEventArgs e)
-        {
-            Window Mattenprüfung = new Mattenprüfungen.Mattenverwaltung();
-            Mattenprüfung.Show();
-        }
 
         //Exporte
         private void Excel_Click(object sender, RoutedEventArgs e)
@@ -203,7 +197,7 @@ namespace Mattenprüfprogramm
             DatabaseConnectionDataContext db = new DatabaseConnectionDataContext();
 
             var mat = from u in db.Matten
-                      select new { u.Id, u.Datum, Prüfer = u.Prüfer.Name, Mattentyp = u.Mattentypen.Name, Scherungen = u.Scherung.Count, Züge = u.Zug.Count };
+                      select new { u.Id, u.Datum, Maschine = u.Schweissmaschine.Name, Prüfer = u.Prüfer.Name, Mattentyp = u.Mattentypen.Name, Scherungen = u.Scherung.Count, Züge = u.Zug.Count };
 
             dataGrid_Matten.ItemsSource = mat.ToList();
         }
@@ -279,11 +273,15 @@ namespace Mattenprüfprogramm
             Pfad_Window pw = new Pfad_Window();
             pw.Show();
         }
-
         private void button_P_einlesen_Click(object sender, RoutedEventArgs e)
         {
             Erweiterungen.ImportLoader i = new Erweiterungen.ImportLoader(this);
             i.Load(ProgressBar_XML);
+        }
+        private void button_P_import_CSV_Click(object sender, RoutedEventArgs e)
+        {
+            CSV_Pfad_Window cw = new CSV_Pfad_Window();
+            cw.Show();
         }
     }
 }

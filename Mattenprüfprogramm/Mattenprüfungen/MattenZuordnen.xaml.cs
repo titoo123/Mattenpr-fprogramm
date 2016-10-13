@@ -38,7 +38,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
 
             textBox_date.Text = m.Datum.ToShortDateString();
             textBox_kommentar.Text = m.Kommentar;
-            textBox_maschine.Text = Convert.ToString( m.Schweissmaschine.Nummer);
+            textBox_maschine.Text =  m.Schweissmaschine.Name;
             textBox_mattentyp.Text = m.Mattentypen.Name;
             textBox_pnummer.Text = m.Prüfnummer.ToString();
             textBox_pru.Text = m.Prüfer.Name;
@@ -68,7 +68,6 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             dataGrid_zug.ItemsSource = sch.ToList();
             
         }
-
         private void button_SuS_Click(object sender, RoutedEventArgs e)
         {
             DatabaseConnectionDataContext   d = new DatabaseConnectionDataContext();
@@ -99,7 +98,6 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             mv.dataGrid_matten_LoadData();
             this.Close();
         }
-
         private void dataGrid_scherung_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (((DataGrid)sender).SelectedIndex != -1)
@@ -112,23 +110,18 @@ namespace Mattenprüfprogramm.Mattenprüfungen
             {
                 button_scherung_hinzufügen.IsEnabled = false;  
             }
-        }
-
-        
-
+        }        
         private void button_scherung_hinzufügen_Click(object sender, RoutedEventArgs e)
         {
 
             sList.Add(cScherung);
             LoadGridScherung();
         }
-
         private void button_zug_hinzufügen_Click(object sender, RoutedEventArgs e)
         {
             zList.Add(cZug);
             LoadGridZug();
         }
-
         private void dataGrid_zug_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (((DataGrid)sender).SelectedIndex != -1)
@@ -142,7 +135,6 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                 button_zug_hinzufügen.IsEnabled = false;
             }
         }
-
         private void dataGrid_scherung_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             if (e.PropertyType == typeof(System.DateTime) || e.Column.Header.ToString() == "Datum")
@@ -154,7 +146,6 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                 e.Column.Width = 0;
             }
         }
-
         private void dataGrid_zug_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             if (e.PropertyType == typeof(System.DateTime) || e.Column.Header.ToString() == "Datum")

@@ -83,6 +83,7 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -113,11 +114,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseConnection.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Einstellungen\CSV_Pfad_Window.xaml.cs">
+      <DependentUpon>CSV_Pfad_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Einstellungen\Informationen.xaml.cs">
       <DependentUpon>Informationen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Erweiterungen\CreateExcelSheet.cs" />
-    <Compile Include="Erweiterungen\DATParser.cs" />
+    <Compile Include="Erweiterungen\CSV_Reader.cs" />
     <Compile Include="Erweiterungen\ExcelExport.cs" />
     <Compile Include="Erweiterungen\Helper.cs" />
     <Compile Include="Erweiterungen\ImportLoader.cs" />
@@ -132,9 +136,6 @@
     <Compile Include="Mattenprüfungen\MattenLoeschenDatum.xaml.cs">
       <DependentUpon>MattenLoeschenDatum.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Mattenprüfungen\Mattenverwaltung.xaml.cs">
-      <DependentUpon>Mattenverwaltung.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Mattenprüfungen\MattenZuordnen.xaml.cs">
       <DependentUpon>MattenZuordnen.xaml</DependentUpon>
     </Compile>
@@ -147,8 +148,8 @@
     <Compile Include="Stammdaten\Grenzwerte.xaml.cs">
       <DependentUpon>Grenzwerte.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Einstellungen\Pfad_Window.xaml.cs">
-      <DependentUpon>Pfad_Window.xaml</DependentUpon>
+    <Compile Include="Einstellungen\XML_Pfad_Window.xaml.cs">
+      <DependentUpon>XML_Pfad_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Stammdaten\Mattentypen.xaml.cs">
       <DependentUpon>Mattentypen.xaml</DependentUpon>
@@ -167,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Benutzer\BenutzerVerwaltung.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Einstellungen\CSV_Pfad_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -204,10 +209,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Mattenprüfungen\Mattenverwaltung.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Mattenprüfungen\MattenZuordnen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -224,7 +225,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Einstellungen\Pfad_Window.xaml">
+    <Page Include="Einstellungen\XML_Pfad_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

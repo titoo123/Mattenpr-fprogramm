@@ -31,7 +31,9 @@ namespace Mattenprüfprogramm.Mattenprüfungen
 
         private void button_SuS_Click(object sender, RoutedEventArgs e)
         {
-            if (datePicker_matte!= null && textBox_prüfnummer.Text != null && textBox_kommentar.Text != null 
+            if (datePicker_matte!= null 
+                //&& textBox_prüfnummer.Text != null 
+                && textBox_kommentar.Text != null 
                 && comboBox_prüfer.SelectedIndex != -1 && comboBox_mattentyp.SelectedIndex != -1 && comboBox_maschine.SelectedIndex != -1)
             {
                 DatabaseConnectionDataContext d = new DatabaseConnectionDataContext();
@@ -42,7 +44,7 @@ namespace Mattenprüfprogramm.Mattenprüfungen
                                          Id_Maschine = Erweiterungen.Helper.GetSchweissmaschinenIdByName(Convert.ToString( comboBox_maschine.SelectedValue)),
                                          Id_Prüfer = Erweiterungen.Helper.GetPrüferIdByName(Convert.ToString(comboBox_prüfer.SelectedValue)),
                                          Id_Mattentyp = Erweiterungen.Helper.GetMattentypIdByName(Convert.ToString(comboBox_mattentyp.SelectedValue)),
-                                         Tiefgerippt = Convert.ToBoolean( checkBox_tiefgerippt),
+                                         //Tiefgerippt = Convert.ToBoolean( checkBox_tiefgerippt),
                 };
 
                 d.Matten.InsertOnSubmit(m);

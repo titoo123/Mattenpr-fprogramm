@@ -1,13 +1,36 @@
 ﻿<Window x:Class="Mattenprüfprogramm.Mattenprüfungen.MattenLoeschenDatum"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Matten löschen" Height="167.901" Width="279" Icon="/Mattenprüfprogramm;component/IconB.png" WindowStartupLocation="CenterOwner">
+        Title="Matten löschen" Height="150" Width="300" Icon="/Mattenprüfprogramm;component/IconB.png" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Grid>
-        <Button Content="Löschen und Schließen" Height="29" HorizontalAlignment="Left" Margin="58,101,0,0" Name="button_LuS" VerticalAlignment="Top" Width="150" Click="button_LuS_Click" />
-        <DatePicker Height="25" HorizontalAlignment="Left" Margin="12,39,0,0" Name="datePicker_von" VerticalAlignment="Top" Width="115" />
-        <DatePicker Height="25" HorizontalAlignment="Left" Margin="133,39,0,0" Name="datePicker_bis" VerticalAlignment="Top" Width="115" />
-        <Label Content="Von" Height="28" HorizontalAlignment="Left" Margin="12,9,0,0" Name="label1" VerticalAlignment="Top" />
-        <Label Content="Bis" Height="28" HorizontalAlignment="Left" Margin="133,12,0,0" Name="label2" VerticalAlignment="Top" />
-        <CheckBox x:Name="checkBox_Incl" Content="Incl. Züge und Scherungen" HorizontalAlignment="Left" Margin="14,73,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <Grid.RowDefinitions  >
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--<Label x:Name="label" Content="Von:" Grid.Row="0" Grid.Column="0"/>
+        <Label x:Name="label1" Content="Bis:"  Grid.Row="0" Grid.Column="2"/>-->
+        <DatePicker x:Name="datePicker_von" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="1">
+            <DatePicker.Resources>
+                <Style TargetType="DatePickerTextBox">
+                    <Setter Property="Text" Value="Datum 'von' auswählen"/>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <DatePicker x:Name="datePicker_bis" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Margin="1">
+            <DatePicker.Resources>
+                <Style TargetType="DatePickerTextBox">
+                    <Setter Property="Text" Value="Datum 'bis' auswählen"/>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <CheckBox x:Name="checkBox_Incl" Content="Incl. Züge und Scherungen" Grid.Row="1" Grid.ColumnSpan="4" IsChecked="True" Margin="1"/>
+        <Button x:Name="button_LuS" Content="Löschen und Schließen"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Margin="1" Click="button_LuS_Click"/>
     </Grid>
 </Window>
